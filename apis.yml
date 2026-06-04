@@ -1,0 +1,130 @@
+---
+aid: university-of-pennsylvania
+name: University of Pennsylvania
+description: >-
+  The University of Pennsylvania (Penn) is a private Ivy League research
+  university in Philadelphia, ranked #11 in the QS World University Rankings
+  2025. Penn's public developer footprint centers on the Penn OpenData API, an
+  institutional ESB service exposing Registrar, Dining, Directory, Transit, News
+  and Events, Maps, Calendar, and Laundry data; access generally requires a
+  validated API token issued by the university. A large share of the
+  community-facing surface is built and documented by Penn Labs, a
+  student-run software organization that publishes open-source SDKs (Python and
+  JavaScript) and JSON REST APIs for Penn Courses, Penn Course Review, and Penn
+  Mobile on top of the OpenData platform. Penn Libraries additionally exposes
+  bibliographic metadata through OAI-PMH and Z39.50 under an open-metadata
+  policy.
+type: Index
+position: Consumer
+access: 3rd-Party
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/university-of-pennsylvania/refs/heads/main/apis.yml
+tags:
+  - Education
+  - Higher Education
+  - University
+  - Open Data
+  - Courses
+  - Library
+  - United States
+  - Ivy League
+created: '2026-06-03'
+modified: '2026-06-03'
+specificationVersion: '0.19'
+apis:
+  - aid: university-of-pennsylvania:opendata
+    name: Penn OpenData API
+    description: >-
+      Penn's institutional OpenData platform (an ISC enterprise service bus)
+      providing access to Registrar/course, Dining, Directory, Transit, News,
+      Events, Maps, Calendar, and Laundry data. Most services require a validated
+      API token/password; access is requested through the university and the
+      documentation host is gated (not publicly resolvable from outside Penn).
+    humanURL: https://pennlabs.org/resources/
+    tags: [ Open Data, Registrar, Courses, Dining, Directory, Transit ]
+    properties:
+      - type: Documentation
+        url: https://pennlabs.org/resources/
+  - aid: university-of-pennsylvania:penn-sdk-python
+    name: Penn SDK (Python)
+    description: >-
+      Open-source Python module maintained by Penn Labs that wraps the Penn
+      OpenData services (Registrar, Dining, Directory and more). A validated
+      OpenData API token is required for most calls.
+    humanURL: https://penn-sdk.readthedocs.io/en/latest/
+    tags: [ SDK, Python, Open Data, Registrar ]
+    properties:
+      - type: Documentation
+        url: https://penn-sdk.readthedocs.io/en/latest/
+      - type: GitHub
+        url: https://github.com/pennlabs/penn-sdk-python
+  - aid: university-of-pennsylvania:penn-sdk-js
+    name: Penn OpenData Node SDK
+    description: >-
+      Open-source JavaScript/Node SDK from Penn Labs for the Penn OpenData API.
+    humanURL: https://penn-sdk.js.org/
+    tags: [ SDK, JavaScript, Node, Open Data ]
+    properties:
+      - type: Documentation
+        url: https://penn-sdk.js.org/
+      - type: GitHub
+        url: https://github.com/pennlabs
+  - aid: university-of-pennsylvania:penn-courses
+    name: Penn Courses (PCX) API
+    description: >-
+      Open-source course planning and registration platform by Penn Labs.
+      Its backend draws current-semester data from the Penn Registrar via the
+      OpenData API; the OpenData integration requires client credentials.
+    humanURL: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
+    tags: [ Courses, Registrar, REST, Open Source ]
+    properties:
+      - type: Documentation
+        url: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
+      - type: GitHub
+        url: https://github.com/pennlabs/penn-courses
+  - aid: university-of-pennsylvania:penn-course-review
+    name: Penn Course Review API
+    description: >-
+      JSON REST API from Penn Labs exposing Penn course review and registrar
+      data. A default public token grants registrar-data access; richer review
+      data requires a token.
+    humanURL: https://penncoursereview.com/api/documentation/
+    tags: [ Courses, Reviews, REST, Open Data ]
+    properties:
+      - type: Documentation
+        url: https://penncoursereview.com/api/documentation/
+      - type: GitHub
+        url: https://github.com/pennlabs/penncoursereview-sdk-python
+  - aid: university-of-pennsylvania:library-metadata
+    name: Penn Libraries Open Metadata (OAI-PMH / Z39.50)
+    description: >-
+      Penn Libraries publishes bibliographic catalog metadata in bulk under an
+      open-metadata policy, accessible via OAI-PMH and via Z39.50 (Alma/Ex Libris
+      server na03.alma.exlibrisgroup.com:1921, MARC21).
+    humanURL: https://www.library.upenn.edu/about/policies/open-metadata
+    tags: [ Library, Metadata, OAI-PMH, Z39.50, MARC21 ]
+    properties:
+      - type: Documentation
+        url: https://www.library.upenn.edu/about/policies/open-metadata
+common:
+  - type: Website
+    url: https://www.upenn.edu/
+  - type: GitHub
+    url: https://github.com/upenn
+  - type: SourceCode
+    url: https://github.com/pennlabs
+  - type: DeveloperPortal
+    url: https://pennlabs.org/resources/
+  - type: LinkedIn
+    url: https://www.linkedin.com/school/university-of-pennsylvania/
+  - type: Plans
+    url: plans/university-of-pennsylvania-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/university-of-pennsylvania-rate-limits.yml
+  - type: FinOps
+    url: finops/university-of-pennsylvania-finops.yml
+  - type: Review
+    url: review.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

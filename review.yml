@@ -1,0 +1,61 @@
+---
+name: University of Pennsylvania
+description: University of Pennsylvania public developer/API footprint review for APIs.json cataloging.
+url: https://raw.githubusercontent.com/api-evangelist/university-of-pennsylvania/refs/heads/main/review.yml
+created: '2026-06-03'
+modified: '2026-06-03'
+reviews:
+  - date: '2026-06-03'
+    rating: 3
+    summary: >-
+      Penn's official OpenData API is real but gated: documentation lives on a
+      Penn-internal ESB host (esb.isc-seo.upenn.edu) that does not resolve from
+      outside the network, and most services require a validated token. The
+      strongest public, verifiable surface comes from Penn Labs, a student
+      software organization that publishes open-source SDKs (Python at
+      penn-sdk.readthedocs.io, Node at penn-sdk.js.org) and JSON REST APIs
+      (Penn Courses, Penn Course Review) on GitHub. Penn Libraries publishes
+      catalog metadata via OAI-PMH/Z39.50 under a documented open-metadata
+      policy. No fabricated endpoints: every API entry maps to a live docs page
+      probed below, and the gated OpenData host is reported honestly with its
+      non-resolving status.
+    endpoints:
+      - url: https://esb.isc-seo.upenn.edu/8091/documentation/
+        status: 0
+        note: Official Penn OpenData API docs; host does not resolve externally (gated).
+      - url: https://pennlabs.org/resources/
+        status: 200
+        note: Penn Labs developer resources hub listing OpenData APIs and SDKs.
+      - url: https://penn-sdk.readthedocs.io/en/latest/
+        status: 200
+        note: Penn SDK (Python) documentation, wraps OpenData services.
+      - url: https://penn-sdk.js.org/
+        status: 200
+        note: Penn OpenData Node/JavaScript SDK docs.
+      - url: https://penncoursereview.com/api/documentation/
+        status: 200
+        note: Penn Course Review API documentation (public token gives registrar data).
+      - url: https://github.com/pennlabs/penn-courses
+        status: 200
+        note: Penn Courses (PCX) open-source platform; backend uses OpenData API.
+      - url: https://github.com/pennlabs/penn-sdk-python
+        status: 200
+        note: Penn SDK Python source; validated API token required.
+      - url: https://github.com/pennlabs
+        status: 200
+        note: Penn Labs GitHub organization (student-run, primary public API maintainer).
+      - url: https://github.com/upenn
+        status: 200
+        note: Official University of Pennsylvania GitHub organization.
+      - url: https://www.library.upenn.edu/about/policies/open-metadata
+        status: 200
+        note: Penn Libraries open-metadata policy (OAI-PMH / Z39.50 access).
+      - url: https://catalog.upenn.edu/courses/
+        status: 200
+        note: Public course catalog (HTML; data sourced from Penn OpenData).
+      - url: https://www.upenn.edu/
+        status: 200
+        note: Official institution website.
+      - url: https://data.pennlabs.org
+        status: 404
+        note: Former Penn Labs OpenData demo endpoint; no longer resolving.
