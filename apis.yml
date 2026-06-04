@@ -82,6 +82,18 @@ apis:
         url: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
       - type: GitHub
         url: https://github.com/pennlabs/penn-courses
+      - type: OpenAPI
+        url: openapi/university-of-pennsylvania-penn-courses.yaml
+      - type: x-json-schema
+        url: json-schema/university-of-pennsylvania-course-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-pennsylvania-course-structure.json
+      - type: x-rules
+        url: rules/university-of-pennsylvania-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-pennsylvania-vocabulary.yml
+      - type: x-json-ld
+        url: json-ld/university-of-pennsylvania-context.jsonld
   - aid: university-of-pennsylvania:penn-course-review
     name: Penn Course Review API
     description: >-
@@ -95,6 +107,8 @@ apis:
         url: https://penncoursereview.com/api/documentation/
       - type: GitHub
         url: https://github.com/pennlabs/penncoursereview-sdk-python
+      - type: OpenAPI
+        url: openapi/university-of-pennsylvania-penn-courses.yaml
   - aid: university-of-pennsylvania:library-metadata
     name: Penn Libraries Open Metadata (OAI-PMH / Z39.50)
     description: >-

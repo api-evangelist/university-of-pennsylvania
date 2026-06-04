@@ -1,0 +1,112 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "readOnly": true,
+      "description": "\nThe full code of the course, in the form '{dept code}-{course code}'\ndash-joined department and code of the course, e.g. `CIS-120` for CIS-120."
+    },
+    "title": {
+      "type": "string",
+      "readOnly": true,
+      "description": "\nThe title of the course, e.g. 'Programming Languages and Techniques I' for CIS-120.\n"
+    },
+    "description": {
+      "type": "string",
+      "readOnly": true,
+      "description": "\nThe description of the course, e.g. 'A fast-paced introduction to the fundamental concepts\nof programming... [etc.]' for CIS-120.\n"
+    },
+    "syllabus_url": {
+      "type": "string",
+      "readOnly": true,
+      "nullable": true,
+      "description": "\nA URL for the syllabus of the course, if available.\nNot available for courses offered in or before spring 2022.\n"
+    },
+    "semester": {
+      "type": "string",
+      "readOnly": true,
+      "description": "\nThe semester of the course (of the form YYYYx where x is A [for spring],\nB [summer], or C [fall]), e.g. `2019C` for fall 2019.\n"
+    },
+    "prerequisites": {
+      "type": "string",
+      "readOnly": true,
+      "description": "Text describing the prereqs for a course, e.g. 'CIS 120, 160' for CIS-121."
+    },
+    "course_quality": {
+      "type": "number",
+      "multipleOf": 0.001,
+      "maximum": 10,
+      "minimum": -10,
+      "readOnly": true,
+      "description": "The average course quality rating for this section, on a scale of 0-4."
+    },
+    "instructor_quality": {
+      "type": "number",
+      "multipleOf": 0.001,
+      "maximum": 10,
+      "minimum": -10,
+      "readOnly": true,
+      "description": "The average instructor quality for this section, on a scale of 0-4."
+    },
+    "difficulty": {
+      "type": "number",
+      "multipleOf": 0.001,
+      "maximum": 10,
+      "minimum": -10,
+      "readOnly": true,
+      "description": "The average difficult rating for this section, on a scale of 0-4."
+    },
+    "work_required": {
+      "type": "number",
+      "multipleOf": 0.001,
+      "maximum": 10,
+      "minimum": -10,
+      "readOnly": true,
+      "description": "The average work required for this section, on a scale of 0-4."
+    },
+    "credits": {
+      "type": "number",
+      "multipleOf": 0.01,
+      "maximum": 100,
+      "minimum": -100,
+      "readOnly": true,
+      "nullable": true,
+      "description": "The number of credits this course takes. This is precomputed for efficiency."
+    },
+    "crosslistings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "readOnly": true,
+      "description": "\nA list of the full codes (DEPT-###) of all crosslistings for this course\n(not including this course).\n"
+    },
+    "pre_ngss_requirements": {
+      "type": "array",
+      "items": [],
+      "readOnly": true,
+      "description": "\nA list of the pre-NGSS (deprecated since 2022B) academic requirements\nthis course fulfills.\n"
+    },
+    "attributes": {
+      "type": "array",
+      "items": [],
+      "readOnly": true,
+      "description": "\nA list of attributes this course has. Attributes are typically\nused to mark courses which students in a program/major should\ntake.\n"
+    },
+    "restrictions": {
+      "type": "array",
+      "items": [],
+      "readOnly": true,
+      "description": "\nA list of NGSSRestrictions this course has. Restrictions provide information about\nwho can take a course.\n"
+    },
+    "sections": {
+      "type": "array",
+      "items": [],
+      "readOnly": true,
+      "description": "A list of the sections of this course."
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/university-of-pennsylvania/main/json-schema/university-of-pennsylvania-coursedetail-schema.json",
+  "title": "CourseDetail"
+}

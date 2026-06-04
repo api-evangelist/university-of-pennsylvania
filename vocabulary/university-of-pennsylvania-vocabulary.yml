@@ -1,0 +1,74 @@
+vocabulary:
+  name: University of Pennsylvania Penn Courses Vocabulary
+  description: >-
+    Terms used across the Penn Courses API (Penn Course Plan, Penn Course Review,
+    Penn Course Alert, and Penn Degree Plan) maintained by Penn Labs. Definitions
+    are drawn from the published OpenAPI document at penncoursereview.com.
+  version: "1.0.0"
+  terms:
+    - term: Course
+      definition: >-
+        An academic offering identified by a full code of the form
+        '{dept code}-{course code}', e.g. CIS-120.
+      tags: [course, registrar, base]
+    - term: Section
+      definition: >-
+        A specific meeting instance of a course identified by dept, course, and
+        section code, e.g. CIS-120-001.
+      tags: [section, registrar, base]
+    - term: Semester
+      definition: >-
+        An academic term encoded as YYYYx where x is A (spring), B (summer), or
+        C (fall), e.g. 2019C for fall 2019.
+      tags: [semester, time]
+    - term: Activity
+      definition: >-
+        The instructional type of a section such as LEC (lecture), REC (recitation),
+        LAB (laboratory), SEM (seminar), or ONL (online).
+      tags: [section, activity]
+    - term: Status
+      definition: >-
+        The registration status of a section. O = Open, C = Closed, X = Cancelled,
+        blank = Unlisted.
+      tags: [section, status, registration]
+    - term: Course Quality
+      definition: >-
+        Average course quality rating from Penn Course Review on a scale of 0 to 4.
+      tags: [review, rating]
+    - term: Instructor Quality
+      definition: >-
+        Average instructor quality rating from Penn Course Review.
+      tags: [review, rating, instructor]
+    - term: Difficulty
+      definition: >-
+        Average difficulty rating from Penn Course Review.
+      tags: [review, rating]
+    - term: Work Required
+      definition: >-
+        Average amount-of-work rating from Penn Course Review.
+      tags: [review, rating]
+    - term: Schedule
+      definition: >-
+        A user-named collection of sections and breaks for a single semester in
+        Penn Course Plan.
+      tags: [plan, schedule]
+    - term: Break
+      definition: >-
+        A user-defined block of unavailable time placed on a Penn Course Plan schedule.
+      tags: [plan, schedule]
+    - term: Registration
+      definition: >-
+        A Penn Course Alert subscription that notifies a user when a section opens.
+      tags: [alert, registration]
+    - term: Degree Plan
+      definition: >-
+        A Penn Degree Plan that maps courses to degree rules and fulfillments.
+      tags: [degree, planning]
+    - term: Fulfillment
+      definition: >-
+        A course assigned to satisfy a rule within a degree plan.
+      tags: [degree, fulfillment]
+    - term: Friendship
+      definition: >-
+        A reciprocal connection between Penn Courses users for sharing schedules.
+      tags: [social, plan]

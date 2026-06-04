@@ -1,0 +1,122 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "readOnly": true,
+      "description": "\nThe dash-separated dept, full-code, and section-code, e.g. `CIS-120-001` for the\n001 lecture section of CIS-120.\n"
+    },
+    "status": {
+      "enum": [
+        "O",
+        "C",
+        "X",
+        ""
+      ],
+      "type": "string",
+      "readOnly": true,
+      "description": "The registration status of the section. Options and meanings: <table width=100%><tr><td>\"O\"</td><td>\"Open\"</td></tr><tr><td>\"C\"</td><td>\"Closed\"</td></tr><tr><td>\"X\"</td><td>\"Cancelled\"</td></tr><tr><td>\"\"</td><td>\"Unlisted\"</td></tr></table>"
+    },
+    "activity": {
+      "enum": [
+        "",
+        "CLN",
+        "CRT",
+        "DAB",
+        "DIS",
+        "DPC",
+        "FLD",
+        "HYB",
+        "IND",
+        "LAB",
+        "LEC",
+        "MST",
+        "ONL",
+        "PRC",
+        "REC",
+        "SEM",
+        "SRT",
+        "STU"
+      ],
+      "type": "string",
+      "readOnly": true,
+      "description": "The section activity, e.g. `LEC` for CIS-120-001 (2020A). Options and meanings: <table width=100%><tr><td>\"\"</td><td>\"Undefined\"</td></tr><tr><td>\"CLN\"</td><td>\"Clinic\"</td></tr><tr><td>\"CRT\"</td><td>\"Clinical Rotation\"</td></tr><tr><td>\"DAB\"</td><td>\"Dissertation Abroad\"</td></tr><tr><td>\"DIS\"</td><td>\"Dissertation\"</td></tr><tr><td>\"DPC\"</td><td>\"Doctoral Program Exchange\"</td></tr><tr><td>\"FLD\"</td><td>\"Field Work\"</td></tr><tr><td>\"HYB\"</td><td>\"Hybrid\"</td></tr><tr><td>\"IND\"</td><td>\"Independent Study\"</td></tr><tr><td>\"LAB\"</td><td>\"Lab\"</td></tr><tr><td>\"LEC\"</td><td>\"Lecture\"</td></tr><tr><td>\"MST\"</td><td>\"Masters Thesis\"</td></tr><tr><td>\"ONL\"</td><td>\"Online\"</td></tr><tr><td>\"PRC\"</td><td>\"Practicum\"</td></tr><tr><td>\"REC\"</td><td>\"Recitation\"</td></tr><tr><td>\"SEM\"</td><td>\"Seminar\"</td></tr><tr><td>\"SRT\"</td><td>\"Senior Thesis\"</td></tr><tr><td>\"STU\"</td><td>\"Studio\"</td></tr></table>"
+    },
+    "credits": {
+      "type": "number",
+      "multipleOf": 0.01,
+      "maximum": 100,
+      "minimum": -100,
+      "readOnly": true,
+      "nullable": true,
+      "description": "The number of credits this section is worth."
+    },
+    "capacity": {
+      "type": "integer",
+      "readOnly": true,
+      "description": "The max allowed enrollment across all crosslistings of this section."
+    },
+    "semester": {
+      "type": "string",
+      "readOnly": true,
+      "description": "\nThe semester of the course (of the form YYYYx where x is A [for spring],\nB [summer], or C [fall]), e.g. `2019C` for fall 2019.\n"
+    },
+    "meetings": {
+      "type": "string",
+      "readOnly": true,
+      "description": "\nA list of the meetings of this section (each meeting is a continuous span of time\nduring which a section would meet).\n"
+    },
+    "instructors": {
+      "type": "array",
+      "items": [],
+      "readOnly": true,
+      "description": "A list of the names of the instructors teaching this section."
+    },
+    "course_quality": {
+      "type": "number",
+      "multipleOf": 0.001,
+      "maximum": 10,
+      "minimum": -10,
+      "readOnly": true,
+      "description": "The average course quality rating for this section, on a scale of 0-4."
+    },
+    "instructor_quality": {
+      "type": "number",
+      "multipleOf": 0.001,
+      "maximum": 10,
+      "minimum": -10,
+      "readOnly": true,
+      "description": "The average instructor quality for this section, on a scale of 0-4."
+    },
+    "difficulty": {
+      "type": "number",
+      "multipleOf": 0.001,
+      "maximum": 10,
+      "minimum": -10,
+      "readOnly": true,
+      "description": "The average difficult rating for this section, on a scale of 0-4."
+    },
+    "work_required": {
+      "type": "number",
+      "multipleOf": 0.001,
+      "maximum": 10,
+      "minimum": -10,
+      "readOnly": true,
+      "description": "The average work required for this section, on a scale of 0-4."
+    },
+    "associated_sections": {
+      "type": "array",
+      "items": [],
+      "readOnly": true,
+      "description": "\nA list of all sections associated with the Course which this section belongs to; e.g. for\nCIS-120-001, all of the lecture and recitation sections for CIS-120 (including CIS-120-001)\nin the same semester.\n"
+    },
+    "registration_volume": {
+      "type": "integer",
+      "readOnly": true,
+      "description": "The number of active PCA registrations watching this section."
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/university-of-pennsylvania/main/json-schema/university-of-pennsylvania-sectiondetail-schema.json",
+  "title": "SectionDetail"
+}

@@ -1,0 +1,46 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "The id of the schedule."
+    },
+    "sections": {
+      "type": "array",
+      "items": [],
+      "description": "The sections in the schedule."
+    },
+    "breaks": {
+      "type": "array",
+      "items": [],
+      "description": "The breaks in the schedule."
+    },
+    "semester": {
+      "type": "string",
+      "description": "\nThe academic semester planned out by the schedule (of the form YYYYx where x is A\n[for spring], B [summer], or C [fall]), e.g. `2019C` for fall 2019.\n",
+      "maxLength": 5
+    },
+    "name": {
+      "type": "string",
+      "description": "\nThe user's nick-name for the schedule. No two schedules can match in all of the fields\n`[name, semester, person]`\n",
+      "maxLength": 255
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    }
+  },
+  "required": [
+    "sections",
+    "name"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/university-of-pennsylvania/main/json-schema/university-of-pennsylvania-schedule-schema.json",
+  "title": "Schedule"
+}

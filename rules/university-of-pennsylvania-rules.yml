@@ -1,0 +1,53 @@
+extends: [[spectral:oas, off]]
+documentationUrl: https://penncoursereview.com/api/documentation/
+formats:
+  - oas3
+rules:
+  upenn-info-title:
+    description: API must declare a title.
+    severity: error
+    given: $.info
+    then:
+      field: title
+      function: truthy
+
+  upenn-operation-description:
+    description: Every operation should have a description (observed throughout the Penn Courses API).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: description
+      function: truthy
+
+  upenn-operation-tags:
+    description: Operations should be tagged (e.g. Plan, Review, Alert, Degree, Base).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: tags
+      function: truthy
+
+  upenn-path-kebab-or-snake:
+    description: Path segments use lowercase letters, digits, dashes, underscores, or path params (observed convention, e.g. /api/review/course_plots).
+    severity: warn
+    given: $.paths[*]~
+    then:
+      function: pattern
+      functionOptions:
+        match: '^(/[a-z0-9_\-]+|/\{[a-zA-Z_]+\})+/?$'
+
+  upenn-course-code-param:
+    description: Course code path params should be documented (e.g. course_code, full_code).
+    severity: hint
+    given: $.paths[*].*.parameters[?(@.in=='path')]
+    then:
+      field: description
+      function: truthy
+
+  upenn-success-response:
+    description: GET operations must define a 200 response.
+    severity: error
+    given: $.paths[*].get.responses
+    then:
+      field: '200'
+      function: truthy

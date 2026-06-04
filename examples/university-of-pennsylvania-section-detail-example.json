@@ -1,0 +1,114 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://penncourseplan.com/api/base/2024C/sections/CIS-1600-001/",
+    "note": "Representative section object as embedded in course detail."
+  },
+  "response": {
+    "id": "CIS-1600-001",
+    "status": "O",
+    "activity": "LEC",
+    "credits": 1.0,
+    "capacity": 140,
+    "semester": "2024C",
+    "meetings": [
+      {
+        "day": "R",
+        "start": 8.3,
+        "end": 9.59,
+        "room": "TOWN 100"
+      },
+      {
+        "day": "T",
+        "start": 8.3,
+        "end": 9.59,
+        "room": "TOWN 100"
+      }
+    ],
+    "instructors": [
+      {
+        "id": 11212,
+        "name": "Rajiv C. Gandhi"
+      }
+    ],
+    "course_quality": 3.236,
+    "instructor_quality": 3.557,
+    "difficulty": 3.81,
+    "work_required": 3.859,
+    "associated_sections": [
+      {
+        "id": "CIS-1600-209",
+        "activity": "REC"
+      },
+      {
+        "id": "CIS-1600-207",
+        "activity": "REC"
+      },
+      {
+        "id": "CIS-1600-213",
+        "activity": "REC"
+      },
+      {
+        "id": "CIS-1600-206",
+        "activity": "REC"
+      },
+      {
+        "id": "CIS-1600-216",
+        "activity": "REC"
+      },
+      {
+        "id": "CIS-1600-205",
+        "activity": "REC"
+      },
+      {
+        "id": "CIS-1600-211",
+        "activity": "REC"
+      },
+      {
+        "id": "CIS-1600-201",
+        "activity": "REC"
+      },
+      {
+        "id": "CIS-1600-218",
+        "activity": "REC"
+      },
+      {
+        "id": "CIS-1600-204",
+        "activity": "REC"
+      },
+      {
+        "id": "CIS-1600-203",
+        "activity": "REC"
+      },
+      {
+        "id": "CIS-1600-215",
+        "activity": "REC"
+      },
+      {
+        "id": "CIS-1600-210",
+        "activity": "REC"
+      },
+      {
+        "id": "CIS-1600-208",
+        "activity": "REC"
+      },
+      {
+        "id": "CIS-1600-217",
+        "activity": "REC"
+      },
+      {
+        "id": "CIS-1600-214",
+        "activity": "REC"
+      },
+      {
+        "id": "CIS-1600-212",
+        "activity": "REC"
+      },
+      {
+        "id": "CIS-1600-202",
+        "activity": "REC"
+      }
+    ],
+    "registration_volume": 3
+  }
+}

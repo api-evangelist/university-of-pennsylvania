@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/university-of-pennsylvania/main/json-structure/university-of-pennsylvania-section-structure.json",
+  "name": "Section",
+  "type": "object",
+  "description": "A Penn course section as returned by the Penn Courses API.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Dept-code-section, e.g. CIS-120-001."
+    },
+    "status": {
+      "type": "string",
+      "description": "O=Open, C=Closed, X=Cancelled, blank=Unlisted."
+    },
+    "activity": {
+      "type": "string",
+      "description": "Section activity such as LEC, REC, LAB."
+    },
+    "credits": {
+      "type": "number"
+    },
+    "capacity": {
+      "type": "integer"
+    },
+    "semester": {
+      "type": "string"
+    },
+    "instructors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "registration_volume": {
+      "type": "integer"
+    }
+  }
+}

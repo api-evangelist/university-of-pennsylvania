@@ -1,0 +1,49 @@
+{
+  "@context": {
+    "schema": "https://schema.org/",
+    "upenn": "https://www.upenn.edu/ns/penn-courses#",
+    "name": "schema:name",
+    "url": "schema:url",
+    "description": "schema:description",
+    "Organization": "schema:CollegeOrUniversity",
+    "institution": {
+      "@id": "upenn:institution",
+      "@type": "schema:CollegeOrUniversity"
+    },
+    "Course": {
+      "@id": "schema:Course",
+      "@type": "@id"
+    },
+    "courseCode": "schema:courseCode",
+    "title": "schema:name",
+    "semester": {
+      "@id": "upenn:semester",
+      "@type": "schema:Text"
+    },
+    "credits": "schema:numberOfCredits",
+    "prerequisites": "schema:coursePrerequisites",
+    "Section": {
+      "@id": "schema:CourseInstance",
+      "@type": "@id"
+    },
+    "activity": "schema:courseMode",
+    "status": "upenn:status",
+    "capacity": "schema:maximumAttendeeCapacity",
+    "instructors": {
+      "@id": "schema:instructor",
+      "@type": "schema:Person",
+      "@container": "@set"
+    },
+    "meetings": "upenn:meetings",
+    "courseQuality": "upenn:courseQuality",
+    "instructorQuality": "upenn:instructorQuality",
+    "difficulty": "upenn:difficulty",
+    "workRequired": "upenn:workRequired",
+    "Schedule": "upenn:Schedule",
+    "DegreePlan": "upenn:DegreePlan"
+  },
+  "@type": "schema:CollegeOrUniversity",
+  "name": "University of Pennsylvania",
+  "url": "https://www.upenn.edu/",
+  "description": "Penn Courses API objects (Course, Section, Schedule, DegreePlan) maintained by Penn Labs, mapped to schema.org."
+}

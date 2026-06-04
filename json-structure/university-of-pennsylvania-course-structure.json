@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/university-of-pennsylvania/main/json-structure/university-of-pennsylvania-course-structure.json",
+  "name": "Course",
+  "type": "object",
+  "description": "A Penn course as returned by the Penn Courses API course detail endpoint.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Full course code, e.g. CIS-120."
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "semester": {
+      "type": "string",
+      "description": "Form YYYYx (A=spring, B=summer, C=fall)."
+    },
+    "prerequisites": {
+      "type": "string"
+    },
+    "course_quality": {
+      "type": "number"
+    },
+    "instructor_quality": {
+      "type": "number"
+    },
+    "difficulty": {
+      "type": "number"
+    },
+    "work_required": {
+      "type": "number"
+    },
+    "credits": {
+      "type": "number"
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "description": "Section codes such as CIS-120-001."
+      }
+    }
+  }
+}
