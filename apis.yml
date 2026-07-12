@@ -121,6 +121,8 @@ apis:
       - type: Documentation
         url: https://www.library.upenn.edu/about/policies/open-metadata
 common:
+  - type: DomainSecurity
+    url: security/university-of-pennsylvania-domain-security.yml
   - type: Website
     url: https://www.upenn.edu/
   - type: GitHub
@@ -139,6 +141,8 @@ common:
     url: finops/university-of-pennsylvania-finops.yml
   - type: Review
     url: review.yml
+  - url: https://penntoday.upenn.edu/rss.xml
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
