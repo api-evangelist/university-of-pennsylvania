@@ -121,6 +121,8 @@ apis:
       - type: Documentation
         url: https://www.library.upenn.edu/about/policies/open-metadata
 common:
+  - type: AgenticAccess
+    url: agentic-access/university-of-pennsylvania-agentic-access.yml
   - type: DomainSecurity
     url: security/university-of-pennsylvania-domain-security.yml
   - type: Website
