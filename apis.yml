@@ -1,4 +1,3 @@
----
 aid: university-of-pennsylvania
 name: University of Pennsylvania
 description: >-
@@ -15,9 +14,21 @@ description: >-
   bibliographic metadata through OAI-PMH and Z39.50 under an open-metadata
   policy.
 type: Index
+accessModel:
+  pricing: free
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Free
+  confidence: medium
+  source:
+    - plans
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/university-of-pennsylvania.png
 url: https://raw.githubusercontent.com/api-evangelist/university-of-pennsylvania/refs/heads/main/apis.yml
 tags:
   - Education
@@ -29,30 +40,38 @@ tags:
   - United States
   - Ivy League
 created: '2026-06-03'
-modified: '2026-06-03'
+modified: '2026-07-25'
 specificationVersion: '0.19'
 apis:
   - aid: university-of-pennsylvania:opendata
     name: Penn OpenData API
     description: >-
-      Penn's institutional OpenData platform (an ISC enterprise service bus)
-      providing access to Registrar/course, Dining, Directory, Transit, News,
-      Events, Maps, Calendar, and Laundry data. Most services require a validated
-      API token/password; access is requested through the university and the
-      documentation host is gated (not publicly resolvable from outside Penn).
+      Penn's institutional OpenData platform (an ISC enterprise service bus) providing access to Registrar/course,
+      Dining, Directory, Transit, News, Events, Maps, Calendar, and Laundry data. Most services require
+      a validated API token/password; access is requested through the university and the documentation host
+      is gated (not publicly resolvable from outside Penn).
     humanURL: https://pennlabs.org/resources/
-    tags: [ Open Data, Registrar, Courses, Dining, Directory, Transit ]
+    tags:
+      - Open Data
+      - Registrar
+      - Courses
+      - Dining
+      - Directory
+      - Transit
     properties:
       - type: Documentation
         url: https://pennlabs.org/resources/
   - aid: university-of-pennsylvania:penn-sdk-python
     name: Penn SDK (Python)
     description: >-
-      Open-source Python module maintained by Penn Labs that wraps the Penn
-      OpenData services (Registrar, Dining, Directory and more). A validated
-      OpenData API token is required for most calls.
+      Open-source Python module maintained by Penn Labs that wraps the Penn OpenData services (Registrar,
+      Dining, Directory and more). A validated OpenData API token is required for most calls.
     humanURL: https://penn-sdk.readthedocs.io/en/latest/
-    tags: [ SDK, Python, Open Data, Registrar ]
+    tags:
+      - SDK
+      - Python
+      - Open Data
+      - Registrar
     properties:
       - type: Documentation
         url: https://penn-sdk.readthedocs.io/en/latest/
@@ -60,30 +79,40 @@ apis:
         url: https://github.com/pennlabs/penn-sdk-python
   - aid: university-of-pennsylvania:penn-sdk-js
     name: Penn OpenData Node SDK
-    description: >-
-      Open-source JavaScript/Node SDK from Penn Labs for the Penn OpenData API.
+    description: Open-source JavaScript/Node SDK from Penn Labs for the Penn OpenData API.
     humanURL: https://penn-sdk.js.org/
-    tags: [ SDK, JavaScript, Node, Open Data ]
+    tags:
+      - SDK
+      - JavaScript
+      - Node
+      - Open Data
     properties:
       - type: Documentation
         url: https://penn-sdk.js.org/
       - type: GitHub
         url: https://github.com/pennlabs
-  - aid: university-of-pennsylvania:penn-courses
-    name: Penn Courses (PCX) API
+  - aid: university-of-pennsylvania:university-of-pennsylvania-accounts-user-api
+    name: University of Pennsylvania [Accounts] User API
     description: >-
-      Open-source course planning and registration platform by Penn Labs.
-      Its backend draws current-semester data from the Penn Registrar via the
-      OpenData API; the OpenData integration requires client credentials.
-    humanURL: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
-    tags: [ Courses, Registrar, REST, Open Source ]
+      These routes allow interaction with the User object of a Penn Labs Accounts user.
+
+      We do not document `/accounts/...` authentication routes here, as they are described
+
+      by the [Authentication](#section/Authentication) section, and the
+
+      [Penn Labs Account Engine](https://www.notion.so/pennlabs/The-Accounts-Engine-726ccf8875e244f4b8dbf8a8f2c97a87?pvs=4)
+
+      Notion page.
+    humanURL: https://pennlabs.org/resources/
+    tags:
+      - '[Accounts] User'
     properties:
+      - type: OpenAPI
+        url: openapi/university-of-pennsylvania-accounts-user-api-openapi.yml
       - type: Documentation
         url: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
       - type: GitHub
         url: https://github.com/pennlabs/penn-courses
-      - type: OpenAPI
-        url: openapi/university-of-pennsylvania-penn-courses.yaml
       - type: x-json-schema
         url: json-schema/university-of-pennsylvania-course-schema.json
       - type: x-json-structure
@@ -94,32 +123,898 @@ apis:
         url: vocabulary/university-of-pennsylvania-vocabulary.yml
       - type: x-json-ld
         url: json-ld/university-of-pennsylvania-context.jsonld
-  - aid: university-of-pennsylvania:penn-course-review
-    name: Penn Course Review API
-    description: >-
-      JSON REST API from Penn Labs exposing Penn course review and registrar
-      data. A default public token grants registrar-data access; richer review
-      data requires a token.
-    humanURL: https://penncoursereview.com/api/documentation/
-    tags: [ Courses, Reviews, REST, Open Data ]
-    properties:
       - type: Documentation
         url: https://penncoursereview.com/api/documentation/
       - type: GitHub
         url: https://github.com/pennlabs/penncoursereview-sdk-python
-      - type: OpenAPI
-        url: openapi/university-of-pennsylvania-penn-courses.yaml
-  - aid: university-of-pennsylvania:library-metadata
-    name: Penn Libraries Open Metadata (OAI-PMH / Z39.50)
+  - aid: university-of-pennsylvania:university-of-pennsylvania-pca-registration-api
+    name: University of Pennsylvania [PCA] Registration API
     description: >-
-      Penn Libraries publishes bibliographic catalog metadata in bulk under an
-      open-metadata policy, accessible via OAI-PMH and via Z39.50 (Alma/Ex Libris
-      server na03.alma.exlibrisgroup.com:1921, MARC21).
-    humanURL: https://www.library.upenn.edu/about/policies/open-metadata
-    tags: [ Library, Metadata, OAI-PMH, Z39.50, MARC21 ]
+      As the main API endpoints for PCA, these routes allow interaction with the user's
+
+      PCA registrations.  An important concept which is referenced throughout the documentation
+
+      for these routes is that of the "resubscribe chain".  A resubscribe chain is a chain
+
+      of PCA registrations where the tail of the chain was an original registration created
+
+      through a POST request to `/api/alert/registrations/` specifying a new section (one that
+
+      the user wasn't already registered to receive alerts for).  Each next element in the chain
+
+      is a registration created by resubscribing to the previous registration (once that
+
+      registration had triggered an alert to be sent), either manually by the user or
+
+      automatically if auto_resubscribe was set to true.  Then, it follows that the head of the
+
+      resubscribe chain is the most relevant Registration for that user/section combo; if any
+
+      of the registrations in the chain are active, it would be the head.  And if the head
+
+      is active, none of the other registrations in the chain are active.
+
+
+      Note that a registration will send an alert when the section it is watching opens, if and
+
+      only if it hasn't sent one before, it isn't cancelled, and it isn't deleted.  If a
+
+      registration would send an alert when the section it is watching opens, we call it
+
+      "active".  See the Create Registration docs for an explanation of how to create a new
+
+      registration, and the Update Registration docs for an explanation of how you can modify
+
+      a registration after it is created.
+
+
+      In addition to sending alerts for when a class opens up, we have also implemented
+
+      an optionally user-enabled feature called "close notifications".
+
+      If a registration has close_notification enabled, it will act normally when the watched
+
+      section opens up for the first time (triggering an alert to be sent). However, once the
+
+      watched section closes, it will send another alert (the email alert will be in the same
+
+      chain as the original alert) to let the user know that the section has closed. Thus,
+
+      if a user sees a PCA notification on their phone during a class for instance, they won't
+
+      need to frantically open up their laptop and check PennInTouch to see if the class is still
+
+      open just to find that it is already closed.  To avoid spam and wasted money, we DO NOT
+
+      send any close notifications over text. So the user must have an email saved or use
+
+      push notifications in order to be able to enable close notifications on a registration.
+
+      Note that the close_notification setting carries over across resubscriptions, but can be
+
+      disabled at any time using Update Registration.
+
+
+      After the PCA backend refactor in 2019C/2020A, all PCA Registrations have a `user` field
+
+      pointing to the user's Penn Labs Accounts User object.  In other words, we implemented a
+
+      user/accounts system for PCA which required that
+
+      people log in to use the website. Thus, the contact information used in PCA alerts
+
+      is taken from the user's User Profile.  You can edit this contact information using
+
+      Update User or Partial Update User.  If push_notifications is set to True, then
+
+      a push notification will be sent when the user is alerted, but no text notifications will
+
+      be sent (as that would be a redundant alert to the user's phone). Otherwise, an email
+
+      or a text alert is sent if and only if contact information for that medium exists in
+
+      the user's profile.
+    humanURL: https://pennlabs.org/resources/
+    tags:
+      - '[PCA] Registration'
     properties:
+      - type: OpenAPI
+        url: openapi/university-of-pennsylvania-pca-registration-api-openapi.yml
       - type: Documentation
-        url: https://www.library.upenn.edu/about/policies/open-metadata
+        url: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
+      - type: GitHub
+        url: https://github.com/pennlabs/penn-courses
+      - type: x-json-schema
+        url: json-schema/university-of-pennsylvania-course-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-pennsylvania-course-structure.json
+      - type: x-rules
+        url: rules/university-of-pennsylvania-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-pennsylvania-vocabulary.yml
+      - type: x-json-ld
+        url: json-ld/university-of-pennsylvania-context.jsonld
+      - type: Documentation
+        url: https://penncoursereview.com/api/documentation/
+      - type: GitHub
+        url: https://github.com/pennlabs/penncoursereview-sdk-python
+  - aid: university-of-pennsylvania:university-of-pennsylvania-pca-registration-history-api
+    name: University of Pennsylvania [PCA] Registration History API
+    description: >-
+      These routes expose a user's registration history (including
+
+      inactive and obsolete registrations) for the current semester.  Inactive registrations are
+
+      registrations which would not trigger a notification to be sent if their section opened,
+
+      and obsolete registrations are registrations which are not at the head of their resubscribe
+
+      chain.
+    humanURL: https://pennlabs.org/resources/
+    tags:
+      - '[PCA] Registration History'
+    properties:
+      - type: OpenAPI
+        url: openapi/university-of-pennsylvania-pca-registration-history-api-openapi.yml
+      - type: Documentation
+        url: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
+      - type: GitHub
+        url: https://github.com/pennlabs/penn-courses
+      - type: x-json-schema
+        url: json-schema/university-of-pennsylvania-course-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-pennsylvania-course-structure.json
+      - type: x-rules
+        url: rules/university-of-pennsylvania-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-pennsylvania-vocabulary.yml
+      - type: x-json-ld
+        url: json-ld/university-of-pennsylvania-context.jsonld
+      - type: Documentation
+        url: https://penncoursereview.com/api/documentation/
+      - type: GitHub
+        url: https://github.com/pennlabs/penncoursereview-sdk-python
+  - aid: university-of-pennsylvania:university-of-pennsylvania-pcp-break-api
+    name: University of Pennsylvania [PCP] Break API
+    description: The [PCP] Break API from University of Pennsylvania — 2 operation(s) for [pcp] break.
+    humanURL: https://pennlabs.org/resources/
+    tags:
+      - '[PCP] Break'
+    properties:
+      - type: OpenAPI
+        url: openapi/university-of-pennsylvania-pcp-break-api-openapi.yml
+      - type: Documentation
+        url: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
+      - type: GitHub
+        url: https://github.com/pennlabs/penn-courses
+      - type: x-json-schema
+        url: json-schema/university-of-pennsylvania-course-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-pennsylvania-course-structure.json
+      - type: x-rules
+        url: rules/university-of-pennsylvania-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-pennsylvania-vocabulary.yml
+      - type: x-json-ld
+        url: json-ld/university-of-pennsylvania-context.jsonld
+      - type: Documentation
+        url: https://penncoursereview.com/api/documentation/
+      - type: GitHub
+        url: https://github.com/pennlabs/penncoursereview-sdk-python
+  - aid: university-of-pennsylvania:university-of-pennsylvania-pcp-calendar-api
+    name: University of Pennsylvania [PCP] Calendar API
+    description: >-
+      The [PCP] Calendar API from University of Pennsylvania — 1 operation(s) for [pcp] calendar.
+    humanURL: https://pennlabs.org/resources/
+    tags:
+      - '[PCP] Calendar'
+    properties:
+      - type: OpenAPI
+        url: openapi/university-of-pennsylvania-pcp-calendar-api-openapi.yml
+      - type: Documentation
+        url: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
+      - type: GitHub
+        url: https://github.com/pennlabs/penn-courses
+      - type: x-json-schema
+        url: json-schema/university-of-pennsylvania-course-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-pennsylvania-course-structure.json
+      - type: x-rules
+        url: rules/university-of-pennsylvania-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-pennsylvania-vocabulary.yml
+      - type: x-json-ld
+        url: json-ld/university-of-pennsylvania-context.jsonld
+      - type: Documentation
+        url: https://penncoursereview.com/api/documentation/
+      - type: GitHub
+        url: https://github.com/pennlabs/penncoursereview-sdk-python
+  - aid: university-of-pennsylvania:university-of-pennsylvania-pcp-course-recommendations-api
+    name: University of Pennsylvania [PCP] Course Recommendations API
+    description: >-
+      The [PCP] Course Recommendations API from University of Pennsylvania — 1 operation(s) for [pcp] course
+      recommendations.
+    humanURL: https://pennlabs.org/resources/
+    tags:
+      - '[PCP] Course Recommendations'
+    properties:
+      - type: OpenAPI
+        url: openapi/university-of-pennsylvania-pcp-course-recommendations-api-openapi.yml
+      - type: Documentation
+        url: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
+      - type: GitHub
+        url: https://github.com/pennlabs/penn-courses
+      - type: x-json-schema
+        url: json-schema/university-of-pennsylvania-course-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-pennsylvania-course-structure.json
+      - type: x-rules
+        url: rules/university-of-pennsylvania-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-pennsylvania-vocabulary.yml
+      - type: x-json-ld
+        url: json-ld/university-of-pennsylvania-context.jsonld
+      - type: Documentation
+        url: https://penncoursereview.com/api/documentation/
+      - type: GitHub
+        url: https://github.com/pennlabs/penncoursereview-sdk-python
+  - aid: university-of-pennsylvania:university-of-pennsylvania-pcp-primary-schedule-api
+    name: University of Pennsylvania [PCP] Primary Schedule API
+    description: >-
+      The [PCP] Primary Schedule API from University of Pennsylvania — 2 operation(s) for [pcp] primary
+      schedule.
+    humanURL: https://pennlabs.org/resources/
+    tags:
+      - '[PCP] Primary Schedule'
+    properties:
+      - type: OpenAPI
+        url: openapi/university-of-pennsylvania-pcp-primary-schedule-api-openapi.yml
+      - type: Documentation
+        url: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
+      - type: GitHub
+        url: https://github.com/pennlabs/penn-courses
+      - type: x-json-schema
+        url: json-schema/university-of-pennsylvania-course-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-pennsylvania-course-structure.json
+      - type: x-rules
+        url: rules/university-of-pennsylvania-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-pennsylvania-vocabulary.yml
+      - type: x-json-ld
+        url: json-ld/university-of-pennsylvania-context.jsonld
+      - type: Documentation
+        url: https://penncoursereview.com/api/documentation/
+      - type: GitHub
+        url: https://github.com/pennlabs/penncoursereview-sdk-python
+  - aid: university-of-pennsylvania:university-of-pennsylvania-pcp-schedule-api
+    name: University of Pennsylvania [PCP] Schedule API
+    description: >-
+      These routes allow interfacing with the user's PCP Schedules for the current semester,
+
+      stored on the backend. Ever since we integrated Penn Labs Accounts into PCP so that users
+
+      can store their schedules across devices and browsers, we have stored users' schedules on
+
+      our backend (rather than local storage).
+    humanURL: https://pennlabs.org/resources/
+    tags:
+      - '[PCP] Schedule'
+    properties:
+      - type: OpenAPI
+        url: openapi/university-of-pennsylvania-pcp-schedule-api-openapi.yml
+      - type: Documentation
+        url: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
+      - type: GitHub
+        url: https://github.com/pennlabs/penn-courses
+      - type: x-json-schema
+        url: json-schema/university-of-pennsylvania-course-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-pennsylvania-course-structure.json
+      - type: x-rules
+        url: rules/university-of-pennsylvania-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-pennsylvania-vocabulary.yml
+      - type: x-json-ld
+        url: json-ld/university-of-pennsylvania-context.jsonld
+      - type: Documentation
+        url: https://penncoursereview.com/api/documentation/
+      - type: GitHub
+        url: https://github.com/pennlabs/penncoursereview-sdk-python
+  - aid: university-of-pennsylvania:university-of-pennsylvania-pcr-autocomplete-dump-api
+    name: University of Pennsylvania [PCR] Autocomplete Dump API
+    description: >-
+      The [PCR] Autocomplete Dump API from University of Pennsylvania — 1 operation(s) for [pcr] autocomplete
+      dump.
+    humanURL: https://pennlabs.org/resources/
+    tags:
+      - '[PCR] Autocomplete Dump'
+    properties:
+      - type: OpenAPI
+        url: openapi/university-of-pennsylvania-pcr-autocomplete-dump-api-openapi.yml
+      - type: Documentation
+        url: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
+      - type: GitHub
+        url: https://github.com/pennlabs/penn-courses
+      - type: x-json-schema
+        url: json-schema/university-of-pennsylvania-course-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-pennsylvania-course-structure.json
+      - type: x-rules
+        url: rules/university-of-pennsylvania-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-pennsylvania-vocabulary.yml
+      - type: x-json-ld
+        url: json-ld/university-of-pennsylvania-context.jsonld
+      - type: Documentation
+        url: https://penncoursereview.com/api/documentation/
+      - type: GitHub
+        url: https://github.com/pennlabs/penncoursereview-sdk-python
+  - aid: university-of-pennsylvania:university-of-pennsylvania-pcr-course-reviews-api
+    name: University of Pennsylvania [PCR] Course Reviews API
+    description: >-
+      The [PCR] Course Reviews API from University of Pennsylvania — 1 operation(s) for [pcr] course reviews.
+    humanURL: https://pennlabs.org/resources/
+    tags:
+      - '[PCR] Course Reviews'
+    properties:
+      - type: OpenAPI
+        url: openapi/university-of-pennsylvania-pcr-course-reviews-api-openapi.yml
+      - type: Documentation
+        url: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
+      - type: GitHub
+        url: https://github.com/pennlabs/penn-courses
+      - type: x-json-schema
+        url: json-schema/university-of-pennsylvania-course-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-pennsylvania-course-structure.json
+      - type: x-rules
+        url: rules/university-of-pennsylvania-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-pennsylvania-vocabulary.yml
+      - type: x-json-ld
+        url: json-ld/university-of-pennsylvania-context.jsonld
+      - type: Documentation
+        url: https://penncoursereview.com/api/documentation/
+      - type: GitHub
+        url: https://github.com/pennlabs/penncoursereview-sdk-python
+  - aid: university-of-pennsylvania:university-of-pennsylvania-pcr-department-reviews-api
+    name: University of Pennsylvania [PCR] Department Reviews API
+    description: >-
+      The [PCR] Department Reviews API from University of Pennsylvania — 1 operation(s) for [pcr] department
+      reviews.
+    humanURL: https://pennlabs.org/resources/
+    tags:
+      - '[PCR] Department Reviews'
+    properties:
+      - type: OpenAPI
+        url: openapi/university-of-pennsylvania-pcr-department-reviews-api-openapi.yml
+      - type: Documentation
+        url: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
+      - type: GitHub
+        url: https://github.com/pennlabs/penn-courses
+      - type: x-json-schema
+        url: json-schema/university-of-pennsylvania-course-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-pennsylvania-course-structure.json
+      - type: x-rules
+        url: rules/university-of-pennsylvania-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-pennsylvania-vocabulary.yml
+      - type: x-json-ld
+        url: json-ld/university-of-pennsylvania-context.jsonld
+      - type: Documentation
+        url: https://penncoursereview.com/api/documentation/
+      - type: GitHub
+        url: https://github.com/pennlabs/penncoursereview-sdk-python
+  - aid: university-of-pennsylvania:university-of-pennsylvania-pcr-instructor-reviews-api
+    name: University of Pennsylvania [PCR] Instructor Reviews API
+    description: >-
+      The [PCR] Instructor Reviews API from University of Pennsylvania — 1 operation(s) for [pcr] instructor
+      reviews.
+    humanURL: https://pennlabs.org/resources/
+    tags:
+      - '[PCR] Instructor Reviews'
+    properties:
+      - type: OpenAPI
+        url: openapi/university-of-pennsylvania-pcr-instructor-reviews-api-openapi.yml
+      - type: Documentation
+        url: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
+      - type: GitHub
+        url: https://github.com/pennlabs/penn-courses
+      - type: x-json-schema
+        url: json-schema/university-of-pennsylvania-course-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-pennsylvania-course-structure.json
+      - type: x-rules
+        url: rules/university-of-pennsylvania-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-pennsylvania-vocabulary.yml
+      - type: x-json-ld
+        url: json-ld/university-of-pennsylvania-context.jsonld
+      - type: Documentation
+        url: https://penncoursereview.com/api/documentation/
+      - type: GitHub
+        url: https://github.com/pennlabs/penncoursereview-sdk-python
+  - aid: university-of-pennsylvania:university-of-pennsylvania-pcr-plots-api
+    name: University of Pennsylvania [PCR] Plots API
+    description: The [PCR] Plots API from University of Pennsylvania — 1 operation(s) for [pcr] plots.
+    humanURL: https://pennlabs.org/resources/
+    tags:
+      - '[PCR] Plots'
+    properties:
+      - type: OpenAPI
+        url: openapi/university-of-pennsylvania-pcr-plots-api-openapi.yml
+      - type: Documentation
+        url: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
+      - type: GitHub
+        url: https://github.com/pennlabs/penn-courses
+      - type: x-json-schema
+        url: json-schema/university-of-pennsylvania-course-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-pennsylvania-course-structure.json
+      - type: x-rules
+        url: rules/university-of-pennsylvania-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-pennsylvania-vocabulary.yml
+      - type: x-json-ld
+        url: json-ld/university-of-pennsylvania-context.jsonld
+      - type: Documentation
+        url: https://penncoursereview.com/api/documentation/
+      - type: GitHub
+        url: https://github.com/pennlabs/penncoursereview-sdk-python
+  - aid: university-of-pennsylvania:university-of-pennsylvania-pcr-section-specific-reviews-api
+    name: University of Pennsylvania [PCR] Section-Specific Reviews API
+    description: >-
+      The [PCR] Section-Specific Reviews API from University of Pennsylvania — 1 operation(s) for [pcr]
+      section-specific reviews.
+    humanURL: https://pennlabs.org/resources/
+    tags:
+      - '[PCR] Section-Specific Reviews'
+    properties:
+      - type: OpenAPI
+        url: openapi/university-of-pennsylvania-pcr-section-specific-reviews-api-openapi.yml
+      - type: Documentation
+        url: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
+      - type: GitHub
+        url: https://github.com/pennlabs/penn-courses
+      - type: x-json-schema
+        url: json-schema/university-of-pennsylvania-course-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-pennsylvania-course-structure.json
+      - type: x-rules
+        url: rules/university-of-pennsylvania-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-pennsylvania-vocabulary.yml
+      - type: x-json-ld
+        url: json-ld/university-of-pennsylvania-context.jsonld
+      - type: Documentation
+        url: https://penncoursereview.com/api/documentation/
+      - type: GitHub
+        url: https://github.com/pennlabs/penncoursereview-sdk-python
+  - aid: university-of-pennsylvania:university-of-pennsylvania-pcx-attributes-api
+    name: University of Pennsylvania [PCx] Attributes API
+    description: >-
+      The [PCx] Attributes API from University of Pennsylvania — 1 operation(s) for [pcx] attributes.
+    humanURL: https://pennlabs.org/resources/
+    tags:
+      - '[PCx] Attributes'
+    properties:
+      - type: OpenAPI
+        url: openapi/university-of-pennsylvania-pcx-attributes-api-openapi.yml
+      - type: Documentation
+        url: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
+      - type: GitHub
+        url: https://github.com/pennlabs/penn-courses
+      - type: x-json-schema
+        url: json-schema/university-of-pennsylvania-course-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-pennsylvania-course-structure.json
+      - type: x-rules
+        url: rules/university-of-pennsylvania-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-pennsylvania-vocabulary.yml
+      - type: x-json-ld
+        url: json-ld/university-of-pennsylvania-context.jsonld
+      - type: Documentation
+        url: https://penncoursereview.com/api/documentation/
+      - type: GitHub
+        url: https://github.com/pennlabs/penncoursereview-sdk-python
+  - aid: university-of-pennsylvania:university-of-pennsylvania-pcx-course-api
+    name: University of Pennsylvania [PCx] Course API
+    description: The [PCx] Course API from University of Pennsylvania — 3 operation(s) for [pcx] course.
+    humanURL: https://pennlabs.org/resources/
+    tags:
+      - '[PCx] Course'
+    properties:
+      - type: OpenAPI
+        url: openapi/university-of-pennsylvania-pcx-course-api-openapi.yml
+      - type: Documentation
+        url: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
+      - type: GitHub
+        url: https://github.com/pennlabs/penn-courses
+      - type: x-json-schema
+        url: json-schema/university-of-pennsylvania-course-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-pennsylvania-course-structure.json
+      - type: x-rules
+        url: rules/university-of-pennsylvania-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-pennsylvania-vocabulary.yml
+      - type: x-json-ld
+        url: json-ld/university-of-pennsylvania-context.jsonld
+      - type: Documentation
+        url: https://penncoursereview.com/api/documentation/
+      - type: GitHub
+        url: https://github.com/pennlabs/penncoursereview-sdk-python
+  - aid: university-of-pennsylvania:university-of-pennsylvania-pcx-friendship-api
+    name: University of Pennsylvania [PCx] Friendship API
+    description: >-
+      The [PCx] Friendship API from University of Pennsylvania — 1 operation(s) for [pcx] friendship.
+    humanURL: https://pennlabs.org/resources/
+    tags:
+      - '[PCx] Friendship'
+    properties:
+      - type: OpenAPI
+        url: openapi/university-of-pennsylvania-pcx-friendship-api-openapi.yml
+      - type: Documentation
+        url: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
+      - type: GitHub
+        url: https://github.com/pennlabs/penn-courses
+      - type: x-json-schema
+        url: json-schema/university-of-pennsylvania-course-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-pennsylvania-course-structure.json
+      - type: x-rules
+        url: rules/university-of-pennsylvania-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-pennsylvania-vocabulary.yml
+      - type: x-json-ld
+        url: json-ld/university-of-pennsylvania-context.jsonld
+      - type: Documentation
+        url: https://penncoursereview.com/api/documentation/
+      - type: GitHub
+        url: https://github.com/pennlabs/penncoursereview-sdk-python
+  - aid: university-of-pennsylvania:university-of-pennsylvania-pcx-healths-api
+    name: University of Pennsylvania [PCx] Healths API
+    description: >-
+      The [PCx] Healths API from University of Pennsylvania — 1 operation(s) for [pcx] healths.
+    humanURL: https://pennlabs.org/resources/
+    tags:
+      - '[PCx] Healths'
+    properties:
+      - type: OpenAPI
+        url: openapi/university-of-pennsylvania-pcx-healths-api-openapi.yml
+      - type: Documentation
+        url: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
+      - type: GitHub
+        url: https://github.com/pennlabs/penn-courses
+      - type: x-json-schema
+        url: json-schema/university-of-pennsylvania-course-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-pennsylvania-course-structure.json
+      - type: x-rules
+        url: rules/university-of-pennsylvania-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-pennsylvania-vocabulary.yml
+      - type: x-json-ld
+        url: json-ld/university-of-pennsylvania-context.jsonld
+      - type: Documentation
+        url: https://penncoursereview.com/api/documentation/
+      - type: GitHub
+        url: https://github.com/pennlabs/penncoursereview-sdk-python
+  - aid: university-of-pennsylvania:university-of-pennsylvania-pcx-ngss-restrictions-api
+    name: University of Pennsylvania [PCx] NGSS Restrictions API
+    description: >-
+      The [PCx] NGSS Restrictions API from University of Pennsylvania — 1 operation(s) for [pcx] ngss restrictions.
+    humanURL: https://pennlabs.org/resources/
+    tags:
+      - '[PCx] NGSS Restrictions'
+    properties:
+      - type: OpenAPI
+        url: openapi/university-of-pennsylvania-pcx-ngss-restrictions-api-openapi.yml
+      - type: Documentation
+        url: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
+      - type: GitHub
+        url: https://github.com/pennlabs/penn-courses
+      - type: x-json-schema
+        url: json-schema/university-of-pennsylvania-course-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-pennsylvania-course-structure.json
+      - type: x-rules
+        url: rules/university-of-pennsylvania-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-pennsylvania-vocabulary.yml
+      - type: x-json-ld
+        url: json-ld/university-of-pennsylvania-context.jsonld
+      - type: Documentation
+        url: https://penncoursereview.com/api/documentation/
+      - type: GitHub
+        url: https://github.com/pennlabs/penncoursereview-sdk-python
+  - aid: university-of-pennsylvania:university-of-pennsylvania-pcx-pre-ngss-requirements-api
+    name: University of Pennsylvania [PCx] Pre-NGSS Requirements API
+    description: >-
+      The [PCx] Pre-NGSS Requirements API from University of Pennsylvania — 1 operation(s) for [pcx] pre-ngss
+      requirements.
+    humanURL: https://pennlabs.org/resources/
+    tags:
+      - '[PCx] Pre-NGSS Requirements'
+    properties:
+      - type: OpenAPI
+        url: openapi/university-of-pennsylvania-pcx-pre-ngss-requirements-api-openapi.yml
+      - type: Documentation
+        url: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
+      - type: GitHub
+        url: https://github.com/pennlabs/penn-courses
+      - type: x-json-schema
+        url: json-schema/university-of-pennsylvania-course-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-pennsylvania-course-structure.json
+      - type: x-rules
+        url: rules/university-of-pennsylvania-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-pennsylvania-vocabulary.yml
+      - type: x-json-ld
+        url: json-ld/university-of-pennsylvania-context.jsonld
+      - type: Documentation
+        url: https://penncoursereview.com/api/documentation/
+      - type: GitHub
+        url: https://github.com/pennlabs/penncoursereview-sdk-python
+  - aid: university-of-pennsylvania:university-of-pennsylvania-pcx-section-api
+    name: University of Pennsylvania [PCx] Section API
+    description: >-
+      The [PCx] Section API from University of Pennsylvania — 2 operation(s) for [pcx] section.
+    humanURL: https://pennlabs.org/resources/
+    tags:
+      - '[PCx] Section'
+    properties:
+      - type: OpenAPI
+        url: openapi/university-of-pennsylvania-pcx-section-api-openapi.yml
+      - type: Documentation
+        url: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
+      - type: GitHub
+        url: https://github.com/pennlabs/penn-courses
+      - type: x-json-schema
+        url: json-schema/university-of-pennsylvania-course-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-pennsylvania-course-structure.json
+      - type: x-rules
+        url: rules/university-of-pennsylvania-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-pennsylvania-vocabulary.yml
+      - type: x-json-ld
+        url: json-ld/university-of-pennsylvania-context.jsonld
+      - type: Documentation
+        url: https://penncoursereview.com/api/documentation/
+      - type: GitHub
+        url: https://github.com/pennlabs/penncoursereview-sdk-python
+  - aid: university-of-pennsylvania:university-of-pennsylvania-pcx-status-updates-api
+    name: University of Pennsylvania [PCx] Status Updates API
+    description: >-
+      The [PCx] Status Updates API from University of Pennsylvania — 1 operation(s) for [pcx] status updates.
+    humanURL: https://pennlabs.org/resources/
+    tags:
+      - '[PCx] Status Updates'
+    properties:
+      - type: OpenAPI
+        url: openapi/university-of-pennsylvania-pcx-status-updates-api-openapi.yml
+      - type: Documentation
+        url: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
+      - type: GitHub
+        url: https://github.com/pennlabs/penn-courses
+      - type: x-json-schema
+        url: json-schema/university-of-pennsylvania-course-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-pennsylvania-course-structure.json
+      - type: x-rules
+        url: rules/university-of-pennsylvania-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-pennsylvania-vocabulary.yml
+      - type: x-json-ld
+        url: json-ld/university-of-pennsylvania-context.jsonld
+      - type: Documentation
+        url: https://penncoursereview.com/api/documentation/
+      - type: GitHub
+        url: https://github.com/pennlabs/penncoursereview-sdk-python
+  - aid: university-of-pennsylvania:university-of-pennsylvania-pdp-degree-api
+    name: University of Pennsylvania [PDP] Degree API
+    description: The [PDP] Degree API from University of Pennsylvania — 2 operation(s) for [pdp] degree.
+    humanURL: https://pennlabs.org/resources/
+    tags:
+      - '[PDP] Degree'
+    properties:
+      - type: OpenAPI
+        url: openapi/university-of-pennsylvania-pdp-degree-api-openapi.yml
+      - type: Documentation
+        url: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
+      - type: GitHub
+        url: https://github.com/pennlabs/penn-courses
+      - type: x-json-schema
+        url: json-schema/university-of-pennsylvania-course-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-pennsylvania-course-structure.json
+      - type: x-rules
+        url: rules/university-of-pennsylvania-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-pennsylvania-vocabulary.yml
+      - type: x-json-ld
+        url: json-ld/university-of-pennsylvania-context.jsonld
+      - type: Documentation
+        url: https://penncoursereview.com/api/documentation/
+      - type: GitHub
+        url: https://github.com/pennlabs/penncoursereview-sdk-python
+  - aid: university-of-pennsylvania:university-of-pennsylvania-pdp-degree-plan-detail-api
+    name: University of Pennsylvania [PDP] Degree Plan Detail API
+    description: >-
+      The [PDP] Degree Plan Detail API from University of Pennsylvania — 4 operation(s) for [pdp] degree
+      plan detail.
+    humanURL: https://pennlabs.org/resources/
+    tags:
+      - '[PDP] Degree Plan Detail'
+    properties:
+      - type: OpenAPI
+        url: openapi/university-of-pennsylvania-pdp-degree-plan-detail-api-openapi.yml
+      - type: Documentation
+        url: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
+      - type: GitHub
+        url: https://github.com/pennlabs/penn-courses
+      - type: x-json-schema
+        url: json-schema/university-of-pennsylvania-course-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-pennsylvania-course-structure.json
+      - type: x-rules
+        url: rules/university-of-pennsylvania-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-pennsylvania-vocabulary.yml
+      - type: x-json-ld
+        url: json-ld/university-of-pennsylvania-context.jsonld
+      - type: Documentation
+        url: https://penncoursereview.com/api/documentation/
+      - type: GitHub
+        url: https://github.com/pennlabs/penncoursereview-sdk-python
+  - aid: university-of-pennsylvania:university-of-pennsylvania-pdp-degree-plan-lists-api
+    name: University of Pennsylvania [PDP] Degree Plan Lists API
+    description: >-
+      The [PDP] Degree Plan Lists API from University of Pennsylvania — 1 operation(s) for [pdp] degree
+      plan lists.
+    humanURL: https://pennlabs.org/resources/
+    tags:
+      - '[PDP] Degree Plan Lists'
+    properties:
+      - type: OpenAPI
+        url: openapi/university-of-pennsylvania-pdp-degree-plan-lists-api-openapi.yml
+      - type: Documentation
+        url: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
+      - type: GitHub
+        url: https://github.com/pennlabs/penn-courses
+      - type: x-json-schema
+        url: json-schema/university-of-pennsylvania-course-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-pennsylvania-course-structure.json
+      - type: x-rules
+        url: rules/university-of-pennsylvania-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-pennsylvania-vocabulary.yml
+      - type: x-json-ld
+        url: json-ld/university-of-pennsylvania-context.jsonld
+      - type: Documentation
+        url: https://penncoursereview.com/api/documentation/
+      - type: GitHub
+        url: https://github.com/pennlabs/penncoursereview-sdk-python
+  - aid: university-of-pennsylvania:university-of-pennsylvania-pdp-docked-course-api
+    name: University of Pennsylvania [PDP] Docked Course API
+    description: >-
+      The [PDP] Docked Course API from University of Pennsylvania — 2 operation(s) for [pdp] docked course.
+    humanURL: https://pennlabs.org/resources/
+    tags:
+      - '[PDP] Docked Course'
+    properties:
+      - type: OpenAPI
+        url: openapi/university-of-pennsylvania-pdp-docked-course-api-openapi.yml
+      - type: Documentation
+        url: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
+      - type: GitHub
+        url: https://github.com/pennlabs/penn-courses
+      - type: x-json-schema
+        url: json-schema/university-of-pennsylvania-course-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-pennsylvania-course-structure.json
+      - type: x-rules
+        url: rules/university-of-pennsylvania-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-pennsylvania-vocabulary.yml
+      - type: x-json-ld
+        url: json-ld/university-of-pennsylvania-context.jsonld
+      - type: Documentation
+        url: https://penncoursereview.com/api/documentation/
+      - type: GitHub
+        url: https://github.com/pennlabs/penncoursereview-sdk-python
+  - aid: university-of-pennsylvania:university-of-pennsylvania-pdp-fulfillment-api
+    name: University of Pennsylvania [PDP] Fulfillment API
+    description: >-
+      The [PDP] Fulfillment API from University of Pennsylvania — 5 operation(s) for [pdp] fulfillment.
+    humanURL: https://pennlabs.org/resources/
+    tags:
+      - '[PDP] Fulfillment'
+    properties:
+      - type: OpenAPI
+        url: openapi/university-of-pennsylvania-pdp-fulfillment-api-openapi.yml
+      - type: Documentation
+        url: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
+      - type: GitHub
+        url: https://github.com/pennlabs/penn-courses
+      - type: x-json-schema
+        url: json-schema/university-of-pennsylvania-course-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-pennsylvania-course-structure.json
+      - type: x-rules
+        url: rules/university-of-pennsylvania-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-pennsylvania-vocabulary.yml
+      - type: x-json-ld
+        url: json-ld/university-of-pennsylvania-context.jsonld
+      - type: Documentation
+        url: https://penncoursereview.com/api/documentation/
+      - type: GitHub
+        url: https://github.com/pennlabs/penncoursereview-sdk-python
+  - aid: university-of-pennsylvania:university-of-pennsylvania-pdp-onboard-from-transcript-api
+    name: University of Pennsylvania [PDP] Onboard From Transcript API
+    description: >-
+      The [PDP] Onboard From Transcript API from University of Pennsylvania — 1 operation(s) for [pdp] onboard
+      from transcript.
+    humanURL: https://pennlabs.org/resources/
+    tags:
+      - '[PDP] Onboard From Transcript'
+    properties:
+      - type: OpenAPI
+        url: openapi/university-of-pennsylvania-pdp-onboard-from-transcript-api-openapi.yml
+      - type: Documentation
+        url: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
+      - type: GitHub
+        url: https://github.com/pennlabs/penn-courses
+      - type: x-json-schema
+        url: json-schema/university-of-pennsylvania-course-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-pennsylvania-course-structure.json
+      - type: x-rules
+        url: rules/university-of-pennsylvania-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-pennsylvania-vocabulary.yml
+      - type: x-json-ld
+        url: json-ld/university-of-pennsylvania-context.jsonld
+      - type: Documentation
+        url: https://penncoursereview.com/api/documentation/
+      - type: GitHub
+        url: https://github.com/pennlabs/penncoursereview-sdk-python
+  - aid: university-of-pennsylvania:university-of-pennsylvania-pdp-satisfied-rule-lists-api
+    name: University of Pennsylvania [PDP] Satisfied Rule Lists API
+    description: >-
+      The [PDP] Satisfied Rule Lists API from University of Pennsylvania — 1 operation(s) for [pdp] satisfied
+      rule lists.
+    humanURL: https://pennlabs.org/resources/
+    tags:
+      - '[PDP] Satisfied Rule Lists'
+    properties:
+      - type: OpenAPI
+        url: openapi/university-of-pennsylvania-pdp-satisfied-rule-lists-api-openapi.yml
+      - type: Documentation
+        url: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
+      - type: GitHub
+        url: https://github.com/pennlabs/penn-courses
+      - type: x-json-schema
+        url: json-schema/university-of-pennsylvania-course-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-pennsylvania-course-structure.json
+      - type: x-rules
+        url: rules/university-of-pennsylvania-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-pennsylvania-vocabulary.yml
+      - type: x-json-ld
+        url: json-ld/university-of-pennsylvania-context.jsonld
+      - type: Documentation
+        url: https://penncoursereview.com/api/documentation/
+      - type: GitHub
+        url: https://github.com/pennlabs/penncoursereview-sdk-python
 common:
   - type: AgenticAccess
     url: agentic-access/university-of-pennsylvania-agentic-access.yml
@@ -145,6 +1040,8 @@ common:
     url: review.yml
   - url: https://penntoday.upenn.edu/rss.xml
     type: Blog
+  - type: About
+    url: https://www.library.upenn.edu/about/policies/open-metadata
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
