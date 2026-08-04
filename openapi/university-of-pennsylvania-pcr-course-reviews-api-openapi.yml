@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
   title: Penn Courses API Documentation [Accounts] User [Accounts] User [PCR] Course Reviews API
-  version: ''
+  version: "1.0"
   description: '
 
     # Introduction
