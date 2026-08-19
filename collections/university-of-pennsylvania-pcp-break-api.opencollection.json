@@ -1,0 +1,124 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Penn Courses API Documentation [Accounts] User [Accounts] User [PCP] Break API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "[PCP] Break",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Breaks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://penncoursereview.com/api/plan/breaks/"
+          },
+          "docs": "(GET `/api/plan/breaks/`)\n\n\n\n<span style=\"color:red;\">User authentication required</span>."
+        },
+        {
+          "info": {
+            "name": "Create Break",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://penncoursereview.com/api/plan/breaks/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "(POST `/api/plan/breaks/`)\n\n\n\n<span style=\"color:red;\">User authentication required</span>."
+        },
+        {
+          "info": {
+            "name": "Retrieve Break",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://penncoursereview.com/api/plan/breaks/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "(GET `/api/plan/breaks/{id}/`)\n\n\n\n<span style=\"color:red;\">User authentication required</span>."
+        },
+        {
+          "info": {
+            "name": "Update Break",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://penncoursereview.com/api/plan/breaks/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "(PUT `/api/plan/breaks/{id}/`)\n\n\n\n<span style=\"color:red;\">User authentication required</span>."
+        },
+        {
+          "info": {
+            "name": "Partial Update Break",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://penncoursereview.com/api/plan/breaks/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "(PATCH `/api/plan/breaks/{id}/`)\n\n\n\n<span style=\"color:red;\">User authentication required</span>."
+        },
+        {
+          "info": {
+            "name": "Destroy Break",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://penncoursereview.com/api/plan/breaks/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "(DELETE `/api/plan/breaks/{id}/`)\n\n\n\n<span style=\"color:red;\">User authentication required</span>."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

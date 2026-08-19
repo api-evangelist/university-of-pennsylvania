@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Penn Courses API Documentation [Accounts] User [Accounts] User [PCx] Status Updates API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "[PCx] Status Updates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Status Updates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://penncoursereview.com/api/base/statusupdate/:full_code/",
+            "params": [
+              {
+                "name": "full_code",
+                "value": "",
+                "type": "path",
+                "description": "The code of the section which this status update applies to, in the form '{dept code}-{course code}-{section code}', e.g. `CIS-120-001` for the 001 section of CIS-120."
+              }
+            ]
+          },
+          "docs": "(GET `/api/base/statusupdate/{full_code}/`)\n\nRetrieve all Status Update objects from the current semester for a specific section."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

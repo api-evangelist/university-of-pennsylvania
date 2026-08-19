@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Penn Courses API Documentation [Accounts] User [Accounts] User [Accounts] User API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "[Accounts] User",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://penncoursereview.com/accounts/me/"
+          },
+          "docs": "(GET `/accounts/me/`)\n\nThis view exposes the Penn Labs Accounts User object.\n\n<span style=\"color:red;\">User authentication required</span>."
+        },
+        {
+          "info": {
+            "name": "Update User",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://penncoursereview.com/accounts/me/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "(PUT `/accounts/me/`)\n\nThis view exposes the Penn Labs Accounts User object.\n\n<span style=\"color:red;\">User authentication required</span>."
+        },
+        {
+          "info": {
+            "name": "Partial Update User",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://penncoursereview.com/accounts/me/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "(PATCH `/accounts/me/`)\n\nThis view exposes the Penn Labs Accounts User object.\n\n<span style=\"color:red;\">User authentication required</span>."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,954 @@
+{
+  "item": [
+    {
+      "id": "10708af8-0a4f-4fe8-ae0e-210b1956e461",
+      "name": "[PCA] Registration",
+      "description": {
+        "content": "\nAs the main API endpoints for PCA, these routes allow interaction with the user's\nPCA registrations.  An important concept which is referenced throughout the documentation\nfor these routes is that of the \"resubscribe chain\".  A resubscribe chain is a chain\nof PCA registrations where the tail of the chain was an original registration created\nthrough a POST request to `/api/alert/registrations/` specifying a new section (one that\nthe user wasn't already registered to receive alerts for).  Each next element in the chain\nis a registration created by resubscribing to the previous registration (once that\nregistration had triggered an alert to be sent), either manually by the user or\nautomatically if auto_resubscribe was set to true.  Then, it follows that the head of the\nresubscribe chain is the most relevant Registration for that user/section combo; if any\nof the registrations in the chain are active, it would be the head.  And if the head\nis active, none of the other registrations in the chain are active.\n\nNote that a registration will send an alert when the section it is watching opens, if and\nonly if it hasn't sent one before, it isn't cancelled, and it isn't deleted.  If a\nregistration would send an alert when the section it is watching opens, we call it\n\"active\".  See the Create Registration docs for an explanation of how to create a new\nregistration, and the Update Registration docs for an explanation of how you can modify\na registration after it is created.\n\nIn addition to sending alerts for when a class opens up, we have also implemented\nan optionally user-enabled feature called \"close notifications\".\nIf a registration has close_notification enabled, it will act normally when the watched\nsection opens up for the first time (triggering an alert to be sent). However, once the\nwatched section closes, it will send another alert (the email alert will be in the same\nchain as the original alert) to let the user know that the section has closed. Thus,\nif a user sees a PCA notification on their phone during a class for instance, they won't\nneed to frantically open up their laptop and check PennInTouch to see if the class is still\nopen just to find that it is already closed.  To avoid spam and wasted money, we DO NOT\nsend any close notifications over text. So the user must have an email saved or use\npush notifications in order to be able to enable close notifications on a registration.\nNote that the close_notification setting carries over across resubscriptions, but can be\ndisabled at any time using Update Registration.\n\nAfter the PCA backend refactor in 2019C/2020A, all PCA Registrations have a `user` field\npointing to the user's Penn Labs Accounts User object.  In other words, we implemented a\nuser/accounts system for PCA which required that\npeople log in to use the website. Thus, the contact information used in PCA alerts\nis taken from the user's User Profile.  You can edit this contact information using\nUpdate User or Partial Update User.  If push_notifications is set to True, then\na push notification will be sent when the user is alerted, but no text notifications will\nbe sent (as that would be a redundant alert to the user's phone). Otherwise, an email\nor a text alert is sent if and only if contact information for that medium exists in\nthe user's profile.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ce100d46-3c23-45aa-8afe-89eca596cba5",
+          "name": "List Registrations",
+          "request": {
+            "name": "List Registrations",
+            "description": {
+              "content": "(GET `/api/alert/registrations/`)\n\nReturns all registrations which are not deleted or made obsolete by resubscription.  Put\nanother way, this endpoint will return a superset of all active registrations: all\nactive registrations (meaning registrations which would trigger an alert to be sent if their\nsection were to open up), IN ADDITION TO all inactive registrations from the current semester\nwhich are at the head of their resubscribe chains and not deleted.  However, one extra\nmodification is made: if multiple registrations for the same section are included in the\nabove-specified set, then all but the most recent (latest `created_at` value) are removed from\nthe list. This ensures that at most 1 registration is returned for each section. Note that this\nis still a superset of all active registrations. If a registration is active, its `created_at`\nvalue will be greater than any other registrations for the same section (our code ensures no\nregistration can be created or resubscribed to when an active registration exists for the same\nsection). This extra modification is actually made to prevent the user from being able to\nresubscribe to an older registration after creating a new one (which would cause the backend to\nreturn a 409 error).\n\nEach object in the returned list of registrations is of the same form as the object returned\nby Retrieve Registration.\n\n<span style=\"color:red;\">User authentication required</span>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "alert",
+                "registrations",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b7d5f0e9-38f3-4a55-9009-ecb218245ee6",
+              "name": "Registrations successfully listed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "alert",
+                    "registrations",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 8564,\n    \"created_at\": \"1999-03-19T21:02:29.031Z\",\n    \"original_created_at\": \"1969-02-22T14:12:53.436Z\",\n    \"updated_at\": \"1980-10-01T15:45:02.692Z\",\n    \"section\": \"string\",\n    \"user\": \"string\",\n    \"cancelled\": false,\n    \"cancelled_at\": \"2011-01-14T19:32:24.391Z\",\n    \"deleted\": false,\n    \"deleted_at\": \"1966-10-02T20:09:10.292Z\",\n    \"auto_resubscribe\": true,\n    \"notification_sent\": false,\n    \"notification_sent_at\": \"1960-12-29T21:05:07.802Z\",\n    \"last_notification_sent_at\": \"string\",\n    \"close_notification\": true,\n    \"close_notification_sent\": false,\n    \"close_notification_sent_at\": \"1946-10-01T11:21:07.337Z\",\n    \"is_active\": \"string\",\n    \"is_waiting_for_close\": \"string\",\n    \"section_status\": \"string\"\n  },\n  {\n    \"id\": 6973,\n    \"created_at\": \"2009-06-04T08:34:40.939Z\",\n    \"original_created_at\": \"1950-06-18T17:34:51.199Z\",\n    \"updated_at\": \"2009-09-28T09:59:24.522Z\",\n    \"section\": \"string\",\n    \"user\": \"string\",\n    \"cancelled\": false,\n    \"cancelled_at\": \"1947-04-12T17:49:30.720Z\",\n    \"deleted\": true,\n    \"deleted_at\": \"2026-07-17T07:11:05.806Z\",\n    \"auto_resubscribe\": false,\n    \"notification_sent\": true,\n    \"notification_sent_at\": \"1958-04-20T05:02:38.534Z\",\n    \"last_notification_sent_at\": \"string\",\n    \"close_notification\": false,\n    \"close_notification_sent\": false,\n    \"close_notification_sent_at\": \"1949-09-23T13:21:05.593Z\",\n    \"is_active\": \"string\",\n    \"is_waiting_for_close\": \"string\",\n    \"section_status\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4749cb7c-30e2-4984-8845-5023cd709702",
+              "name": "Access denied (missing or improper authentication).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "alert",
+                    "registrations",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8484111e-ce7d-4f7b-a259-e56e3d7e4767",
+          "name": "Create Registration",
+          "request": {
+            "name": "Create Registration",
+            "description": {
+              "content": "(POST `/api/alert/registrations/`)\n\nUse this route to create a PCA registration for a certain section.  A PCA registration\nrepresents a \"subscription\" to receive alerts for that section.  The body of the request must\ninclude a section field (with the dash-separated full code of the section) and optionally\ncan contain an auto_resubscribe field (defaults to false) which sets whether the registration\nwill automatically create a new registration once it triggers an alerts (i.e. whether it will\nautomatically resubscribe the user to receive alerts for that section). It can also optionally\ncontain a \"close_notification\" field, to enable close notifications on the registration.\nNote that close notifications CANNOT be sent by text so you shouldn't allow the user to\nenable close notifications for any registration unless they have an email set in their\nUser Profile or have push notifications enabled.  If you try to create a registration with\nclose_notification enabled and the user only has texts enabled, , a 406 will be returned\nand the registration will not be created.\nNote that if you include the \"id\" field in the body of your POST request, and that id\ndoes not already exist, the id of the created registration will be set to the given value.\nHowever, if the given id does exist, the request will instead be treated as a PUT request for\nthe registration (see the Update Registration docs for more info on how\nPUT requests are handled).\n\nThis route returns a 201 if the registration is successfully created, a 400 if the input is\ninvalid (for instance if a null section is given), a 404 if the given section is not found in\nthe database, a 406 if the authenticated user does not have either a phone or an email set\nin their profile (thus making it impossible for them to receive alerts), and a 409 if the\nuser is already currently registered to receive alerts for the given section.  If the request\nis redirected to update (when the passed in id is already associated with a registration),\nother response codes may be returned (see the Update Registration docs for more info). If\nregistration is not currently open on PCA, a 503 is returned.\n\n<span style=\"color:red;\">User authentication required</span>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "alert",
+                "registrations",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"section\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"auto_resubscribe\": \"<boolean>\",\n  \"close_notification\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d5dfde60-8b51-4b29-887d-68d4c25ffa6c",
+              "name": "Registration successfully created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "alert",
+                    "registrations",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"section\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"auto_resubscribe\": \"<boolean>\",\n  \"close_notification\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"id\": 3225\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "882bdd6c-f51b-42d5-9a6a-b8db98c399f6",
+              "name": "Bad request (e.g. given null section).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "alert",
+                    "registrations",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"section\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"auto_resubscribe\": \"<boolean>\",\n  \"close_notification\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7f13a407-bcc8-434d-8f40-760b3526fcba",
+              "name": "Access denied (missing or improper authentication).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "alert",
+                    "registrations",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"section\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"auto_resubscribe\": \"<boolean>\",\n  \"close_notification\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "222e66da-d864-49a8-9701-e45db0cc72ca",
+              "name": "Given section not found in database.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "alert",
+                    "registrations",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"section\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"auto_resubscribe\": \"<boolean>\",\n  \"close_notification\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9b511132-c84c-4420-bde1-503a95872bb5",
+              "name": "No contact information (phone or email) set for user.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "alert",
+                    "registrations",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"section\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"auto_resubscribe\": \"<boolean>\",\n  \"close_notification\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dca0b907-cd28-43a8-b27d-4d48737fb276",
+              "name": "Registration for given section already exists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "alert",
+                    "registrations",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"section\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"auto_resubscribe\": \"<boolean>\",\n  \"close_notification\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2b68b170-f0c5-4d7a-9cbf-c62bed894d12",
+              "name": "Registration not currently open.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "alert",
+                    "registrations",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"section\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"auto_resubscribe\": \"<boolean>\",\n  \"close_notification\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "386f19a5-ecc2-4fbd-b3aa-4022c9ce11c5",
+          "name": "Retrieve Registration",
+          "request": {
+            "name": "Retrieve Registration",
+            "description": {
+              "content": "(GET `/api/alert/registrations/{id}/`)\n\nGet one of the logged-in user's PCA registrations for the current semester, using\nthe registration's ID. Note that if a registration with the specified ID exists, but that\nregistration is not at the head of its resubscribe chain (i.e. there is a more recent\nregistration which was created by resubscribing to the specified registration), the\nHEAD of the resubscribe chain will be returned.  This means the same registration could be\nreturned from a GET request to 2 distinct IDs (if they are in the same resubscribe chain).\nIf a registration with the specified ID exists, a 200 response code is returned, along\nwith the head registration object. If no registration with the given id exists,\na 404 is returned.\n\n<span style=\"color:red;\">User authentication required</span>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "alert",
+                "registrations",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique integer value identifying this registration."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "239713b9-3c27-445e-8920-96fbb24f114b",
+              "name": "Registration detail successfully retrieved.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "alert",
+                    "registrations",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this registration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 4699,\n  \"created_at\": \"1974-04-24T22:27:03.719Z\",\n  \"original_created_at\": \"1987-05-01T13:05:30.096Z\",\n  \"updated_at\": \"1984-01-21T19:18:40.870Z\",\n  \"section\": \"string\",\n  \"user\": \"string\",\n  \"cancelled\": false,\n  \"cancelled_at\": \"1998-03-28T23:53:13.880Z\",\n  \"deleted\": false,\n  \"deleted_at\": \"1996-11-19T10:25:20.580Z\",\n  \"auto_resubscribe\": true,\n  \"notification_sent\": false,\n  \"notification_sent_at\": \"1988-11-20T05:42:12.129Z\",\n  \"last_notification_sent_at\": \"string\",\n  \"close_notification\": false,\n  \"close_notification_sent\": false,\n  \"close_notification_sent_at\": \"2008-01-23T07:18:31.386Z\",\n  \"is_active\": \"string\",\n  \"is_waiting_for_close\": \"string\",\n  \"section_status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4b108076-6ea4-4d02-a8ae-1786d467d635",
+              "name": "Access denied (missing or improper authentication).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "alert",
+                    "registrations",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this registration."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "14948477-8980-489f-aa6a-ebca6f16b9c2",
+              "name": "Registration not found with given id.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "alert",
+                    "registrations",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this registration."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "19d8537b-eb15-4b3b-b1fc-b2f91bde01c5",
+          "name": "Update Registration",
+          "request": {
+            "name": "Update Registration",
+            "description": {
+              "content": "(PUT `/api/alert/registrations/{id}/`)\n\nUse this route to update existing PCA Registrations.  Note that the provided id does\nnot always strictly specify which Registration gets modified.  In fact, the actual Registration\nthat would get modified by a PUT request would be the head of the resubscribe chain of the\nRegistration with the specified id (so if you try to update an outdated Registration it will\ninstead update the most recent Registration).  The parameters which can be\nincluded in the request body are `resubscribe`, `auto_resubscribe`, 'close_notification',\n`cancelled`, and `deleted`. If you include multiple parameters, the order of precedence in\nchoosing what action to take is `resubscribe` > `deleted` > `cancelled` >\n[`auto_resubscribe` and `close_notification`] (so if you include multiple\nparameters only the action associated with the highest priority parameter will be executed,\nexcept both auto_resubscribe and close_notification can be updated in the same request).\nNote that close notifications CANNOT be sent by text so you shouldn't allow the user to\nenable close notifications for any registration unless they have an email set in their\nUser Profile or have push notifications enabled.  If you try to update a registration to\nenable close_notification and the user only has texts enabled, a 406 will be returned\nand the registration will not be created.\nNote that a registration will send an alert when the section it is watching opens, if and only\nif it hasn't sent one before, it isn't cancelled, and it isn't deleted.  If a registration would\nsend an alert when the section it is watching opens, we call it \"active\".  Registrations which\nhave triggered an alert can be resubscribed to (which creates a new registration with the same\nsettings and adds that to the end of the original registration's resubscribe chain).  Triggered\nregistrations would show up in List Registrations (as long as they are at the head of\ntheir resubscribe chain), even though they aren't active.  Cancelled registrations can also\nbe resubscribed to (in effect uncancelling), and also show up in List Registrations, despite\nnot being active.  A user might cancel an alert rather than delete it if they want to keep it\nin their PCA manage console but don't want to receive alerts for it.  Deleted registrations\nare not active, do not show up in List Registrations, and cannot be resubscribed to.  You can\nthink of deleted registrations as effectively nonexistent; they are only kept on the backend\nfor analytics purposes.  Note that while you can cancel a registration by setting the cancelled\nparameter to true in your PUT request (and the same for delete/deleted), you cannot uncancel\nor undelete (cancelled registrations can be resubscribed to and deleted registrations\nare effectively nonexistent).\n\nIf the update is successful, a 200 is returned.  If there is some issue with the request,\na 400 is returned.  This could be caused by trying to update a registration from a different\nsemester, trying to resubscribe to a deleted registration, resubscribing to a registration\nwhich is not cancelled or hasn't yet triggered a notification, cancelling a deleted or\ntriggered registration, trying to make changes to a deleted registration, or otherwise\nbreaking rules.  Look in the detail field of the response object for more detail on what\nexactly went wrong if you encounter a 400.  If no registration with the given id is found,\na 404 is returned. If registration is not currently open on PCA, a 503 is returned.\n\n<span style=\"color:red;\">User authentication required</span>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "alert",
+                "registrations",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique integer value identifying this registration."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cancelled\": \"<boolean>\",\n  \"deleted\": \"<boolean>\",\n  \"auto_resubscribe\": \"<boolean>\",\n  \"close_notification\": \"<boolean>\",\n  \"resubscribe\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "25a43736-2403-4ffa-ad28-832af18bb224",
+              "name": "Registration successfully updated (or no changes necessary).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "alert",
+                    "registrations",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this registration."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cancelled\": \"<boolean>\",\n  \"deleted\": \"<boolean>\",\n  \"auto_resubscribe\": \"<boolean>\",\n  \"close_notification\": \"<boolean>\",\n  \"resubscribe\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "44015873-6fc3-4e3a-81e7-2c837ae9726c",
+              "name": "Bad request (see route description).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "alert",
+                    "registrations",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this registration."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cancelled\": \"<boolean>\",\n  \"deleted\": \"<boolean>\",\n  \"auto_resubscribe\": \"<boolean>\",\n  \"close_notification\": \"<boolean>\",\n  \"resubscribe\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "56c11bae-f99e-4196-9a2a-ea8b15461d26",
+              "name": "Access denied (missing or improper authentication).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "alert",
+                    "registrations",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this registration."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cancelled\": \"<boolean>\",\n  \"deleted\": \"<boolean>\",\n  \"auto_resubscribe\": \"<boolean>\",\n  \"close_notification\": \"<boolean>\",\n  \"resubscribe\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "233adbad-93ba-486f-8928-c72aacf78928",
+              "name": "Registration not found with given id.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "alert",
+                    "registrations",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this registration."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cancelled\": \"<boolean>\",\n  \"deleted\": \"<boolean>\",\n  \"auto_resubscribe\": \"<boolean>\",\n  \"close_notification\": \"<boolean>\",\n  \"resubscribe\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1ece290e-cd4d-4fff-9962-dcac7e0b6af8",
+              "name": "Registration not currently open.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "alert",
+                    "registrations",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this registration."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cancelled\": \"<boolean>\",\n  \"deleted\": \"<boolean>\",\n  \"auto_resubscribe\": \"<boolean>\",\n  \"close_notification\": \"<boolean>\",\n  \"resubscribe\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://penncoursereview.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "872198ee-d52a-4de9-8da5-e2aee11f4dec",
+    "name": "Penn Courses API Documentation [Accounts] User [Accounts] User [PCA] Registration API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\n# Introduction\nPenn Courses ([GitHub](https://github.com/pennlabs/penn-courses)) is the umbrella\ncategorization for [Penn Labs](https://pennlabs.org/)\nproducts designed to help students navigate the course registration process. It currently\nincludes three products, each with their own API documented on this page:\nPenn Course Alert, Penn Course Plan, and Penn Course Review.\n\nSee `Penn Labs Notion > Penn Courses` for more details on each of our (currently) three apps.\n\nFor instructions on how to maintain this documentation while writing code,\nsee the comments in `backend/PennCourses/docs_settings.py` (it is easy, and will be helpful\nfor maintaining Labs knowledge in spite of our high member turnover rate).\n\nSee our [GitHub](https://github.com/pennlabs/penn-courses) repo for instructions on\ninstallation, running in development, and loading in course data for development. Visit\nthe `/admin/doc/` route ([link](/admin/doc/)) for the backend documentation generated by Django\n(admin account required, which can be made by running\n`python manage.py createsuperuser` in terminal/CLI).\n\n# Unified Penn Courses\nBy virtue of the fact that all Penn Courses products deal with, well, courses,\nit would make sense for all three products to share the same backend.\n\nWe realized the necessity of a unified backend when attempting to design a new Django backend\nfor Penn Course Plan. We like to live by the philosophy of keeping it\n[DRY](https://en.wikipedia.org/wiki/Don't_repeat_yourself), and\nPCA and PCP's data models both need to reference course and\nsection information. We could have simply copied over code (a bad idea)\nor created a shared reusable Django app (a better idea) for course data,\nbut each app would still need to download copies of the same data.\nAdditionally, this will help us build integrations between our Courses products.\n\n# Authentication\nPCx user authentication is handled by platform's Penn Labs Accounts Engine.\nSee [Penn Labs Notion > Platform > The Accounts Engine](https://www.notion.so/pennlabs/The-Accounts-Engine-726ccf8875e244f4b8dbf8a8f2c97a87?pvs=4)\nfor extensive documentation and links to repositories for this system. When tags or routes\nare described as requiring user authentication, they are referring to this system.\n\nI highly recommend the [official video course on OAuth2](https://oauth.net/2/) (by Aaron Parecki),\nthen the Platform Notion docs on the \"Accounts Engine\" for anyone who wants to understand\nLabs authentication better. Platform is our OAuth2 \"Authorization Server\",\nand Django Labs Accounts is an OAuth2 client run by our Django backends (Clubs, Penn Courses, etc),\nexposing client-facing authentication routes like `penncourseplan.com/accounts/login`.\nThere's also this Wikipedia page explaining [Shibboleth](https://en.wikipedia.org/wiki/Shibboleth_(software))\n(which is used by Penn for authentication, and by the Platform authorization server).\n\nSee the Django docs for more on Django's features for\n[User Authentication](https://docs.djangoproject.com/en/3.0/topics/auth/),\nwhich are used by PCX apps, as part of Platform's accounts system.\n\n\nContact Support:\n Email: contact@pennlabs.org",
+      "type": "text/plain"
+    }
+  }
+}

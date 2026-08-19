@@ -1,0 +1,441 @@
+{
+  "item": [
+    {
+      "id": "4bc55a5d-ef19-441e-aaf8-3e2fb0050a81",
+      "name": "[PCP] Primary Schedule",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8a09bb58-fabd-488a-8cf7-6de898ef4abf",
+          "name": "List Primary Schedules",
+          "request": {
+            "name": "List Primary Schedules",
+            "description": {
+              "content": "(GET `/api/plan/primary-schedules/`)\n\nGet the primary schedule for the current user as well as primary\nschedules of the user's friends.\n\n<span style=\"color:red;\">User authentication required</span>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "plan",
+                "primary-schedules",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6a417e4a-ece9-4f9d-b5ef-5cea9300cc1a",
+              "name": "Primary schedule (and friend's schedules) retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "plan",
+                    "primary-schedules",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"user\": {\n      \"username\": \"string\",\n      \"first_name\": \"string\",\n      \"last_name\": \"string\"\n    },\n    \"schedule\": {\n      \"id\": 2996,\n      \"semester\": \"strin\",\n      \"name\": \"string\",\n      \"created_at\": \"1993-06-13T04:17:37.814Z\",\n      \"updated_at\": \"1999-03-13T15:07:49.888Z\"\n    }\n  },\n  {\n    \"user\": {\n      \"username\": \"string\",\n      \"first_name\": \"string\",\n      \"last_name\": \"string\"\n    },\n    \"schedule\": {\n      \"id\": 9593,\n      \"semester\": \"strin\",\n      \"name\": \"string\",\n      \"created_at\": \"2012-02-09T11:18:32.547Z\",\n      \"updated_at\": \"1948-01-07T07:53:45.358Z\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f448fc14-7314-4145-a284-1095ca880964",
+              "name": "Access denied (missing or improper authentication).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "plan",
+                    "primary-schedules",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "60f78b15-c5a9-47bb-8b0e-cd5cc86427d9",
+          "name": "Create Primary Schedule",
+          "request": {
+            "name": "Create Primary Schedule",
+            "description": {
+              "content": "(POST `/api/plan/primary-schedules/`)\n\nCreate/update/delete the primary schedule for the current user.\n\n<span style=\"color:red;\">User authentication required</span>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "plan",
+                "primary-schedules",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"schedule_id\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e364b777-d9b0-4ce4-9b7b-af8fd0d9e1bc",
+              "name": "Primary schedule updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "plan",
+                    "primary-schedules",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schedule_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e7767ec6-400c-4d87-948e-2d77a1dfdaf2",
+              "name": "Invalid schedule in request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "plan",
+                    "primary-schedules",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schedule_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "22749c02-c4f7-40c8-8e15-f16a52d373e4",
+              "name": "Access denied (missing or improper authentication).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "plan",
+                    "primary-schedules",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schedule_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bc39ab61-31dc-454c-9067-84bee8c7fa74",
+          "name": "Retrieve Primary Schedule",
+          "request": {
+            "name": "Retrieve Primary Schedule",
+            "description": {
+              "content": "(GET `/api/plan/primary-schedules/{id}/`)\n\n\n\n<span style=\"color:red;\">User authentication required</span>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "plan",
+                "primary-schedules",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique integer value identifying this primary schedule."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "32e0a388-0a42-47b2-8863-cb82075cf81a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "plan",
+                    "primary-schedules",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this primary schedule."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user\": {\n    \"username\": \"string\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\"\n  },\n  \"schedule\": {\n    \"id\": 3087,\n    \"semester\": \"strin\",\n    \"name\": \"string\",\n    \"created_at\": \"2010-10-17T08:41:38.079Z\",\n    \"updated_at\": \"1979-07-31T20:05:19.653Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5feb5489-bc7f-4403-86ab-d459bcdd2401",
+              "name": "Access denied (missing or improper authentication).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "plan",
+                    "primary-schedules",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this primary schedule."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://penncoursereview.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2b5e2535-9192-4475-b10d-2f54e2fd680b",
+    "name": "Penn Courses API Documentation [Accounts] User [Accounts] User [PCP] Primary Schedule API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\n# Introduction\nPenn Courses ([GitHub](https://github.com/pennlabs/penn-courses)) is the umbrella\ncategorization for [Penn Labs](https://pennlabs.org/)\nproducts designed to help students navigate the course registration process. It currently\nincludes three products, each with their own API documented on this page:\nPenn Course Alert, Penn Course Plan, and Penn Course Review.\n\nSee `Penn Labs Notion > Penn Courses` for more details on each of our (currently) three apps.\n\nFor instructions on how to maintain this documentation while writing code,\nsee the comments in `backend/PennCourses/docs_settings.py` (it is easy, and will be helpful\nfor maintaining Labs knowledge in spite of our high member turnover rate).\n\nSee our [GitHub](https://github.com/pennlabs/penn-courses) repo for instructions on\ninstallation, running in development, and loading in course data for development. Visit\nthe `/admin/doc/` route ([link](/admin/doc/)) for the backend documentation generated by Django\n(admin account required, which can be made by running\n`python manage.py createsuperuser` in terminal/CLI).\n\n# Unified Penn Courses\nBy virtue of the fact that all Penn Courses products deal with, well, courses,\nit would make sense for all three products to share the same backend.\n\nWe realized the necessity of a unified backend when attempting to design a new Django backend\nfor Penn Course Plan. We like to live by the philosophy of keeping it\n[DRY](https://en.wikipedia.org/wiki/Don't_repeat_yourself), and\nPCA and PCP's data models both need to reference course and\nsection information. We could have simply copied over code (a bad idea)\nor created a shared reusable Django app (a better idea) for course data,\nbut each app would still need to download copies of the same data.\nAdditionally, this will help us build integrations between our Courses products.\n\n# Authentication\nPCx user authentication is handled by platform's Penn Labs Accounts Engine.\nSee [Penn Labs Notion > Platform > The Accounts Engine](https://www.notion.so/pennlabs/The-Accounts-Engine-726ccf8875e244f4b8dbf8a8f2c97a87?pvs=4)\nfor extensive documentation and links to repositories for this system. When tags or routes\nare described as requiring user authentication, they are referring to this system.\n\nI highly recommend the [official video course on OAuth2](https://oauth.net/2/) (by Aaron Parecki),\nthen the Platform Notion docs on the \"Accounts Engine\" for anyone who wants to understand\nLabs authentication better. Platform is our OAuth2 \"Authorization Server\",\nand Django Labs Accounts is an OAuth2 client run by our Django backends (Clubs, Penn Courses, etc),\nexposing client-facing authentication routes like `penncourseplan.com/accounts/login`.\nThere's also this Wikipedia page explaining [Shibboleth](https://en.wikipedia.org/wiki/Shibboleth_(software))\n(which is used by Penn for authentication, and by the Platform authorization server).\n\nSee the Django docs for more on Django's features for\n[User Authentication](https://docs.djangoproject.com/en/3.0/topics/auth/),\nwhich are used by PCX apps, as part of Platform's accounts system.\n\n\nContact Support:\n Email: contact@pennlabs.org",
+      "type": "text/plain"
+    }
+  }
+}

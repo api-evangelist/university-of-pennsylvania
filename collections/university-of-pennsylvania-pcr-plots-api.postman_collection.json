@@ -1,0 +1,244 @@
+{
+  "item": [
+    {
+      "id": "f6c1a3da-0390-4f58-957b-e0215113fe0d",
+      "name": "[PCR] Plots",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "29848294-81a9-49f1-89f5-1bfd7f61e9f5",
+          "name": "Retrieve Plots",
+          "request": {
+            "name": "Retrieve Plots",
+            "description": {
+              "content": "(GET `/api/review/course_plots/{course_code}`)\n\nGet all PCR plots for a given course.\n\n<span style=\"color:red;\">User authentication required</span>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "review",
+                "course_plots",
+                ":course_code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "semester",
+                  "value": "<string>",
+                  "description": "Optionally specify the semester of the desired course (defaults to most recent course with the specified course code)."
+                },
+                {
+                  "disabled": false,
+                  "key": "instructor_ids",
+                  "value": "<string>",
+                  "description": "A comma-separated list of instructor IDs with which to filter the sections underlying the returned plots.Note that if only invalid instructor IDs are present, plot response fields will be null or 0."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "course_code",
+                  "description": "(Required) The dash-joined department and code of the course you want plots for, e.g. `CIS-120` for CIS-120."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a3a6bb3c-5885-44b5-a39d-cf5a9cf63c14",
+              "name": "Plots retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "review",
+                    "course_plots",
+                    ":course_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "semester",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "instructor_ids",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "course_code",
+                      "description": "(Required) The dash-joined department and code of the course you want plots for, e.g. `CIS-120` for CIS-120."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"current_add_drop_period\": {\n    \"start\": \"string\",\n    \"end\": \"string\"\n  },\n  \"average_plots\": {\n    \"rSemesterCalc\": \"string\",\n    \"rSemesterCount\": 3705,\n    \"rInstructorQuality\": 935.5922623533197,\n    \"rCourseQuality\": 7276.906190591061,\n    \"rCommunicationAbility\": 9092.854533678703,\n    \"rStimulateInterest\": 7911.983438932299,\n    \"rInstructorAccess\": 81.2610707338246,\n    \"rDifficulty\": 9336.765395511395,\n    \"rWorkRequired\": 4725.761364404516,\n    \"rTaQuality\": 9902.558450008532,\n    \"rReadingsValue\": 3571.496027697789,\n    \"rAmountLearned\": 3445.5067688581307,\n    \"rRecommendMajor\": 5317.5357110614,\n    \"rRecommendNonmajor\": 6499.35061576057,\n    \"rAbilitiesChallenged\": 9635.768115598026,\n    \"rClassPace\": 5654.35477999574,\n    \"rInstructorEffective\": 3203.052421185525,\n    \"rNativeAbility\": 5543.25150995801,\n    \"rFinalEnrollment\": 398.41493199312737,\n    \"rPercentOpen\": 8719.128718079952,\n    \"rNumOpenings\": 1884.2090805371893,\n    \"rFilledInAdvReg\": 4750.187645720507\n  },\n  \"recent_plots\": {\n    \"rSemesterCalc\": \"string\",\n    \"rSemesterCount\": 4503,\n    \"rInstructorQuality\": 6192.2786893340635,\n    \"rCourseQuality\": 9175.475700146066,\n    \"rCommunicationAbility\": 7070.693607387577,\n    \"rStimulateInterest\": 902.7509187978167,\n    \"rInstructorAccess\": 479.357530886908,\n    \"rDifficulty\": 8234.048942152582,\n    \"rWorkRequired\": 1341.2840802057058,\n    \"rTaQuality\": 9095.964594041066,\n    \"rReadingsValue\": 3700.329234729791,\n    \"rAmountLearned\": 4862.600648896392,\n    \"rRecommendMajor\": 8589.85905826212,\n    \"rRecommendNonmajor\": 2199.524747494499,\n    \"rAbilitiesChallenged\": 1935.4976836283,\n    \"rClassPace\": 1399.4700459986386,\n    \"rInstructorEffective\": 2276.788281860375,\n    \"rNativeAbility\": 2234.638985946076,\n    \"rFinalEnrollment\": 4685.65366973925,\n    \"rPercentOpen\": 7534.525087776308,\n    \"rNumOpenings\": 7126.049674756741,\n    \"rFilledInAdvReg\": 5041.254238142964\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "75fdf940-a77b-4a3a-9ff5-c7faae06ae24",
+              "name": "Access denied (missing or improper authentication).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "review",
+                    "course_plots",
+                    ":course_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "semester",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "instructor_ids",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "course_code",
+                      "description": "(Required) The dash-joined department and code of the course you want plots for, e.g. `CIS-120` for CIS-120."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "61c0e795-3e21-42ac-aba3-804604a1aa43",
+              "name": "Course with given course_code not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "review",
+                    "course_plots",
+                    ":course_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "semester",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "instructor_ids",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "course_code",
+                      "description": "(Required) The dash-joined department and code of the course you want plots for, e.g. `CIS-120` for CIS-120."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://penncoursereview.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1abf1638-6730-4096-9c89-3ca50cf2b92e",
+    "name": "Penn Courses API Documentation [Accounts] User [Accounts] User [PCR] Plots API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\n# Introduction\nPenn Courses ([GitHub](https://github.com/pennlabs/penn-courses)) is the umbrella\ncategorization for [Penn Labs](https://pennlabs.org/)\nproducts designed to help students navigate the course registration process. It currently\nincludes three products, each with their own API documented on this page:\nPenn Course Alert, Penn Course Plan, and Penn Course Review.\n\nSee `Penn Labs Notion > Penn Courses` for more details on each of our (currently) three apps.\n\nFor instructions on how to maintain this documentation while writing code,\nsee the comments in `backend/PennCourses/docs_settings.py` (it is easy, and will be helpful\nfor maintaining Labs knowledge in spite of our high member turnover rate).\n\nSee our [GitHub](https://github.com/pennlabs/penn-courses) repo for instructions on\ninstallation, running in development, and loading in course data for development. Visit\nthe `/admin/doc/` route ([link](/admin/doc/)) for the backend documentation generated by Django\n(admin account required, which can be made by running\n`python manage.py createsuperuser` in terminal/CLI).\n\n# Unified Penn Courses\nBy virtue of the fact that all Penn Courses products deal with, well, courses,\nit would make sense for all three products to share the same backend.\n\nWe realized the necessity of a unified backend when attempting to design a new Django backend\nfor Penn Course Plan. We like to live by the philosophy of keeping it\n[DRY](https://en.wikipedia.org/wiki/Don't_repeat_yourself), and\nPCA and PCP's data models both need to reference course and\nsection information. We could have simply copied over code (a bad idea)\nor created a shared reusable Django app (a better idea) for course data,\nbut each app would still need to download copies of the same data.\nAdditionally, this will help us build integrations between our Courses products.\n\n# Authentication\nPCx user authentication is handled by platform's Penn Labs Accounts Engine.\nSee [Penn Labs Notion > Platform > The Accounts Engine](https://www.notion.so/pennlabs/The-Accounts-Engine-726ccf8875e244f4b8dbf8a8f2c97a87?pvs=4)\nfor extensive documentation and links to repositories for this system. When tags or routes\nare described as requiring user authentication, they are referring to this system.\n\nI highly recommend the [official video course on OAuth2](https://oauth.net/2/) (by Aaron Parecki),\nthen the Platform Notion docs on the \"Accounts Engine\" for anyone who wants to understand\nLabs authentication better. Platform is our OAuth2 \"Authorization Server\",\nand Django Labs Accounts is an OAuth2 client run by our Django backends (Clubs, Penn Courses, etc),\nexposing client-facing authentication routes like `penncourseplan.com/accounts/login`.\nThere's also this Wikipedia page explaining [Shibboleth](https://en.wikipedia.org/wiki/Shibboleth_(software))\n(which is used by Penn for authentication, and by the Platform authorization server).\n\nSee the Django docs for more on Django's features for\n[User Authentication](https://docs.djangoproject.com/en/3.0/topics/auth/),\nwhich are used by PCX apps, as part of Platform's accounts system.\n\n\nContact Support:\n Email: contact@pennlabs.org",
+      "type": "text/plain"
+    }
+  }
+}

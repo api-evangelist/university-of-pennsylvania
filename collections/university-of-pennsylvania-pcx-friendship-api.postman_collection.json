@@ -1,0 +1,598 @@
+{
+  "item": [
+    {
+      "id": "de2fc913-f608-46c4-bb97-e317ff270969",
+      "name": "[PCx] Friendship",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "408f8303-8d1a-498f-9e2b-8441121ca6ae",
+          "name": "List Friendships",
+          "request": {
+            "name": "List Friendships",
+            "description": {
+              "content": "(GET `/api/base/friendship/`)\n\nGet a list of all friendships and friendship requests (sent and recieved) for the\nspecified user. Filter the list by status (accepted, sent) to distinguish between\nfriendships and friendship requests.\n\n<span style=\"color:red;\">User authentication required</span>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "base",
+                "friendship",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a80a6ae2-d2f6-4bf0-8ccf-de58f54fce92",
+              "name": "Friendships retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "base",
+                    "friendship",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6ab3bce2-c87b-409c-8b8e-6e8493eb83db",
+              "name": "Access denied (missing or improper authentication).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "base",
+                    "friendship",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "90247fd6-54b8-4723-9120-e08374a3abff",
+          "name": "Create Friendship",
+          "request": {
+            "name": "Create Friendship",
+            "description": {
+              "content": "(POST `/api/base/friendship/`)\n\nCreate a friendship between two users (sender and recipient). If a previous request does\nnot exist between the two friendships, then we create friendship request. If a previous request\nexists (where the recipient is the sender) and the recipient of a request hits this route, then\nwe accept the request.\n\n<span style=\"color:red;\">User authentication required</span>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "base",
+                "friendship",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pennkey\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8828ceef-e55e-4c4b-ad64-42e6e92fa257",
+              "name": "Friendship request accepted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "base",
+                    "friendship",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pennkey\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b1b375a0-c197-438a-a49a-7e23a89dc03a",
+              "name": "Friendship request created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "base",
+                    "friendship",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pennkey\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "000432a2-a78d-4e9c-a09f-728037a896f0",
+              "name": "Access denied (missing or improper authentication).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "base",
+                    "friendship",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pennkey\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "57671089-9a95-4e56-8231-7c475c6f9a58",
+              "name": "Username was None/ Username did not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "base",
+                    "friendship",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pennkey\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "942b08b1-5b98-4b2b-93c4-9cda49138f54",
+              "name": "Friendship request already exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "base",
+                    "friendship",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pennkey\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c866a5da-b991-468c-a1c0-98cc6d7e46e5",
+          "name": "Destroy Friendship",
+          "request": {
+            "name": "Destroy Friendship",
+            "description": {
+              "content": "(DELETE `/api/base/friendship/`)\n\nDelete a friendship between two users (sender and recipient). If there exists only\na friendship request between two users, then we either delete the friendship request\nif the sender hits the route, or we reject the request if the recipient hits this route.\n\n<span style=\"color:red;\">User authentication required</span>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "base",
+                "friendship",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pennkey",
+                  "value": "<string>",
+                  "description": "(Required) The Pennkey of the user you are ending/rejecting your friendship/friend request with."
+                }
+              ],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ee2a673e-224d-43aa-9d6c-9710169deb6e",
+              "name": "Friendship rejected/deleted/cancelled successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "base",
+                    "friendship",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pennkey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8be2c241-bd77-4229-acb0-7a0d10463622",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "base",
+                    "friendship",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pennkey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "60b41049-204d-401a-9bb9-09ca8959c9fc",
+              "name": "Access denied (missing or improper authentication).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "base",
+                    "friendship",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pennkey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "857def4a-2937-4dfa-8471-ae30843a4de6",
+              "name": "Friendship does not exist or Username does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "base",
+                    "friendship",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pennkey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2259f7d3-6861-498e-9de6-fa56d3b3e90a",
+              "name": "Friendship request already rejected.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "base",
+                    "friendship",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pennkey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://penncoursereview.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7b820c53-51b6-4681-85fc-3412494275f0",
+    "name": "Penn Courses API Documentation [Accounts] User [Accounts] User [PCx] Friendship API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\n# Introduction\nPenn Courses ([GitHub](https://github.com/pennlabs/penn-courses)) is the umbrella\ncategorization for [Penn Labs](https://pennlabs.org/)\nproducts designed to help students navigate the course registration process. It currently\nincludes three products, each with their own API documented on this page:\nPenn Course Alert, Penn Course Plan, and Penn Course Review.\n\nSee `Penn Labs Notion > Penn Courses` for more details on each of our (currently) three apps.\n\nFor instructions on how to maintain this documentation while writing code,\nsee the comments in `backend/PennCourses/docs_settings.py` (it is easy, and will be helpful\nfor maintaining Labs knowledge in spite of our high member turnover rate).\n\nSee our [GitHub](https://github.com/pennlabs/penn-courses) repo for instructions on\ninstallation, running in development, and loading in course data for development. Visit\nthe `/admin/doc/` route ([link](/admin/doc/)) for the backend documentation generated by Django\n(admin account required, which can be made by running\n`python manage.py createsuperuser` in terminal/CLI).\n\n# Unified Penn Courses\nBy virtue of the fact that all Penn Courses products deal with, well, courses,\nit would make sense for all three products to share the same backend.\n\nWe realized the necessity of a unified backend when attempting to design a new Django backend\nfor Penn Course Plan. We like to live by the philosophy of keeping it\n[DRY](https://en.wikipedia.org/wiki/Don't_repeat_yourself), and\nPCA and PCP's data models both need to reference course and\nsection information. We could have simply copied over code (a bad idea)\nor created a shared reusable Django app (a better idea) for course data,\nbut each app would still need to download copies of the same data.\nAdditionally, this will help us build integrations between our Courses products.\n\n# Authentication\nPCx user authentication is handled by platform's Penn Labs Accounts Engine.\nSee [Penn Labs Notion > Platform > The Accounts Engine](https://www.notion.so/pennlabs/The-Accounts-Engine-726ccf8875e244f4b8dbf8a8f2c97a87?pvs=4)\nfor extensive documentation and links to repositories for this system. When tags or routes\nare described as requiring user authentication, they are referring to this system.\n\nI highly recommend the [official video course on OAuth2](https://oauth.net/2/) (by Aaron Parecki),\nthen the Platform Notion docs on the \"Accounts Engine\" for anyone who wants to understand\nLabs authentication better. Platform is our OAuth2 \"Authorization Server\",\nand Django Labs Accounts is an OAuth2 client run by our Django backends (Clubs, Penn Courses, etc),\nexposing client-facing authentication routes like `penncourseplan.com/accounts/login`.\nThere's also this Wikipedia page explaining [Shibboleth](https://en.wikipedia.org/wiki/Shibboleth_(software))\n(which is used by Penn for authentication, and by the Platform authorization server).\n\nSee the Django docs for more on Django's features for\n[User Authentication](https://docs.djangoproject.com/en/3.0/topics/auth/),\nwhich are used by PCX apps, as part of Platform's accounts system.\n\n\nContact Support:\n Email: contact@pennlabs.org",
+      "type": "text/plain"
+    }
+  }
+}

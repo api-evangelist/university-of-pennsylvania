@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Penn Courses API Documentation [Accounts] User [Accounts] User [PCA] Registration API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "[PCA] Registration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Registrations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://penncoursereview.com/api/alert/registrations/"
+          },
+          "docs": "(GET `/api/alert/registrations/`)\n\nReturns all registrations which are not deleted or made obsolete by resubscription.  Put\nanother way, this endpoint will return a superset of all active registrations: all\nactive registrations (meaning registrations which would trigger an alert to be sent if their\nsection were to open up), IN ADDITION TO all inactive registrations from the current semester\nwhich are at the head of their resubscribe chains and not deleted.  However, one extra\nmodification is mad"
+        },
+        {
+          "info": {
+            "name": "Create Registration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://penncoursereview.com/api/alert/registrations/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "(POST `/api/alert/registrations/`)\n\nUse this route to create a PCA registration for a certain section.  A PCA registration\nrepresents a \"subscription\" to receive alerts for that section.  The body of the request must\ninclude a section field (with the dash-separated full code of the section) and optionally\ncan contain an auto_resubscribe field (defaults to false) which sets whether the registration\nwill automatically create a new registration once it triggers an alerts (i.e. whether it will\nautom"
+        },
+        {
+          "info": {
+            "name": "Retrieve Registration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://penncoursereview.com/api/alert/registrations/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this registration."
+              }
+            ]
+          },
+          "docs": "(GET `/api/alert/registrations/{id}/`)\n\nGet one of the logged-in user's PCA registrations for the current semester, using\nthe registration's ID. Note that if a registration with the specified ID exists, but that\nregistration is not at the head of its resubscribe chain (i.e. there is a more recent\nregistration which was created by resubscribing to the specified registration), the\nHEAD of the resubscribe chain will be returned.  This means the same registration could be\nreturned from a GET request"
+        },
+        {
+          "info": {
+            "name": "Update Registration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://penncoursereview.com/api/alert/registrations/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this registration."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "(PUT `/api/alert/registrations/{id}/`)\n\nUse this route to update existing PCA Registrations.  Note that the provided id does\nnot always strictly specify which Registration gets modified.  In fact, the actual Registration\nthat would get modified by a PUT request would be the head of the resubscribe chain of the\nRegistration with the specified id (so if you try to update an outdated Registration it will\ninstead update the most recent Registration).  The parameters which can be\nincluded in the requ"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

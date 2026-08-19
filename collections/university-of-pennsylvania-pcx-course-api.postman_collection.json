@@ -1,0 +1,599 @@
+{
+  "item": [
+    {
+      "id": "77c6c574-bfa0-4351-98c8-4e7ab1c395ae",
+      "name": "[PCx] Course",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "46216889-3227-4adc-878d-34ae82972c41",
+          "name": "List Courses",
+          "request": {
+            "name": "List Courses",
+            "description": {
+              "content": "(GET `/api/base/{semester}/courses/`)\n\nRetrieve a list of (all) courses for the provided semester.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "base",
+                ":semester",
+                "courses",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "semester",
+                  "description": "(Required) The semester of the course (of the form YYYYx where x is A [for spring], B [summer], or C [fall]), e.g. '2019C' for fall 2019. Alternatively, you can just pass 'current' for the current semester. Finally, you can pass 'all' to always return the most recent course for each full_code, no matter which semester it is from. The 'all' option can be significantly more expensive, so use only where needed. "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "14511979-bfa4-4f8f-9514-a2560bdb5e51",
+              "name": "Courses listed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "base",
+                    ":semester",
+                    "courses",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "semester",
+                      "description": "(Required) The semester of the course (of the form YYYYx where x is A [for spring], B [summer], or C [fall]), e.g. '2019C' for fall 2019. Alternatively, you can just pass 'current' for the current semester. Finally, you can pass 'all' to always return the most recent course for each full_code, no matter which semester it is from. The 'all' option can be significantly more expensive, so use only where needed. "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"semester\": \"string\",\n    \"num_sections\": 447,\n    \"course_quality\": 18.174,\n    \"instructor_quality\": 18.566,\n    \"difficulty\": 2.832,\n    \"work_required\": 15.996,\n    \"recommendation_score\": 11.469,\n    \"credits\": 190.82\n  },\n  {\n    \"id\": \"string\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"semester\": \"string\",\n    \"num_sections\": 3882,\n    \"course_quality\": 9.463000000000001,\n    \"instructor_quality\": 12.806000000000001,\n    \"difficulty\": 10.271,\n    \"work_required\": 6.952,\n    \"recommendation_score\": 13.446,\n    \"credits\": 112.60000000000001\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "868f44a3-c3cf-4328-8b7f-015873904c04",
+          "name": "Course Search",
+          "request": {
+            "name": "Course Search",
+            "description": {
+              "content": "(GET `/api/base/{semester}/search/courses/`)\n\nThis route allows you to list courses by certain search terms and/or filters.\nWithout any GET parameters, this route simply returns all courses\nfor a given semester. There are a few filter query parameters which constitute ranges of\nfloating-point numbers. The values for these are <min>-<max> , with minimum excluded.\nFor example, looking for classes in the range of 0-2.5 in difficulty, you would add the\nparameter difficulty=0-2.5. If you are a backend developer, you can find these filters in\nbackend/plan/filters.py/CourseSearchFilterBackend. If you are reading the frontend docs,\nthese filters are listed below in the query parameters list (with description starting with\n\"Filter\").",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "base",
+                ":semester",
+                "search",
+                "courses",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "A page number within the paginated result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Search query. Can be either a fragment of a course code, or any keyword/professor name."
+                },
+                {
+                  "disabled": false,
+                  "key": "degree_rules",
+                  "value": "<string>",
+                  "description": "Filter to courses that satisfy certain degree Rules. Accepts a string of comma-separated Rule ids. If multiple Rule ids are passed then filtered courses satisfy all the rules."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "auto",
+                  "description": "Can specify what kind of query to run. Course queries are faster, keyword queries look against professor name and course title."
+                },
+                {
+                  "disabled": false,
+                  "key": "pre_ngss_requirements",
+                  "value": "<string>",
+                  "description": "Deprecated since 2022B. Filter courses by comma-separated pre ngss requirements, ANDed together. Use the [List Requirements](/api/documentation/#operation/List%20Pre-Ngss%20Requirements) endpoint to get requirement IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "attributes",
+                  "value": "<string>",
+                  "description": "This query parameter accepts a logical expression of attribute codes separated by `*` (AND) or `|` (OR) connectives, optionally grouped into clauses by parentheses and arbitrarily nested (we avoid using `&` for the AND connective so the query string doesn't have to be escaped). You can negate an individual attribute code or a clause with the `~` operator (this will filter for courses that do NOT have that attribute or do not satisfy that clause). Binary operators are left-associative, and operator precedence is as follows: `~ > * > |`. Whitespace is ignored. A syntax error will cause a 400 response to be returned. Example: `(EUHS|EUSS)*(QP|QS)` would filter for courses that satisfy the EAS humanities or social science requirements and also have a standard grade type or a pass/fail grade type. Use the [List Attributes](/api/documentation/#operation/List%20Attributes) endpoint to get a list of valid attribute codes and descriptions."
+                },
+                {
+                  "disabled": false,
+                  "key": "cu",
+                  "value": "<string>",
+                  "description": "Filter course units to be within the given range."
+                },
+                {
+                  "disabled": false,
+                  "key": "difficulty",
+                  "value": "<string>",
+                  "description": "Filter course difficulty (average across all reviews) to be within the given range."
+                },
+                {
+                  "disabled": false,
+                  "key": "course_quality",
+                  "value": "<string>",
+                  "description": "Filter course quality (average across all reviews) to be within the given range."
+                },
+                {
+                  "disabled": false,
+                  "key": "instructor_quality",
+                  "value": "<string>",
+                  "description": "Filter instructor quality (average across all reviews) to be within the given range."
+                },
+                {
+                  "disabled": false,
+                  "key": "days",
+                  "value": "<string>",
+                  "description": "Filter meetings to be within the specified set of days. The set of days should be specified as a string containing some combination of the characters [M, T, W, R, F, S, U]. This filters courses by the following condition: include a course only if the specified day filter does not limit the set of section activities we can participate in for the course. Passing an empty string will return only asynchronous classes or classes with meeting days TBD."
+                },
+                {
+                  "disabled": false,
+                  "key": "time",
+                  "value": "<string>",
+                  "description": "Filter meeting times to be within the specified range. The start and end time of the filter should be dash-separated. Times should be specified as decimal numbers of the form `h+mm/100` where h is the hour `[0..23]` and mm is the minute `[0,60)`, in ET. You can omit either the start or end time to leave that side unbounded, e.g. '11.30-'. This filters courses by the following condition: include a course only if the specified time filter does not limit the set of section activities we can participate in for the course."
+                },
+                {
+                  "disabled": false,
+                  "key": "schedule-fit",
+                  "value": "<integer>",
+                  "description": "Filter meeting times to fit into the schedule with the specified integer id. You must be authenticated with the account owning the specified schedule, or this filter will be ignored. This filters courses by the following condition: include a course only if the specified schedule-fit filter does not limit the set of section activities we can participate in for the course."
+                },
+                {
+                  "disabled": false,
+                  "key": "is_open",
+                  "value": "<boolean>",
+                  "description": "Filter courses to only those that are open. A boolean of true should be included if you want to apply the filter. By default (ie when the `is_open` is not supplied, the filter is not applied. This filters courses by the following condition: include a course only if the specification that a section is open does not limit the set of section activities we can participate in for the course.In other words, filter to courses for which all activities have open sections."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "semester",
+                  "description": "(Required) The semester of the course (of the form YYYYx where x is A [for spring], B [summer], or C [fall]), e.g. '2019C' for fall 2019. Alternatively, you can just pass 'current' for the current semester. Finally, you can pass 'all' to always return the most recent course for each full_code, no matter which semester it is from. The 'all' option can be significantly more expensive, so use only where needed. "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ce2018f4-68f7-4f3d-92ac-45ac4848cfdd",
+              "name": "Courses listed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "base",
+                    ":semester",
+                    "search",
+                    "courses",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "degree_rules",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "auto"
+                    },
+                    {
+                      "key": "pre_ngss_requirements",
+                      "value": "SS@SEAS,H@SEAS"
+                    },
+                    {
+                      "key": "attributes",
+                      "value": "WUOM|WUGA"
+                    },
+                    {
+                      "key": "cu",
+                      "value": "0-0.5"
+                    },
+                    {
+                      "key": "difficulty",
+                      "value": "1-2.5"
+                    },
+                    {
+                      "key": "course_quality",
+                      "value": "2.5-4"
+                    },
+                    {
+                      "key": "instructor_quality",
+                      "value": "2.5-4"
+                    },
+                    {
+                      "key": "days",
+                      "value": "TWR"
+                    },
+                    {
+                      "key": "time",
+                      "value": "11.30-18"
+                    },
+                    {
+                      "key": "schedule-fit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "is_open",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "semester",
+                      "description": "(Required) The semester of the course (of the form YYYYx where x is A [for spring], B [summer], or C [fall]), e.g. '2019C' for fall 2019. Alternatively, you can just pass 'current' for the current semester. Finally, you can pass 'all' to always return the most recent course for each full_code, no matter which semester it is from. The 'all' option can be significantly more expensive, so use only where needed. "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 123,\n  \"next\": \"http://api.example.org/accounts/?page=4\",\n  \"previous\": \"http://api.example.org/accounts/?page=2\",\n  \"results\": [\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"semester\": \"string\",\n      \"num_sections\": 3976,\n      \"course_quality\": 8.985,\n      \"instructor_quality\": 16.942,\n      \"difficulty\": 5.832,\n      \"work_required\": 15.623000000000001,\n      \"recommendation_score\": 6.103,\n      \"credits\": 73\n    },\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"semester\": \"string\",\n      \"num_sections\": 6248,\n      \"course_quality\": 9.961,\n      \"instructor_quality\": 0.432,\n      \"difficulty\": 10.089,\n      \"work_required\": 17.104,\n      \"recommendation_score\": 4.027,\n      \"credits\": 27.87\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "48871595-c56b-4633-b01f-5b06ad4fe20d",
+              "name": "Bad request (invalid query).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "base",
+                    ":semester",
+                    "search",
+                    "courses",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "degree_rules",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "auto"
+                    },
+                    {
+                      "key": "pre_ngss_requirements",
+                      "value": "SS@SEAS,H@SEAS"
+                    },
+                    {
+                      "key": "attributes",
+                      "value": "WUOM|WUGA"
+                    },
+                    {
+                      "key": "cu",
+                      "value": "0-0.5"
+                    },
+                    {
+                      "key": "difficulty",
+                      "value": "1-2.5"
+                    },
+                    {
+                      "key": "course_quality",
+                      "value": "2.5-4"
+                    },
+                    {
+                      "key": "instructor_quality",
+                      "value": "2.5-4"
+                    },
+                    {
+                      "key": "days",
+                      "value": "TWR"
+                    },
+                    {
+                      "key": "time",
+                      "value": "11.30-18"
+                    },
+                    {
+                      "key": "schedule-fit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "is_open",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "semester",
+                      "description": "(Required) The semester of the course (of the form YYYYx where x is A [for spring], B [summer], or C [fall]), e.g. '2019C' for fall 2019. Alternatively, you can just pass 'current' for the current semester. Finally, you can pass 'all' to always return the most recent course for each full_code, no matter which semester it is from. The 'all' option can be significantly more expensive, so use only where needed. "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5e0741e0-11e2-4976-a9d1-8dab28646e91",
+          "name": "Retrieve Course",
+          "request": {
+            "name": "Retrieve Course",
+            "description": {
+              "content": "(GET `/api/base/{semester}/courses/{full_code}/`)\n\nRetrieve a detailed look at a specific course. Includes all details necessary to display course\ninfo, including requirements this class fulfills, and all sections.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "base",
+                ":semester",
+                "courses",
+                ":full_code",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "check_offered_in",
+                  "value": "<string>",
+                  "description": "\nCheck that the desired course was offered under the specified\ncode in the specified semester.\nFormat is `course_code@semester`, e.g. `CIS-1210@2022A`.\n404 will be returned if the course\ndoes not exist, or was not offered in that semester.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "semester",
+                  "description": "(Required) The semester of the course (of the form YYYYx where x is A [for spring], B [summer], or C [fall]), e.g. '2019C' for fall 2019. Alternatively, you can just pass 'current' for the current semester. Finally, you can pass 'all' to always return the most recent course for each full_code, no matter which semester it is from. The 'all' option can be significantly more expensive, so use only where needed. "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "full_code",
+                  "description": "(Required) The dash-joined department and code of the course, e.g. `CIS-120` for CIS-120."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4bfe27ec-06fa-46d3-bdb5-952946e18f9c",
+              "name": "Courses detail retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "base",
+                    ":semester",
+                    "courses",
+                    ":full_code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "check_offered_in",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "semester",
+                      "description": "(Required) The semester of the course (of the form YYYYx where x is A [for spring], B [summer], or C [fall]), e.g. '2019C' for fall 2019. Alternatively, you can just pass 'current' for the current semester. Finally, you can pass 'all' to always return the most recent course for each full_code, no matter which semester it is from. The 'all' option can be significantly more expensive, so use only where needed. "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "full_code",
+                      "description": "(Required) The dash-joined department and code of the course, e.g. `CIS-120` for CIS-120."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"syllabus_url\": \"string\",\n  \"semester\": \"string\",\n  \"prerequisites\": \"string\",\n  \"course_quality\": 0.555,\n  \"instructor_quality\": 1.83,\n  \"difficulty\": 18.842,\n  \"work_required\": 8.909,\n  \"credits\": 191.73000000000002,\n  \"crosslistings\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://penncoursereview.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4d8cb03b-a479-4871-b1e2-51bc8837e266",
+    "name": "Penn Courses API Documentation [Accounts] User [Accounts] User [PCx] Course API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\n# Introduction\nPenn Courses ([GitHub](https://github.com/pennlabs/penn-courses)) is the umbrella\ncategorization for [Penn Labs](https://pennlabs.org/)\nproducts designed to help students navigate the course registration process. It currently\nincludes three products, each with their own API documented on this page:\nPenn Course Alert, Penn Course Plan, and Penn Course Review.\n\nSee `Penn Labs Notion > Penn Courses` for more details on each of our (currently) three apps.\n\nFor instructions on how to maintain this documentation while writing code,\nsee the comments in `backend/PennCourses/docs_settings.py` (it is easy, and will be helpful\nfor maintaining Labs knowledge in spite of our high member turnover rate).\n\nSee our [GitHub](https://github.com/pennlabs/penn-courses) repo for instructions on\ninstallation, running in development, and loading in course data for development. Visit\nthe `/admin/doc/` route ([link](/admin/doc/)) for the backend documentation generated by Django\n(admin account required, which can be made by running\n`python manage.py createsuperuser` in terminal/CLI).\n\n# Unified Penn Courses\nBy virtue of the fact that all Penn Courses products deal with, well, courses,\nit would make sense for all three products to share the same backend.\n\nWe realized the necessity of a unified backend when attempting to design a new Django backend\nfor Penn Course Plan. We like to live by the philosophy of keeping it\n[DRY](https://en.wikipedia.org/wiki/Don't_repeat_yourself), and\nPCA and PCP's data models both need to reference course and\nsection information. We could have simply copied over code (a bad idea)\nor created a shared reusable Django app (a better idea) for course data,\nbut each app would still need to download copies of the same data.\nAdditionally, this will help us build integrations between our Courses products.\n\n# Authentication\nPCx user authentication is handled by platform's Penn Labs Accounts Engine.\nSee [Penn Labs Notion > Platform > The Accounts Engine](https://www.notion.so/pennlabs/The-Accounts-Engine-726ccf8875e244f4b8dbf8a8f2c97a87?pvs=4)\nfor extensive documentation and links to repositories for this system. When tags or routes\nare described as requiring user authentication, they are referring to this system.\n\nI highly recommend the [official video course on OAuth2](https://oauth.net/2/) (by Aaron Parecki),\nthen the Platform Notion docs on the \"Accounts Engine\" for anyone who wants to understand\nLabs authentication better. Platform is our OAuth2 \"Authorization Server\",\nand Django Labs Accounts is an OAuth2 client run by our Django backends (Clubs, Penn Courses, etc),\nexposing client-facing authentication routes like `penncourseplan.com/accounts/login`.\nThere's also this Wikipedia page explaining [Shibboleth](https://en.wikipedia.org/wiki/Shibboleth_(software))\n(which is used by Penn for authentication, and by the Platform authorization server).\n\nSee the Django docs for more on Django's features for\n[User Authentication](https://docs.djangoproject.com/en/3.0/topics/auth/),\nwhich are used by PCX apps, as part of Platform's accounts system.\n\n\nContact Support:\n Email: contact@pennlabs.org",
+      "type": "text/plain"
+    }
+  }
+}

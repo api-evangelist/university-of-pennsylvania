@@ -1,0 +1,250 @@
+{
+  "item": [
+    {
+      "id": "82ec3086-b13e-424c-a858-e6e5371b0edf",
+      "name": "[PCx] Section",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "291fbee6-4b9d-4bb4-be8c-d5e69245eb4c",
+          "name": "Section Search",
+          "request": {
+            "name": "Section Search",
+            "description": {
+              "content": "(GET `/api/base/{semester}/search/sections/`)\n\nRetrieve a list of sections (less detailed than [PCx] Section, or SectionDetail on the\nbackend).  The sections are filtered by the search term (assumed to be a prefix of a\nsection's full code, with each chunk either space-delimited, dash-delimited, or not delimited).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "base",
+                ":semester",
+                "search",
+                "sections",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "A search term."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "semester",
+                  "description": "(Required) The semester of the course (of the form YYYYx where x is A [for spring], B [summer], or C [fall]), e.g. '2019C' for fall 2019. Alternatively, you can just pass 'current' for the current semester. Finally, you can pass 'all' to always return the most recent course for each full_code, no matter which semester it is from. The 'all' option can be significantly more expensive, so use only where needed. "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "72147d82-aefc-48d1-9fa1-10bcce3d6eca",
+              "name": "Sections Listed Successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "base",
+                    ":semester",
+                    "search",
+                    "sections",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "semester",
+                      "description": "(Required) The semester of the course (of the form YYYYx where x is A [for spring], B [summer], or C [fall]), e.g. '2019C' for fall 2019. Alternatively, you can just pass 'current' for the current semester. Finally, you can pass 'all' to always return the most recent course for each full_code, no matter which semester it is from. The 'all' option can be significantly more expensive, so use only where needed. "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"section_id\": \"string\",\n    \"status\": \"X\",\n    \"activity\": \"HYB\",\n    \"meeting_times\": \"string\",\n    \"course_code\": \"string\",\n    \"course_title\": \"string\",\n    \"semester\": \"string\",\n    \"registration_volume\": 6725\n  },\n  {\n    \"section_id\": \"string\",\n    \"status\": \"C\",\n    \"activity\": \"SEM\",\n    \"meeting_times\": \"string\",\n    \"course_code\": \"string\",\n    \"course_title\": \"string\",\n    \"semester\": \"string\",\n    \"registration_volume\": 8788\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1a2772f9-4190-47f0-b339-b5612b7d6b1f",
+          "name": "Retrieve Section",
+          "request": {
+            "name": "Retrieve Section",
+            "description": {
+              "content": "(GET `/api/base/{semester}/sections/{full_code}/`)\n\nRetrieve a detailed look at a specific course section.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "base",
+                ":semester",
+                "sections",
+                ":full_code",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "semester",
+                  "description": "(Required) The semester of the course (of the form YYYYx where x is A [for spring], B [summer], or C [fall]), e.g. '2019C' for fall 2019. Alternatively, you can just pass 'current' for the current semester. Finally, you can pass 'all' to always return the most recent course for each full_code, no matter which semester it is from. The 'all' option can be significantly more expensive, so use only where needed. "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "full_code",
+                  "description": "(Required) \nThe full code of the section, in the form '{dept code}-{course code}-{section code}',\ne.g. `CIS-120-001` for the 001 section of CIS-120.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c24e25cb-8c29-4b0e-8f36-302c9e0a57fd",
+              "name": "Section detail retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "base",
+                    ":semester",
+                    "sections",
+                    ":full_code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "semester",
+                      "description": "(Required) The semester of the course (of the form YYYYx where x is A [for spring], B [summer], or C [fall]), e.g. '2019C' for fall 2019. Alternatively, you can just pass 'current' for the current semester. Finally, you can pass 'all' to always return the most recent course for each full_code, no matter which semester it is from. The 'all' option can be significantly more expensive, so use only where needed. "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "full_code",
+                      "description": "(Required) \nThe full code of the section, in the form '{dept code}-{course code}-{section code}',\ne.g. `CIS-120-001` for the 001 section of CIS-120.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"status\": \"X\",\n  \"activity\": \"\",\n  \"credits\": 35.61,\n  \"capacity\": 1816,\n  \"semester\": \"string\",\n  \"meetings\": \"string\",\n  \"course_quality\": 17.475,\n  \"instructor_quality\": 14.934000000000001,\n  \"difficulty\": 6.63,\n  \"work_required\": 13.05,\n  \"registration_volume\": 5741\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://penncoursereview.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9f968e79-2b04-46b4-9d4f-a8103c7b5979",
+    "name": "Penn Courses API Documentation [Accounts] User [Accounts] User [PCx] Section API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\n# Introduction\nPenn Courses ([GitHub](https://github.com/pennlabs/penn-courses)) is the umbrella\ncategorization for [Penn Labs](https://pennlabs.org/)\nproducts designed to help students navigate the course registration process. It currently\nincludes three products, each with their own API documented on this page:\nPenn Course Alert, Penn Course Plan, and Penn Course Review.\n\nSee `Penn Labs Notion > Penn Courses` for more details on each of our (currently) three apps.\n\nFor instructions on how to maintain this documentation while writing code,\nsee the comments in `backend/PennCourses/docs_settings.py` (it is easy, and will be helpful\nfor maintaining Labs knowledge in spite of our high member turnover rate).\n\nSee our [GitHub](https://github.com/pennlabs/penn-courses) repo for instructions on\ninstallation, running in development, and loading in course data for development. Visit\nthe `/admin/doc/` route ([link](/admin/doc/)) for the backend documentation generated by Django\n(admin account required, which can be made by running\n`python manage.py createsuperuser` in terminal/CLI).\n\n# Unified Penn Courses\nBy virtue of the fact that all Penn Courses products deal with, well, courses,\nit would make sense for all three products to share the same backend.\n\nWe realized the necessity of a unified backend when attempting to design a new Django backend\nfor Penn Course Plan. We like to live by the philosophy of keeping it\n[DRY](https://en.wikipedia.org/wiki/Don't_repeat_yourself), and\nPCA and PCP's data models both need to reference course and\nsection information. We could have simply copied over code (a bad idea)\nor created a shared reusable Django app (a better idea) for course data,\nbut each app would still need to download copies of the same data.\nAdditionally, this will help us build integrations between our Courses products.\n\n# Authentication\nPCx user authentication is handled by platform's Penn Labs Accounts Engine.\nSee [Penn Labs Notion > Platform > The Accounts Engine](https://www.notion.so/pennlabs/The-Accounts-Engine-726ccf8875e244f4b8dbf8a8f2c97a87?pvs=4)\nfor extensive documentation and links to repositories for this system. When tags or routes\nare described as requiring user authentication, they are referring to this system.\n\nI highly recommend the [official video course on OAuth2](https://oauth.net/2/) (by Aaron Parecki),\nthen the Platform Notion docs on the \"Accounts Engine\" for anyone who wants to understand\nLabs authentication better. Platform is our OAuth2 \"Authorization Server\",\nand Django Labs Accounts is an OAuth2 client run by our Django backends (Clubs, Penn Courses, etc),\nexposing client-facing authentication routes like `penncourseplan.com/accounts/login`.\nThere's also this Wikipedia page explaining [Shibboleth](https://en.wikipedia.org/wiki/Shibboleth_(software))\n(which is used by Penn for authentication, and by the Platform authorization server).\n\nSee the Django docs for more on Django's features for\n[User Authentication](https://docs.djangoproject.com/en/3.0/topics/auth/),\nwhich are used by PCX apps, as part of Platform's accounts system.\n\n\nContact Support:\n Email: contact@pennlabs.org",
+      "type": "text/plain"
+    }
+  }
+}

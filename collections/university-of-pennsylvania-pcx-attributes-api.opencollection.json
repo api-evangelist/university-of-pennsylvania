@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Penn Courses API Documentation [Accounts] User [Accounts] User [PCx] Attributes API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "[PCx] Attributes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Attributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://penncoursereview.com/api/base/attributes/"
+          },
+          "docs": "(GET `/api/base/attributes/`)\n\nRetrieve a list of unique attributes (introduced post-NGSS)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

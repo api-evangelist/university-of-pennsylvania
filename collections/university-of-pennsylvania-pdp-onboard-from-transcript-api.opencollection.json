@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Penn Courses API Documentation [Accounts] User [Accounts] User [PDP] Onboard From Transcript API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "[PDP] Onboard From Transcript",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Onboard From Transcript",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://penncoursereview.com/api/degree/onboard-from-transcript/:degree_plan_id",
+            "params": [
+              {
+                "name": "degree_plan_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "(POST `/api/degree/onboard-from-transcript/{degree_plan_id}`)\n\nGiven courses taken and degrees pursuing, determines an optimized assignment\nof courses to degree rules and creates relevant Fulfillment objects."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

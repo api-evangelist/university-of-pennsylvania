@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Penn Courses API Documentation [Accounts] User [Accounts] User [PDP] Docked Course API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "[PDP] Docked Course",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Docked Courses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://penncoursereview.com/api/degree/docked"
+          },
+          "docs": "(GET `/api/degree/docked`)\n\nList, retrieve, create, destroy, and update docked courses"
+        },
+        {
+          "info": {
+            "name": "Create Docked Course",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://penncoursereview.com/api/degree/docked",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "(POST `/api/degree/docked`)\n\nList, retrieve, create, destroy, and update docked courses"
+        },
+        {
+          "info": {
+            "name": "Retrieve Docked Course",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://penncoursereview.com/api/degree/docked/:full_code",
+            "params": [
+              {
+                "name": "full_code",
+                "value": "",
+                "type": "path",
+                "description": "The dash-joined department and code of the course, e.g., `CIS-120`"
+              }
+            ]
+          },
+          "docs": "(GET `/api/degree/docked/{full_code}`)\n\nList, retrieve, create, destroy, and update docked courses"
+        },
+        {
+          "info": {
+            "name": "Destroy Docked Course",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://penncoursereview.com/api/degree/docked/:full_code",
+            "params": [
+              {
+                "name": "full_code",
+                "value": "",
+                "type": "path",
+                "description": "The dash-joined department and code of the course, e.g., `CIS-120`"
+              }
+            ]
+          },
+          "docs": "(DELETE `/api/degree/docked/{full_code}`)\n\nList, retrieve, create, destroy, and update docked courses"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

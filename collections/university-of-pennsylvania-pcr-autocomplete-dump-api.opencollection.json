@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Penn Courses API Documentation [Accounts] User [Accounts] User [PCR] Autocomplete Dump API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "[PCR] Autocomplete Dump",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Autocomplete Dump",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://penncoursereview.com/api/review/autocomplete"
+          },
+          "docs": "(GET `/api/review/autocomplete`)\n\nAutocomplete entries for Courses, departments, instructors. All objects have title, description,\nand url. This route does not have any path parameters or query parameters, it just dumps\nall the information necessary for frontend-based autocomplete. It is also cached\nto improve performance."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Penn Courses API Documentation [Accounts] User [Accounts] User [PCP] Primary Schedule API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "[PCP] Primary Schedule",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Primary Schedules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://penncoursereview.com/api/plan/primary-schedules/"
+          },
+          "docs": "(GET `/api/plan/primary-schedules/`)\n\nGet the primary schedule for the current user as well as primary\nschedules of the user's friends.\n\n<span style=\"color:red;\">User authentication required</span>."
+        },
+        {
+          "info": {
+            "name": "Create Primary Schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://penncoursereview.com/api/plan/primary-schedules/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "(POST `/api/plan/primary-schedules/`)\n\nCreate/update/delete the primary schedule for the current user.\n\n<span style=\"color:red;\">User authentication required</span>."
+        },
+        {
+          "info": {
+            "name": "Retrieve Primary Schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://penncoursereview.com/api/plan/primary-schedules/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this primary schedule."
+              }
+            ]
+          },
+          "docs": "(GET `/api/plan/primary-schedules/{id}/`)\n\n\n\n<span style=\"color:red;\">User authentication required</span>."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

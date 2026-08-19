@@ -1,0 +1,191 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Penn Courses API Documentation [Accounts] User [Accounts] User [PDP] Fulfillment API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "[PDP] Fulfillment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Fulfillments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://penncoursereview.com/api/degree/degreeplans/:degreeplan_pk/fulfillments",
+            "params": [
+              {
+                "name": "degreeplan_pk",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "(GET `/api/degree/degreeplans/{degreeplan_pk}/fulfillments`)\n\nList, retrieve, create, destroy, and update a Fulfillment."
+        },
+        {
+          "info": {
+            "name": "Create Fulfillment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://penncoursereview.com/api/degree/degreeplans/:degreeplan_pk/fulfillments",
+            "params": [
+              {
+                "name": "degreeplan_pk",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "(POST `/api/degree/degreeplans/{degreeplan_pk}/fulfillments`)\n\nCreate or update fulfillment."
+        },
+        {
+          "info": {
+            "name": "Retrieve Fulfillment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://penncoursereview.com/api/degree/degreeplans/:degreeplan_pk/fulfillments/:full_code",
+            "params": [
+              {
+                "name": "degreeplan_pk",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "full_code",
+                "value": "",
+                "type": "path",
+                "description": "The dash-joined department and code of the course, e.g., `CIS-120`"
+              }
+            ]
+          },
+          "docs": "(GET `/api/degree/degreeplans/{degreeplan_pk}/fulfillments/{full_code}`)\n\nList, retrieve, create, destroy, and update a Fulfillment."
+        },
+        {
+          "info": {
+            "name": "Destroy Fulfillment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://penncoursereview.com/api/degree/degreeplans/:degreeplan_pk/fulfillments/:full_code",
+            "params": [
+              {
+                "name": "degreeplan_pk",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "full_code",
+                "value": "",
+                "type": "path",
+                "description": "The dash-joined department and code of the course, e.g., `CIS-120`"
+              }
+            ]
+          },
+          "docs": "(DELETE `/api/degree/degreeplans/{degreeplan_pk}/fulfillments/{full_code}`)\n\nList, retrieve, create, destroy, and update a Fulfillment."
+        },
+        {
+          "info": {
+            "name": "Add Override Fulfillment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://penncoursereview.com/api/degree/degreeplans/:degreeplan_pk/fulfillments/:full_code/override",
+            "params": [
+              {
+                "name": "degreeplan_pk",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "full_code",
+                "value": "",
+                "type": "path",
+                "description": "The dash-joined department and code of the course, e.g., `CIS-120`"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "(POST `/api/degree/degreeplans/{degreeplan_pk}/fulfillments/{full_code}/override`)\n\nAdd a manual override that allows a course to count for a rule regardless of whether\nit satisfies the rule's Q filter. Also adds the rule to the fulfillment's selected\nrules if not already present.\n\nPOST with `{\"rule_id\": <id>}`."
+        },
+        {
+          "info": {
+            "name": "Switch Rule Fulfillment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://penncoursereview.com/api/degree/degreeplans/:degreeplan_pk/fulfillments/:full_code/switch-rule",
+            "params": [
+              {
+                "name": "degreeplan_pk",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "full_code",
+                "value": "",
+                "type": "path",
+                "description": "The dash-joined department and code of the course, e.g., `CIS-120`"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "(POST `/api/degree/degreeplans/{degreeplan_pk}/fulfillments/{full_code}/switch-rule`)\n\nSwitch a fulfillment's selected rule to another rule in the same degree.\n\nThis promotes the requested rule from `unselected_rules` to `rules`, and\ndemotes any currently selected rules for that same degree into\n`unselected_rules`.\n\nIf another course was already fulfilling the target rule, that course is"
+        },
+        {
+          "info": {
+            "name": "Remove Override Fulfillment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://penncoursereview.com/api/degree/degreeplans/:degreeplan_pk/fulfillments/:full_code/override/:rule_id",
+            "params": [
+              {
+                "name": "degreeplan_pk",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "full_code",
+                "value": "",
+                "type": "path",
+                "description": "The dash-joined department and code of the course, e.g., `CIS-120`"
+              },
+              {
+                "name": "rule_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "(DELETE `/api/degree/degreeplans/{degreeplan_pk}/fulfillments/{full_code}/override/{rule_id}`)\n\nRemove a manual override, and remove the rule from the fulfillment's selected\nand unselected rules.\n\nDELETE to `override/<rule_id>/`."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,177 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Penn Courses API Documentation [Accounts] User [Accounts] User [PCx] Course API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "[PCx] Course",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Courses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://penncoursereview.com/api/base/:semester/courses/",
+            "params": [
+              {
+                "name": "semester",
+                "value": "",
+                "type": "path",
+                "description": "The semester of the course (of the form YYYYx where x is A [for spring], B [summer], or C [fall]), e.g. '2019C' for fall 2019. Alternatively, you can just pass 'current' for the current semester. Finally, you can pass 'all' to always return the most recent course for each full_code, no matter which semester it is from. The 'all' option can be significantly more expensive, so use only where needed. "
+              }
+            ]
+          },
+          "docs": "(GET `/api/base/{semester}/courses/`)\n\nRetrieve a list of (all) courses for the provided semester."
+        },
+        {
+          "info": {
+            "name": "Course Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://penncoursereview.com/api/base/:semester/search/courses/",
+            "params": [
+              {
+                "name": "semester",
+                "value": "",
+                "type": "path",
+                "description": "The semester of the course (of the form YYYYx where x is A [for spring], B [summer], or C [fall]), e.g. '2019C' for fall 2019. Alternatively, you can just pass 'current' for the current semester. Finally, you can pass 'all' to always return the most recent course for each full_code, no matter which semester it is from. The 'all' option can be significantly more expensive, so use only where needed. "
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search query. Can be either a fragment of a course code, or any keyword/professor name."
+              },
+              {
+                "name": "degree_rules",
+                "value": "",
+                "type": "query",
+                "description": "Filter to courses that satisfy certain degree Rules. Accepts a string of comma-separated Rule ids. If multiple Rule ids are passed then filtered courses satisfy all the rules."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Can specify what kind of query to run. Course queries are faster, keyword queries look against professor name and course title."
+              },
+              {
+                "name": "pre_ngss_requirements",
+                "value": "SS@SEAS,H@SEAS",
+                "type": "query",
+                "description": "Deprecated since 2022B. Filter courses by comma-separated pre ngss requirements, ANDed together. Use the [List Requirements](/api/documentation/#operation/List%20Pre-Ngss%20Requirements) endpoint to get requirement IDs."
+              },
+              {
+                "name": "attributes",
+                "value": "WUOM|WUGA",
+                "type": "query",
+                "description": "This query parameter accepts a logical expression of attribute codes separated by `*` (AND) or `|` (OR) connectives, optionally grouped into clauses by parentheses and arbitrarily nested (we avoid using `&` for the AND connective so the query string doesn't have to be escaped). You can negate an individual attribute code or a clause with the `~` operator (this will filter for courses that do NOT have that attribute or do not satisfy that clause). Binary operators are left-associative, and operator precedence is as follows: `~ > * > |`. Whitespace is ignored. A syntax error will cause a 400 response to be returned. Example: `(EUHS|EUSS)*(QP|QS)` would filter for courses that satisfy the EAS humanities or social science requirements and also have a standard grade type or a pass/fail grade type. Use the [List Attributes](/api/documentation/#operation/List%20Attributes) endpoint to get a list of valid attribute codes and descriptions."
+              },
+              {
+                "name": "cu",
+                "value": "0-0.5",
+                "type": "query",
+                "description": "Filter course units to be within the given range."
+              },
+              {
+                "name": "difficulty",
+                "value": "1-2.5",
+                "type": "query",
+                "description": "Filter course difficulty (average across all reviews) to be within the given range."
+              },
+              {
+                "name": "course_quality",
+                "value": "2.5-4",
+                "type": "query",
+                "description": "Filter course quality (average across all reviews) to be within the given range."
+              },
+              {
+                "name": "instructor_quality",
+                "value": "2.5-4",
+                "type": "query",
+                "description": "Filter instructor quality (average across all reviews) to be within the given range."
+              },
+              {
+                "name": "days",
+                "value": "TWR",
+                "type": "query",
+                "description": "Filter meetings to be within the specified set of days. The set of days should be specified as a string containing some combination of the characters [M, T, W, R, F, S, U]. This filters courses by the following condition: include a course only if the specified day filter does not limit the set of section activities we can participate in for the course. Passing an empty string will return only asynchronous classes or classes with meeting days TBD."
+              },
+              {
+                "name": "time",
+                "value": "11.30-18",
+                "type": "query",
+                "description": "Filter meeting times to be within the specified range. The start and end time of the filter should be dash-separated. Times should be specified as decimal numbers of the form `h+mm/100` where h is the hour `[0..23]` and mm is the minute `[0,60)`, in ET. You can omit either the start or end time to leave that side unbounded, e.g. '11.30-'. This filters courses by the following condition: include a course only if the specified time filter does not limit the set of section activities we can participate in for the course."
+              },
+              {
+                "name": "schedule-fit",
+                "value": "242",
+                "type": "query",
+                "description": "Filter meeting times to fit into the schedule with the specified integer id. You must be authenticated with the account owning the specified schedule, or this filter will be ignored. This filters courses by the following condition: include a course only if the specified schedule-fit filter does not limit the set of section activities we can participate in for the course."
+              },
+              {
+                "name": "is_open",
+                "value": "true",
+                "type": "query",
+                "description": "Filter courses to only those that are open. A boolean of true should be included if you want to apply the filter. By default (ie when the `is_open` is not supplied, the filter is not applied. This filters courses by the following condition: include a course only if the specification that a section is open does not limit the set of section activities we can participate in for the course.In other words, filter to courses for which all activities have open sections."
+              }
+            ]
+          },
+          "docs": "(GET `/api/base/{semester}/search/courses/`)\n\nThis route allows you to list courses by certain search terms and/or filters.\nWithout any GET parameters, this route simply returns all courses\nfor a given semester. There are a few filter query parameters which constitute ranges of\nfloating-point numbers. The values for these are <min>-<max> , with minimum excluded.\nFor example, looking for classes in the range of 0-2.5 in difficulty, you would add the\nparameter difficulty=0-2.5. If you are a backen"
+        },
+        {
+          "info": {
+            "name": "Retrieve Course",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://penncoursereview.com/api/base/:semester/courses/:full_code/",
+            "params": [
+              {
+                "name": "semester",
+                "value": "",
+                "type": "path",
+                "description": "The semester of the course (of the form YYYYx where x is A [for spring], B [summer], or C [fall]), e.g. '2019C' for fall 2019. Alternatively, you can just pass 'current' for the current semester. Finally, you can pass 'all' to always return the most recent course for each full_code, no matter which semester it is from. The 'all' option can be significantly more expensive, so use only where needed. "
+              },
+              {
+                "name": "full_code",
+                "value": "",
+                "type": "path",
+                "description": "The dash-joined department and code of the course, e.g. `CIS-120` for CIS-120."
+              },
+              {
+                "name": "check_offered_in",
+                "value": "",
+                "type": "query",
+                "description": "\nCheck that the desired course was offered under the specified\ncode in the specified semester.\nFormat is `course_code@semester`, e.g. `CIS-1210@2022A`.\n404 will be returned if the course\ndoes not exist, or was not offered in that semester.\n"
+              }
+            ]
+          },
+          "docs": "(GET `/api/base/{semester}/courses/{full_code}/`)\n\nRetrieve a detailed look at a specific course. Includes all details necessary to display course\ninfo, including requirements this class fulfills, and all sections."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

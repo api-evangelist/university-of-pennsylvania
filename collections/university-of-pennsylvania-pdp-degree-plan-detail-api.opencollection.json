@@ -1,0 +1,175 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Penn Courses API Documentation [Accounts] User [Accounts] User [PDP] Degree Plan Detail API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "[PDP] Degree Plan Detail",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Degree Plan Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://penncoursereview.com/api/degree/degreeplans",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "(POST `/api/degree/degreeplans`)\n\nList, retrieve, create, destroy, and update a DegreePlan."
+        },
+        {
+          "info": {
+            "name": "Retrieve Degree Plan Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://penncoursereview.com/api/degree/degreeplans/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "(GET `/api/degree/degreeplans/{id}`)\n\nList, retrieve, create, destroy, and update a DegreePlan."
+        },
+        {
+          "info": {
+            "name": "Update Degree Plan Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://penncoursereview.com/api/degree/degreeplans/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "(PUT `/api/degree/degreeplans/{id}`)\n\nList, retrieve, create, destroy, and update a DegreePlan."
+        },
+        {
+          "info": {
+            "name": "Partial Update Degree Plan Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://penncoursereview.com/api/degree/degreeplans/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "(PATCH `/api/degree/degreeplans/{id}`)\n\nList, retrieve, create, destroy, and update a DegreePlan."
+        },
+        {
+          "info": {
+            "name": "Destroy Degree Plan Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://penncoursereview.com/api/degree/degreeplans/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "(DELETE `/api/degree/degreeplans/{id}`)\n\nList, retrieve, create, destroy, and update a DegreePlan."
+        },
+        {
+          "info": {
+            "name": "Copy Degree Plan Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://penncoursereview.com/api/degree/degreeplans/:id/copy",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "(POST `/api/degree/degreeplans/{id}/copy`)\n\nCopy a degree plan."
+        },
+        {
+          "info": {
+            "name": "Degrees Degree Plan Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://penncoursereview.com/api/degree/degreeplans/:id/degrees",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "(POST `/api/degree/degreeplans/{id}/degrees`)\n\nAdd or remove degrees from a degree plan."
+        },
+        {
+          "info": {
+            "name": "Degrees Degree Plan Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://penncoursereview.com/api/degree/degreeplans/:id/degrees",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "(DELETE `/api/degree/degreeplans/{id}/degrees`)\n\nAdd or remove degrees from a degree plan."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

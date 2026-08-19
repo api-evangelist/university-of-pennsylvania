@@ -1,0 +1,316 @@
+{
+  "item": [
+    {
+      "id": "cefa9e12-7711-468d-a807-55e04f35fb8a",
+      "name": "[PCA] Registration History",
+      "description": {
+        "content": "\nThese routes expose a user's registration history (including\ninactive and obsolete registrations) for the current semester.  Inactive registrations are\nregistrations which would not trigger a notification to be sent if their section opened,\nand obsolete registrations are registrations which are not at the head of their resubscribe\nchain.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "96b83d55-3231-480f-bdfe-f620c598487a",
+          "name": "List Registration History",
+          "request": {
+            "name": "List Registration History",
+            "description": {
+              "content": "(GET `/api/alert/registrationhistory/`)\n\nList all of the user's registrations for the current semester, regardless of whether\nthey are active, obsolete (not at the head of their resubscribe chains), or deleted.  Note\nthat this is not appropriate to use for listing registrations and presenting them to the user;\nfor that you should use List Registrations (GET `/api/alert/registrations/`).\n\n<span style=\"color:red;\">User authentication required</span>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "alert",
+                "registrationhistory",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f60cdbf6-b950-4e24-8be9-dc5498cae87a",
+              "name": "Registration history successfully listed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "alert",
+                    "registrationhistory",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 7143,\n    \"created_at\": \"2006-04-02T01:08:12.833Z\",\n    \"original_created_at\": \"1953-01-01T21:09:54.132Z\",\n    \"updated_at\": \"2016-03-15T20:14:37.034Z\",\n    \"section\": \"string\",\n    \"user\": \"string\",\n    \"cancelled\": false,\n    \"cancelled_at\": \"1965-01-26T06:09:13.322Z\",\n    \"deleted\": true,\n    \"deleted_at\": \"1990-06-10T12:01:17.139Z\",\n    \"auto_resubscribe\": true,\n    \"notification_sent\": false,\n    \"notification_sent_at\": \"1984-02-19T21:38:03.248Z\",\n    \"last_notification_sent_at\": \"string\",\n    \"close_notification\": true,\n    \"close_notification_sent\": false,\n    \"close_notification_sent_at\": \"1969-01-06T16:17:32.371Z\",\n    \"is_active\": \"string\",\n    \"is_waiting_for_close\": \"string\",\n    \"section_status\": \"string\"\n  },\n  {\n    \"id\": 733,\n    \"created_at\": \"1977-06-02T05:14:49.358Z\",\n    \"original_created_at\": \"2016-10-26T05:27:57.185Z\",\n    \"updated_at\": \"1974-08-26T10:56:34.373Z\",\n    \"section\": \"string\",\n    \"user\": \"string\",\n    \"cancelled\": false,\n    \"cancelled_at\": \"1991-10-29T03:36:23.139Z\",\n    \"deleted\": false,\n    \"deleted_at\": \"2013-01-14T19:37:07.490Z\",\n    \"auto_resubscribe\": false,\n    \"notification_sent\": true,\n    \"notification_sent_at\": \"2010-04-18T04:05:50.338Z\",\n    \"last_notification_sent_at\": \"string\",\n    \"close_notification\": false,\n    \"close_notification_sent\": false,\n    \"close_notification_sent_at\": \"1956-12-04T19:31:59.355Z\",\n    \"is_active\": \"string\",\n    \"is_waiting_for_close\": \"string\",\n    \"section_status\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b1867f75-4854-496c-89fc-d30be424bdd3",
+              "name": "Access denied (missing or improper authentication).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "alert",
+                    "registrationhistory",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "87a3cfe1-cb29-416c-a665-59693ce0efb8",
+          "name": "Retrieve Historic Registration",
+          "request": {
+            "name": "Retrieve Historic Registration",
+            "description": {
+              "content": "(GET `/api/alert/registrationhistory/{id}/`)\n\nGet the detail of a specific registration from the current semester.  All registrations are\naccessible via this endpoint, regardless of whether they are active,\nobsolete (not at the head of their resubscribe chains), or deleted.  Unless you need to access\ninactive and obsolete registrations, you should probably use Retrieve Registration\n(GET `/api/alert/registrations/{id}/`) rather than this endpoint.\n\n<span style=\"color:red;\">User authentication required</span>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "alert",
+                "registrationhistory",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique integer value identifying this registration."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "08bc476b-0c89-4deb-8020-6af12881a600",
+              "name": "Historic registration detail successfully retrieved.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "alert",
+                    "registrationhistory",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this registration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2853,\n  \"created_at\": \"2002-11-05T14:27:53.095Z\",\n  \"original_created_at\": \"1995-03-29T20:17:15.150Z\",\n  \"updated_at\": \"2017-12-06T22:21:34.908Z\",\n  \"section\": \"string\",\n  \"user\": \"string\",\n  \"cancelled\": true,\n  \"cancelled_at\": \"1963-05-05T07:25:20.675Z\",\n  \"deleted\": false,\n  \"deleted_at\": \"1972-09-27T22:24:33.052Z\",\n  \"auto_resubscribe\": true,\n  \"notification_sent\": false,\n  \"notification_sent_at\": \"1972-03-25T11:40:10.036Z\",\n  \"last_notification_sent_at\": \"string\",\n  \"close_notification\": true,\n  \"close_notification_sent\": true,\n  \"close_notification_sent_at\": \"2013-02-19T01:10:28.260Z\",\n  \"is_active\": \"string\",\n  \"is_waiting_for_close\": \"string\",\n  \"section_status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ef35d89c-65b6-4346-8f82-c46d0c802b79",
+              "name": "Access denied (missing or improper authentication).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "alert",
+                    "registrationhistory",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this registration."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "12146119-52f1-4ae9-bf30-bf93053689d7",
+              "name": "Historic registration not found with given id.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "alert",
+                    "registrationhistory",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this registration."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://penncoursereview.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d73f0e5e-7563-49b3-a51b-537065015555",
+    "name": "Penn Courses API Documentation [Accounts] User [Accounts] User [PCA] Registration History API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\n# Introduction\nPenn Courses ([GitHub](https://github.com/pennlabs/penn-courses)) is the umbrella\ncategorization for [Penn Labs](https://pennlabs.org/)\nproducts designed to help students navigate the course registration process. It currently\nincludes three products, each with their own API documented on this page:\nPenn Course Alert, Penn Course Plan, and Penn Course Review.\n\nSee `Penn Labs Notion > Penn Courses` for more details on each of our (currently) three apps.\n\nFor instructions on how to maintain this documentation while writing code,\nsee the comments in `backend/PennCourses/docs_settings.py` (it is easy, and will be helpful\nfor maintaining Labs knowledge in spite of our high member turnover rate).\n\nSee our [GitHub](https://github.com/pennlabs/penn-courses) repo for instructions on\ninstallation, running in development, and loading in course data for development. Visit\nthe `/admin/doc/` route ([link](/admin/doc/)) for the backend documentation generated by Django\n(admin account required, which can be made by running\n`python manage.py createsuperuser` in terminal/CLI).\n\n# Unified Penn Courses\nBy virtue of the fact that all Penn Courses products deal with, well, courses,\nit would make sense for all three products to share the same backend.\n\nWe realized the necessity of a unified backend when attempting to design a new Django backend\nfor Penn Course Plan. We like to live by the philosophy of keeping it\n[DRY](https://en.wikipedia.org/wiki/Don't_repeat_yourself), and\nPCA and PCP's data models both need to reference course and\nsection information. We could have simply copied over code (a bad idea)\nor created a shared reusable Django app (a better idea) for course data,\nbut each app would still need to download copies of the same data.\nAdditionally, this will help us build integrations between our Courses products.\n\n# Authentication\nPCx user authentication is handled by platform's Penn Labs Accounts Engine.\nSee [Penn Labs Notion > Platform > The Accounts Engine](https://www.notion.so/pennlabs/The-Accounts-Engine-726ccf8875e244f4b8dbf8a8f2c97a87?pvs=4)\nfor extensive documentation and links to repositories for this system. When tags or routes\nare described as requiring user authentication, they are referring to this system.\n\nI highly recommend the [official video course on OAuth2](https://oauth.net/2/) (by Aaron Parecki),\nthen the Platform Notion docs on the \"Accounts Engine\" for anyone who wants to understand\nLabs authentication better. Platform is our OAuth2 \"Authorization Server\",\nand Django Labs Accounts is an OAuth2 client run by our Django backends (Clubs, Penn Courses, etc),\nexposing client-facing authentication routes like `penncourseplan.com/accounts/login`.\nThere's also this Wikipedia page explaining [Shibboleth](https://en.wikipedia.org/wiki/Shibboleth_(software))\n(which is used by Penn for authentication, and by the Platform authorization server).\n\nSee the Django docs for more on Django's features for\n[User Authentication](https://docs.djangoproject.com/en/3.0/topics/auth/),\nwhich are used by PCX apps, as part of Platform's accounts system.\n\n\nContact Support:\n Email: contact@pennlabs.org",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Penn Courses API Documentation [Accounts] User [Accounts] User [PCP] Schedule API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "[PCP] Schedule",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Schedules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://penncoursereview.com/api/plan/schedules/"
+          },
+          "docs": "(GET `/api/plan/schedules/`)\n\nGet a list of all the logged-in user's schedules for the current semester.  Normally, the\nresponse code is 200. Each object in the returned list is of the same form as the object\nreturned by Retrieve Schedule.\n\n<span style=\"color:red;\">User authentication required</span>."
+        },
+        {
+          "info": {
+            "name": "Create Schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://penncoursereview.com/api/plan/schedules/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "(POST `/api/plan/schedules/`)\n\nUse this route to create a schedule for the authenticated user.\nThis route will return a 201 if it succeeds (or a 200 if the POST specifies an id which already\nis associated with a schedule, causing that schedule to be updated), with a JSON in the same\nformat as if you were to get the schedule you just posted (the 200 response schema for Retrieve\nSchedule). If any of the given sections are invalid, a 404 is returned.  If any two sections\nin the `sections` list have"
+        },
+        {
+          "info": {
+            "name": "Retrieve Schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://penncoursereview.com/api/plan/schedules/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this schedule."
+              }
+            ]
+          },
+          "docs": "(GET `/api/plan/schedules/{id}/`)\n\nGet one of the logged-in user's schedules for the current semester, using the schedule's ID.\nIf a schedule with the specified ID exists, a 200 response code is returned, along with\nthe schedule object.\nIf the given id does not exist, a 404 is returned.\n\n<span style=\"color:red;\">User authentication required</span>."
+        },
+        {
+          "info": {
+            "name": "Update Schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://penncoursereview.com/api/plan/schedules/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this schedule."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "(PUT `/api/plan/schedules/{id}/`)\n\nSend a put request to this route to update a specific schedule.\nThe `id` path parameter (an integer) specifies which schedule you want to update. [You can also\npass `path` for the `id` path parameter, in order to create/update a Path Registration schedule\nfor the user. But to do this, you must be authenticated via Platform's token auth for IPC,\ne.g. from Penn Mobile - otherwise a 403 is returned.] If a schedule with\nthe specified id does not exist, a 404 is ret"
+        },
+        {
+          "info": {
+            "name": "Destroy Schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://penncoursereview.com/api/plan/schedules/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this schedule."
+              }
+            ]
+          },
+          "docs": "(DELETE `/api/plan/schedules/{id}/`)\n\nSend a delete request to this route to delete a specific schedule.  The `id` path parameter\n(an integer) specifies which schedule you want to update.  If a schedule with the specified\nid does not exist, a 404 is returned.  If the delete is successful, a 204 is returned.\n\n<span style=\"color:red;\">User authentication required</span>."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Penn Courses API Documentation [Accounts] User [Accounts] User [PDP] Satisfied Rule Lists API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "[PDP] Satisfied Rule Lists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Satisfied Rule List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://penncoursereview.com/api/degree/satisfied-rule-list/:degree_plan_id/:full_code/:rule_id",
+            "params": [
+              {
+                "name": "degree_plan_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the degree plan to query"
+              },
+              {
+                "name": "full_code",
+                "value": "",
+                "type": "path",
+                "description": "The full course code (e.g., 'CIS-1200')\n                                    to check against requirements"
+              },
+              {
+                "name": "rule_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of a specific rule to check, or '-1'\n                                to automatically determine the highest priority rule"
+              }
+            ]
+          },
+          "docs": "(GET `/api/degree/satisfied-rule-list/{degree_plan_id}/{full_code}/{rule_id}`)\n\nProvided a degree plan and a course code, retrieve a sublist\nof the degrees' rules that are satisfied by the course."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

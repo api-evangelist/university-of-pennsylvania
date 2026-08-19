@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Penn Courses API Documentation [Accounts] User [Accounts] User [PCR] Plots API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "[PCR] Plots",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Plots",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://penncoursereview.com/api/review/course_plots/:course_code",
+            "params": [
+              {
+                "name": "course_code",
+                "value": "",
+                "type": "path",
+                "description": "The dash-joined department and code of the course you want plots for, e.g. `CIS-120` for CIS-120."
+              },
+              {
+                "name": "semester",
+                "value": "",
+                "type": "query",
+                "description": "Optionally specify the semester of the desired course (defaults to most recent course with the specified course code)."
+              },
+              {
+                "name": "instructor_ids",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated list of instructor IDs with which to filter the sections underlying the returned plots.Note that if only invalid instructor IDs are present, plot response fields will be null or 0."
+              }
+            ]
+          },
+          "docs": "(GET `/api/review/course_plots/{course_code}`)\n\nGet all PCR plots for a given course.\n\n<span style=\"color:red;\">User authentication required</span>."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

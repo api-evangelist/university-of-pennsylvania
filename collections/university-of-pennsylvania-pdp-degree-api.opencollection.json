@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Penn Courses API Documentation [Accounts] User [Accounts] User [PDP] Degree API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "[PDP] Degree",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Degrees",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://penncoursereview.com/api/degree/degrees",
+            "params": [
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "A search term."
+              }
+            ]
+          },
+          "docs": "(GET `/api/degree/degrees`)\n\nRetrieve a list of all Degree objects."
+        },
+        {
+          "info": {
+            "name": "Retrieve Degree",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://penncoursereview.com/api/degree/degrees/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this degree."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "A search term."
+              }
+            ]
+          },
+          "docs": "(GET `/api/degree/degrees/{id}`)\n\nRetrieve a list of all Degree objects."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

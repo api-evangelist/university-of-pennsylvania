@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Penn Courses API Documentation [Accounts] User [Accounts] User [PCx] Pre-NGSS Requirements API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "[PCx] Pre-NGSS Requirements",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Pre-Ngss Requirements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://penncoursereview.com/api/base/:semester/pre-ngss-requirements/",
+            "params": [
+              {
+                "name": "semester",
+                "value": "",
+                "type": "path",
+                "description": "The semester of the requirement (of the form YYYYx where x is A [for spring], B [summer], or C [fall]), e.g. `2019C` for fall 2019. We organize requirements by semester so that we don't get huge related sets which don't give particularly good info."
+              }
+            ]
+          },
+          "docs": "(GET `/api/base/{semester}/pre-ngss-requirements/`)\n\nRetrieve a list of all pre-NGSS (deprecated since 2022B) academic requirements\nin the database for this semester."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

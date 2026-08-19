@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Penn Courses API Documentation [Accounts] User [Accounts] User [PCP] Calendar API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "[PCP] Calendar",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Calendar",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://penncoursereview.com/api/plan/:schedule_pk/calendar/",
+            "params": [
+              {
+                "name": "schedule_pk",
+                "value": "",
+                "type": "path",
+                "description": "The PCP id of the schedule you want to export."
+              }
+            ]
+          },
+          "docs": "(GET `/api/plan/{schedule_pk}/calendar/`)\n\nReturn a .ics file of the user's selected schedule"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

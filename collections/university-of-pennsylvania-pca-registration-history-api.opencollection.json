@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Penn Courses API Documentation [Accounts] User [Accounts] User [PCA] Registration History API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "[PCA] Registration History",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Registration History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://penncoursereview.com/api/alert/registrationhistory/"
+          },
+          "docs": "(GET `/api/alert/registrationhistory/`)\n\nList all of the user's registrations for the current semester, regardless of whether\nthey are active, obsolete (not at the head of their resubscribe chains), or deleted.  Note\nthat this is not appropriate to use for listing registrations and presenting them to the user;\nfor that you should use List Registrations (GET `/api/alert/registrations/`).\n\n<span style=\"color:red;\">User authentication required</span>."
+        },
+        {
+          "info": {
+            "name": "Retrieve Historic Registration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://penncoursereview.com/api/alert/registrationhistory/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this registration."
+              }
+            ]
+          },
+          "docs": "(GET `/api/alert/registrationhistory/{id}/`)\n\nGet the detail of a specific registration from the current semester.  All registrations are\naccessible via this endpoint, regardless of whether they are active,\nobsolete (not at the head of their resubscribe chains), or deleted.  Unless you need to access\ninactive and obsolete registrations, you should probably use Retrieve Registration\n(GET `/api/alert/registrations/{id}/`) rather than this endpoint.\n\n<span style=\"color:red;\">User authentication req"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

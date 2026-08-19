@@ -1,0 +1,939 @@
+{
+  "item": [
+    {
+      "id": "fdea951a-8c5c-4e95-bfde-e2d9aac85707",
+      "name": "[PCP] Schedule",
+      "description": {
+        "content": "\nThese routes allow interfacing with the user's PCP Schedules for the current semester,\nstored on the backend. Ever since we integrated Penn Labs Accounts into PCP so that users\ncan store their schedules across devices and browsers, we have stored users' schedules on\nour backend (rather than local storage).\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a21fca28-05b8-4aed-b4e1-81d41594f606",
+          "name": "List Schedules",
+          "request": {
+            "name": "List Schedules",
+            "description": {
+              "content": "(GET `/api/plan/schedules/`)\n\nGet a list of all the logged-in user's schedules for the current semester.  Normally, the\nresponse code is 200. Each object in the returned list is of the same form as the object\nreturned by Retrieve Schedule.\n\n<span style=\"color:red;\">User authentication required</span>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "plan",
+                "schedules",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "715a533c-e239-4807-a160-12a79068d5e8",
+              "name": "Schedules listed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "plan",
+                    "schedules",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 3087,\n    \"semester\": \"strin\",\n    \"name\": \"string\",\n    \"created_at\": \"2004-06-14T10:01:52.767Z\",\n    \"updated_at\": \"1955-12-17T07:39:22.242Z\"\n  },\n  {\n    \"id\": 6125,\n    \"semester\": \"strin\",\n    \"name\": \"string\",\n    \"created_at\": \"1957-12-19T10:07:54.372Z\",\n    \"updated_at\": \"1962-07-08T16:19:41.897Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "496174ed-b376-4a93-895d-cbaf5d9892ee",
+              "name": "Access denied (missing or improper authentication).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "plan",
+                    "schedules",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bca2bffa-1b6d-4a8f-89fc-abe20cd891bf",
+          "name": "Create Schedule",
+          "request": {
+            "name": "Create Schedule",
+            "description": {
+              "content": "(POST `/api/plan/schedules/`)\n\nUse this route to create a schedule for the authenticated user.\nThis route will return a 201 if it succeeds (or a 200 if the POST specifies an id which already\nis associated with a schedule, causing that schedule to be updated), with a JSON in the same\nformat as if you were to get the schedule you just posted (the 200 response schema for Retrieve\nSchedule). If any of the given sections are invalid, a 404 is returned.  If any two sections\nin the `sections` list have differing semesters, a 400 is returned.\n\nNote that your posted object can include either a `sections` field or a `meetings` field to\nlist all sections you would like to be in the schedule (mentioned above).\nIf both fields exist in the object, only `meetings` will be considered.  In all cases,\nthe field in question will be renamed to `sections`, so that will be the field name whenever\nyou GET from the server. (Sorry for this confusing behavior, it is grandfathered in\nfrom when the PCP frontend was referring to sections as meetings, before schedules were\nstored on the backend.)\n\n<span style=\"color:red;\">User authentication required</span>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "plan",
+                "schedules",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sections\": [\n    {\n      \"id\": \"<string>\",\n      \"semester\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"semester\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"semester\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "00620a81-7354-4d73-ab1e-a169fa61b12e",
+              "name": "Schedule successfully updated (a schedule with the specified id already existed).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "plan",
+                    "schedules",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sections\": [\n    {\n      \"id\": \"<string>\",\n      \"semester\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"semester\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"semester\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8fbe9c5a-f265-4008-a8dd-6b1acef7741b",
+              "name": "Schedule successfully created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "plan",
+                    "schedules",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sections\": [\n    {\n      \"id\": \"<string>\",\n      \"semester\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"semester\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"semester\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8f8b1128-8c54-4d90-81e5-99c49d15793e",
+              "name": "Bad request (see description above).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "plan",
+                    "schedules",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sections\": [\n    {\n      \"id\": \"<string>\",\n      \"semester\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"semester\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"semester\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c0b1d041-f92e-4c0b-82d5-2ee5bdb9c31d",
+              "name": "Access denied (missing or improper authentication).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "plan",
+                    "schedules",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sections\": [\n    {\n      \"id\": \"<string>\",\n      \"semester\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"semester\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"semester\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7dcccf28-b91a-4a6e-ba17-add3c611897a",
+          "name": "Retrieve Schedule",
+          "request": {
+            "name": "Retrieve Schedule",
+            "description": {
+              "content": "(GET `/api/plan/schedules/{id}/`)\n\nGet one of the logged-in user's schedules for the current semester, using the schedule's ID.\nIf a schedule with the specified ID exists, a 200 response code is returned, along with\nthe schedule object.\nIf the given id does not exist, a 404 is returned.\n\n<span style=\"color:red;\">User authentication required</span>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "plan",
+                "schedules",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique integer value identifying this schedule."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c2b38921-8c15-4487-8239-26a6d755c6cb",
+              "name": "Successful retrieve (the specified schedule exists).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "plan",
+                    "schedules",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this schedule."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1873,\n  \"semester\": \"strin\",\n  \"name\": \"string\",\n  \"created_at\": \"1965-11-03T10:56:25.779Z\",\n  \"updated_at\": \"1979-08-04T21:59:06.577Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5857c36d-cd89-426c-ba4b-26f216ff2a44",
+              "name": "Access denied (missing or improper authentication).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "plan",
+                    "schedules",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this schedule."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7b73a7f0-b467-497d-a4c4-fb10fc4cf8bd",
+              "name": "No schedule with the specified id exists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "plan",
+                    "schedules",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this schedule."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad537734-fb82-4f88-8d7f-7a7a28200546",
+          "name": "Update Schedule",
+          "request": {
+            "name": "Update Schedule",
+            "description": {
+              "content": "(PUT `/api/plan/schedules/{id}/`)\n\nSend a put request to this route to update a specific schedule.\nThe `id` path parameter (an integer) specifies which schedule you want to update. [You can also\npass `path` for the `id` path parameter, in order to create/update a Path Registration schedule\nfor the user. But to do this, you must be authenticated via Platform's token auth for IPC,\ne.g. from Penn Mobile - otherwise a 403 is returned.] If a schedule with\nthe specified id does not exist, a 404 is returned. In the body of the PUT, use the same format\nas a POST request (see the Create Schedule docs).\nThis is an alternate way to update schedules (you can also just include the id field\nin a schedule when you post and it will update that schedule if the id exists).  Note that in a\nput request the id field in the putted object is ignored; the id taken from the route\nalways takes precedence. If the request succeeds, it will return a 200 and a JSON in the same\nformat as if you were to get the schedule you just updated (in the same format as returned by\nthe GET /schedules/ route).\n\n<span style=\"color:red;\">User authentication required</span>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "plan",
+                "schedules",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique integer value identifying this schedule."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sections\": [\n    {\n      \"id\": \"<string>\",\n      \"semester\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"semester\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"semester\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b03dfb6b-ca7e-491c-917d-565a60157b05",
+              "name": "Successful update (the specified schedule was found and updated).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "plan",
+                    "schedules",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this schedule."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sections\": [\n    {\n      \"id\": \"<string>\",\n      \"semester\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"semester\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"semester\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5c18c1c8-1049-4cb5-8762-ca7c286b7cdd",
+              "name": "Bad request (see description above).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "plan",
+                    "schedules",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this schedule."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sections\": [\n    {\n      \"id\": \"<string>\",\n      \"semester\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"semester\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"semester\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "713b2776-4db9-4294-b4db-5543b414cba8",
+              "name": "Access denied (missing or improper authentication).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "plan",
+                    "schedules",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this schedule."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sections\": [\n    {\n      \"id\": \"<string>\",\n      \"semester\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"semester\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"semester\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d63fa8b2-60cb-473f-b141-412ba57ea4fb",
+              "name": "No schedule with the specified id exists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "plan",
+                    "schedules",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this schedule."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sections\": [\n    {\n      \"id\": \"<string>\",\n      \"semester\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"semester\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"semester\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ca60d6f7-36b4-41f4-8dfc-291a2211b568",
+          "name": "Destroy Schedule",
+          "request": {
+            "name": "Destroy Schedule",
+            "description": {
+              "content": "(DELETE `/api/plan/schedules/{id}/`)\n\nSend a delete request to this route to delete a specific schedule.  The `id` path parameter\n(an integer) specifies which schedule you want to update.  If a schedule with the specified\nid does not exist, a 404 is returned.  If the delete is successful, a 204 is returned.\n\n<span style=\"color:red;\">User authentication required</span>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "plan",
+                "schedules",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique integer value identifying this schedule."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1f43ea6a-fd51-4089-b756-99ab901ed76f",
+              "name": "Successful delete (the specified schedule was found and deleted).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "plan",
+                    "schedules",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this schedule."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f530be85-dc28-40dc-9daf-673d31c407a7",
+              "name": "Access denied (missing or improper authentication).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "plan",
+                    "schedules",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this schedule."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "31b9539d-063e-4298-b217-e1caeaf0f4c6",
+              "name": "No schedule with the specified id exists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "plan",
+                    "schedules",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this schedule."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://penncoursereview.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "348459d0-3069-425b-9aef-4d33e6e4b795",
+    "name": "Penn Courses API Documentation [Accounts] User [Accounts] User [PCP] Schedule API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\n# Introduction\nPenn Courses ([GitHub](https://github.com/pennlabs/penn-courses)) is the umbrella\ncategorization for [Penn Labs](https://pennlabs.org/)\nproducts designed to help students navigate the course registration process. It currently\nincludes three products, each with their own API documented on this page:\nPenn Course Alert, Penn Course Plan, and Penn Course Review.\n\nSee `Penn Labs Notion > Penn Courses` for more details on each of our (currently) three apps.\n\nFor instructions on how to maintain this documentation while writing code,\nsee the comments in `backend/PennCourses/docs_settings.py` (it is easy, and will be helpful\nfor maintaining Labs knowledge in spite of our high member turnover rate).\n\nSee our [GitHub](https://github.com/pennlabs/penn-courses) repo for instructions on\ninstallation, running in development, and loading in course data for development. Visit\nthe `/admin/doc/` route ([link](/admin/doc/)) for the backend documentation generated by Django\n(admin account required, which can be made by running\n`python manage.py createsuperuser` in terminal/CLI).\n\n# Unified Penn Courses\nBy virtue of the fact that all Penn Courses products deal with, well, courses,\nit would make sense for all three products to share the same backend.\n\nWe realized the necessity of a unified backend when attempting to design a new Django backend\nfor Penn Course Plan. We like to live by the philosophy of keeping it\n[DRY](https://en.wikipedia.org/wiki/Don't_repeat_yourself), and\nPCA and PCP's data models both need to reference course and\nsection information. We could have simply copied over code (a bad idea)\nor created a shared reusable Django app (a better idea) for course data,\nbut each app would still need to download copies of the same data.\nAdditionally, this will help us build integrations between our Courses products.\n\n# Authentication\nPCx user authentication is handled by platform's Penn Labs Accounts Engine.\nSee [Penn Labs Notion > Platform > The Accounts Engine](https://www.notion.so/pennlabs/The-Accounts-Engine-726ccf8875e244f4b8dbf8a8f2c97a87?pvs=4)\nfor extensive documentation and links to repositories for this system. When tags or routes\nare described as requiring user authentication, they are referring to this system.\n\nI highly recommend the [official video course on OAuth2](https://oauth.net/2/) (by Aaron Parecki),\nthen the Platform Notion docs on the \"Accounts Engine\" for anyone who wants to understand\nLabs authentication better. Platform is our OAuth2 \"Authorization Server\",\nand Django Labs Accounts is an OAuth2 client run by our Django backends (Clubs, Penn Courses, etc),\nexposing client-facing authentication routes like `penncourseplan.com/accounts/login`.\nThere's also this Wikipedia page explaining [Shibboleth](https://en.wikipedia.org/wiki/Shibboleth_(software))\n(which is used by Penn for authentication, and by the Platform authorization server).\n\nSee the Django docs for more on Django's features for\n[User Authentication](https://docs.djangoproject.com/en/3.0/topics/auth/),\nwhich are used by PCX apps, as part of Platform's accounts system.\n\n\nContact Support:\n Email: contact@pennlabs.org",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Penn Courses API Documentation [Accounts] User [Accounts] User [PCP] Course Recommendations API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "[PCP] Course Recommendations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Course Recommendations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://penncoursereview.com/api/plan/recommendations/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "(POST `/api/plan/recommendations/`)\n\nThis route will optionally take in current and past courses. In order to\nmake recommendations solely on the user's courses in past and current PCP schedules, simply\nomit both the curr_courses and past_courses fields in your request.\nOtherwise, in order to specify past and current courses,\ninclude a \"curr-courses\" and/or \"past_courses\" attribute in the request that should each contain\nan array of string course full codes of the form DEPT-XXX (e.g. CIS-120).\nIf"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

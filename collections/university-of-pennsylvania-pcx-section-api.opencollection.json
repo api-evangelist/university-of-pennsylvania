@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Penn Courses API Documentation [Accounts] User [Accounts] User [PCx] Section API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "[PCx] Section",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Section Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://penncoursereview.com/api/base/:semester/search/sections/",
+            "params": [
+              {
+                "name": "semester",
+                "value": "",
+                "type": "path",
+                "description": "The semester of the course (of the form YYYYx where x is A [for spring], B [summer], or C [fall]), e.g. '2019C' for fall 2019. Alternatively, you can just pass 'current' for the current semester. Finally, you can pass 'all' to always return the most recent course for each full_code, no matter which semester it is from. The 'all' option can be significantly more expensive, so use only where needed. "
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "A search term."
+              }
+            ]
+          },
+          "docs": "(GET `/api/base/{semester}/search/sections/`)\n\nRetrieve a list of sections (less detailed than [PCx] Section, or SectionDetail on the\nbackend).  The sections are filtered by the search term (assumed to be a prefix of a\nsection's full code, with each chunk either space-delimited, dash-delimited, or not delimited)."
+        },
+        {
+          "info": {
+            "name": "Retrieve Section",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://penncoursereview.com/api/base/:semester/sections/:full_code/",
+            "params": [
+              {
+                "name": "semester",
+                "value": "",
+                "type": "path",
+                "description": "The semester of the course (of the form YYYYx where x is A [for spring], B [summer], or C [fall]), e.g. '2019C' for fall 2019. Alternatively, you can just pass 'current' for the current semester. Finally, you can pass 'all' to always return the most recent course for each full_code, no matter which semester it is from. The 'all' option can be significantly more expensive, so use only where needed. "
+              },
+              {
+                "name": "full_code",
+                "value": "",
+                "type": "path",
+                "description": "\nThe full code of the section, in the form '{dept code}-{course code}-{section code}',\ne.g. `CIS-120-001` for the 001 section of CIS-120.\n"
+              }
+            ]
+          },
+          "docs": "(GET `/api/base/{semester}/sections/{full_code}/`)\n\nRetrieve a detailed look at a specific course section."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

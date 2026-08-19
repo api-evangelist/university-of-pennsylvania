@@ -1,0 +1,824 @@
+{
+  "item": [
+    {
+      "id": "1da472ca-c798-4ac2-b7fc-47dfa8893efe",
+      "name": "[PDP] Fulfillment",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "765015fa-599c-41af-8fe0-e49d40526619",
+          "name": "List Fulfillments",
+          "request": {
+            "name": "List Fulfillments",
+            "description": {
+              "content": "(GET `/api/degree/degreeplans/{degreeplan_pk}/fulfillments`)\n\nList, retrieve, create, destroy, and update a Fulfillment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "degree",
+                "degreeplans",
+                ":degreeplan_pk",
+                "fulfillments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "degreeplan_pk",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0cad22a8-4658-4ca4-a26e-3d59c1a86ce9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "degree",
+                    "degreeplans",
+                    ":degreeplan_pk",
+                    "fulfillments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "degreeplan_pk",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 6136,\n    \"degree_plan\": 7196,\n    \"full_code\": \"string\",\n    \"course\": \"string\",\n    \"semester\": \"strin\",\n    \"rules\": [\n      6923,\n      9481\n    ],\n    \"unselected_rules\": [\n      3795,\n      5477\n    ],\n    \"legal\": false,\n    \"overrides\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  {\n    \"id\": 1258,\n    \"degree_plan\": 198,\n    \"full_code\": \"string\",\n    \"course\": \"string\",\n    \"semester\": \"strin\",\n    \"rules\": [\n      9773,\n      4452\n    ],\n    \"unselected_rules\": [\n      9985,\n      5659\n    ],\n    \"legal\": true,\n    \"overrides\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "22f22b83-9360-4d57-94eb-728abc0e2811",
+          "name": "Create Fulfillment",
+          "request": {
+            "name": "Create Fulfillment",
+            "description": {
+              "content": "(POST `/api/degree/degreeplans/{degreeplan_pk}/fulfillments`)\n\nCreate or update fulfillment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "degree",
+                "degreeplans",
+                ":degreeplan_pk",
+                "fulfillments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "degreeplan_pk",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"degree_plan\": \"<integer>\",\n  \"full_code\": \"<string>\",\n  \"semester\": \"<string>\",\n  \"rules\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"unselected_rules\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"legal\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "748c54f2-db7c-4f7d-9494-7a8d9301b3ee",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "degree",
+                    "degreeplans",
+                    ":degreeplan_pk",
+                    "fulfillments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "degreeplan_pk",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"degree_plan\": \"<integer>\",\n  \"full_code\": \"<string>\",\n  \"semester\": \"<string>\",\n  \"rules\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"unselected_rules\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"legal\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 6769,\n  \"degree_plan\": 187,\n  \"full_code\": \"string\",\n  \"course\": \"string\",\n  \"semester\": \"strin\",\n  \"rules\": [\n    8684,\n    9193\n  ],\n  \"unselected_rules\": [\n    9243,\n    1305\n  ],\n  \"legal\": false,\n  \"overrides\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02ae02ee-052e-45c2-b471-4f606e77e710",
+          "name": "Retrieve Fulfillment",
+          "request": {
+            "name": "Retrieve Fulfillment",
+            "description": {
+              "content": "(GET `/api/degree/degreeplans/{degreeplan_pk}/fulfillments/{full_code}`)\n\nList, retrieve, create, destroy, and update a Fulfillment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "degree",
+                "degreeplans",
+                ":degreeplan_pk",
+                "fulfillments",
+                ":full_code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "degreeplan_pk",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "full_code",
+                  "description": "(Required) The dash-joined department and code of the course, e.g., `CIS-120`"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "82e6b48f-48d3-49af-b8b9-535b36bdc5d4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "degree",
+                    "degreeplans",
+                    ":degreeplan_pk",
+                    "fulfillments",
+                    ":full_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "degreeplan_pk",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "full_code",
+                      "description": "(Required) The dash-joined department and code of the course, e.g., `CIS-120`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 6769,\n  \"degree_plan\": 187,\n  \"full_code\": \"string\",\n  \"course\": \"string\",\n  \"semester\": \"strin\",\n  \"rules\": [\n    8684,\n    9193\n  ],\n  \"unselected_rules\": [\n    9243,\n    1305\n  ],\n  \"legal\": false,\n  \"overrides\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cf8fc449-c732-4a1a-bb05-1dde37b8a192",
+          "name": "Destroy Fulfillment",
+          "request": {
+            "name": "Destroy Fulfillment",
+            "description": {
+              "content": "(DELETE `/api/degree/degreeplans/{degreeplan_pk}/fulfillments/{full_code}`)\n\nList, retrieve, create, destroy, and update a Fulfillment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "degree",
+                "degreeplans",
+                ":degreeplan_pk",
+                "fulfillments",
+                ":full_code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "degreeplan_pk",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "full_code",
+                  "description": "(Required) The dash-joined department and code of the course, e.g., `CIS-120`"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b6e22350-3adb-4d20-b4ad-821dcabc387e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "degree",
+                    "degreeplans",
+                    ":degreeplan_pk",
+                    "fulfillments",
+                    ":full_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "degreeplan_pk",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "full_code",
+                      "description": "(Required) The dash-joined department and code of the course, e.g., `CIS-120`"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c56bd982-f088-4e8b-91f5-27793b2d3260",
+          "name": "Add Override Fulfillment",
+          "request": {
+            "name": "Add Override Fulfillment",
+            "description": {
+              "content": "(POST `/api/degree/degreeplans/{degreeplan_pk}/fulfillments/{full_code}/override`)\n\nAdd a manual override that allows a course to count for a rule regardless of whether\nit satisfies the rule's Q filter. Also adds the rule to the fulfillment's selected\nrules if not already present.\n\nPOST with `{\"rule_id\": <id>}`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "degree",
+                "degreeplans",
+                ":degreeplan_pk",
+                "fulfillments",
+                ":full_code",
+                "override"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "degreeplan_pk",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "full_code",
+                  "description": "(Required) The dash-joined department and code of the course, e.g., `CIS-120`"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"degree_plan\": \"<integer>\",\n  \"full_code\": \"<string>\",\n  \"semester\": \"<string>\",\n  \"rules\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"unselected_rules\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"legal\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "791de387-ee88-4faf-af2d-856f91f89e89",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "degree",
+                    "degreeplans",
+                    ":degreeplan_pk",
+                    "fulfillments",
+                    ":full_code",
+                    "override"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "degreeplan_pk",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "full_code",
+                      "description": "(Required) The dash-joined department and code of the course, e.g., `CIS-120`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"degree_plan\": \"<integer>\",\n  \"full_code\": \"<string>\",\n  \"semester\": \"<string>\",\n  \"rules\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"unselected_rules\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"legal\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 6769,\n  \"degree_plan\": 187,\n  \"full_code\": \"string\",\n  \"course\": \"string\",\n  \"semester\": \"strin\",\n  \"rules\": [\n    8684,\n    9193\n  ],\n  \"unselected_rules\": [\n    9243,\n    1305\n  ],\n  \"legal\": false,\n  \"overrides\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cfaa47ba-61bb-4482-90c4-664856717be0",
+          "name": "Switch Rule Fulfillment",
+          "request": {
+            "name": "Switch Rule Fulfillment",
+            "description": {
+              "content": "(POST `/api/degree/degreeplans/{degreeplan_pk}/fulfillments/{full_code}/switch-rule`)\n\nSwitch a fulfillment's selected rule to another rule in the same degree.\n\nThis promotes the requested rule from `unselected_rules` to `rules`, and\ndemotes any currently selected rules for that same degree into\n`unselected_rules`.\n\nIf another course was already fulfilling the target rule, that course is",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "degree",
+                "degreeplans",
+                ":degreeplan_pk",
+                "fulfillments",
+                ":full_code",
+                "switch-rule"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "degreeplan_pk",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "full_code",
+                  "description": "(Required) The dash-joined department and code of the course, e.g., `CIS-120`"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"degree_plan\": \"<integer>\",\n  \"full_code\": \"<string>\",\n  \"semester\": \"<string>\",\n  \"rules\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"unselected_rules\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"legal\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d66f7e23-7096-4ccc-a098-ba4636dccf3a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "degree",
+                    "degreeplans",
+                    ":degreeplan_pk",
+                    "fulfillments",
+                    ":full_code",
+                    "switch-rule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "degreeplan_pk",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "full_code",
+                      "description": "(Required) The dash-joined department and code of the course, e.g., `CIS-120`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"degree_plan\": \"<integer>\",\n  \"full_code\": \"<string>\",\n  \"semester\": \"<string>\",\n  \"rules\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"unselected_rules\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"legal\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 6769,\n  \"degree_plan\": 187,\n  \"full_code\": \"string\",\n  \"course\": \"string\",\n  \"semester\": \"strin\",\n  \"rules\": [\n    8684,\n    9193\n  ],\n  \"unselected_rules\": [\n    9243,\n    1305\n  ],\n  \"legal\": false,\n  \"overrides\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e5208899-73a3-48fb-88f3-9a2120f07d91",
+          "name": "Remove Override Fulfillment",
+          "request": {
+            "name": "Remove Override Fulfillment",
+            "description": {
+              "content": "(DELETE `/api/degree/degreeplans/{degreeplan_pk}/fulfillments/{full_code}/override/{rule_id}`)\n\nRemove a manual override, and remove the rule from the fulfillment's selected\nand unselected rules.\n\nDELETE to `override/<rule_id>/`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "degree",
+                "degreeplans",
+                ":degreeplan_pk",
+                "fulfillments",
+                ":full_code",
+                "override",
+                ":rule_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "degreeplan_pk",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "full_code",
+                  "description": "(Required) The dash-joined department and code of the course, e.g., `CIS-120`"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rule_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "183b386d-4bcc-4e60-9ef4-c518080e3583",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "degree",
+                    "degreeplans",
+                    ":degreeplan_pk",
+                    "fulfillments",
+                    ":full_code",
+                    "override",
+                    ":rule_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "degreeplan_pk",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "full_code",
+                      "description": "(Required) The dash-joined department and code of the course, e.g., `CIS-120`"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rule_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://penncoursereview.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c8e2ed13-0aa2-4fd6-ac1b-632712deb6af",
+    "name": "Penn Courses API Documentation [Accounts] User [Accounts] User [PDP] Fulfillment API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\n# Introduction\nPenn Courses ([GitHub](https://github.com/pennlabs/penn-courses)) is the umbrella\ncategorization for [Penn Labs](https://pennlabs.org/)\nproducts designed to help students navigate the course registration process. It currently\nincludes three products, each with their own API documented on this page:\nPenn Course Alert, Penn Course Plan, and Penn Course Review.\n\nSee `Penn Labs Notion > Penn Courses` for more details on each of our (currently) three apps.\n\nFor instructions on how to maintain this documentation while writing code,\nsee the comments in `backend/PennCourses/docs_settings.py` (it is easy, and will be helpful\nfor maintaining Labs knowledge in spite of our high member turnover rate).\n\nSee our [GitHub](https://github.com/pennlabs/penn-courses) repo for instructions on\ninstallation, running in development, and loading in course data for development. Visit\nthe `/admin/doc/` route ([link](/admin/doc/)) for the backend documentation generated by Django\n(admin account required, which can be made by running\n`python manage.py createsuperuser` in terminal/CLI).\n\n# Unified Penn Courses\nBy virtue of the fact that all Penn Courses products deal with, well, courses,\nit would make sense for all three products to share the same backend.\n\nWe realized the necessity of a unified backend when attempting to design a new Django backend\nfor Penn Course Plan. We like to live by the philosophy of keeping it\n[DRY](https://en.wikipedia.org/wiki/Don't_repeat_yourself), and\nPCA and PCP's data models both need to reference course and\nsection information. We could have simply copied over code (a bad idea)\nor created a shared reusable Django app (a better idea) for course data,\nbut each app would still need to download copies of the same data.\nAdditionally, this will help us build integrations between our Courses products.\n\n# Authentication\nPCx user authentication is handled by platform's Penn Labs Accounts Engine.\nSee [Penn Labs Notion > Platform > The Accounts Engine](https://www.notion.so/pennlabs/The-Accounts-Engine-726ccf8875e244f4b8dbf8a8f2c97a87?pvs=4)\nfor extensive documentation and links to repositories for this system. When tags or routes\nare described as requiring user authentication, they are referring to this system.\n\nI highly recommend the [official video course on OAuth2](https://oauth.net/2/) (by Aaron Parecki),\nthen the Platform Notion docs on the \"Accounts Engine\" for anyone who wants to understand\nLabs authentication better. Platform is our OAuth2 \"Authorization Server\",\nand Django Labs Accounts is an OAuth2 client run by our Django backends (Clubs, Penn Courses, etc),\nexposing client-facing authentication routes like `penncourseplan.com/accounts/login`.\nThere's also this Wikipedia page explaining [Shibboleth](https://en.wikipedia.org/wiki/Shibboleth_(software))\n(which is used by Penn for authentication, and by the Platform authorization server).\n\nSee the Django docs for more on Django's features for\n[User Authentication](https://docs.djangoproject.com/en/3.0/topics/auth/),\nwhich are used by PCX apps, as part of Platform's accounts system.\n\n\nContact Support:\n Email: contact@pennlabs.org",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Penn Courses API Documentation [Accounts] User [Accounts] User [PCx] Friendship API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "[PCx] Friendship",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Friendships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://penncoursereview.com/api/base/friendship/"
+          },
+          "docs": "(GET `/api/base/friendship/`)\n\nGet a list of all friendships and friendship requests (sent and recieved) for the\nspecified user. Filter the list by status (accepted, sent) to distinguish between\nfriendships and friendship requests.\n\n<span style=\"color:red;\">User authentication required</span>."
+        },
+        {
+          "info": {
+            "name": "Create Friendship",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://penncoursereview.com/api/base/friendship/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "(POST `/api/base/friendship/`)\n\nCreate a friendship between two users (sender and recipient). If a previous request does\nnot exist between the two friendships, then we create friendship request. If a previous request\nexists (where the recipient is the sender) and the recipient of a request hits this route, then\nwe accept the request.\n\n<span style=\"color:red;\">User authentication required</span>."
+        },
+        {
+          "info": {
+            "name": "Destroy Friendship",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://penncoursereview.com/api/base/friendship/",
+            "params": [
+              {
+                "name": "pennkey",
+                "value": "",
+                "type": "query",
+                "description": "The Pennkey of the user you are ending/rejecting your friendship/friend request with."
+              }
+            ]
+          },
+          "docs": "(DELETE `/api/base/friendship/`)\n\nDelete a friendship between two users (sender and recipient). If there exists only\na friendship request between two users, then we either delete the friendship request\nif the sender hits the route, or we reject the request if the recipient hits this route.\n\n<span style=\"color:red;\">User authentication required</span>."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
