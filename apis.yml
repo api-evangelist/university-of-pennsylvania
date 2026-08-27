@@ -108,18 +108,21 @@ x-coverage:
 apis:
 - aid: university-of-pennsylvania:penn-courses
   name: Penn Courses API (Penn Course Alert / Plan / Review / Degree Plan)
-  description: 'One API, four student-facing products: Penn Course Alert (PCA), Penn Course Plan (PCP),
-    Penn Course Review (PCR) and Penn Degree Plan (PDP), plus a shared Accounts resource. The live OpenAPI
-    3.0.2 document at penncourseplan.com/api/openapi/ declares 45 paths across 29 tags and returned HTTP
-    200 (415 KB) on 2026-08-19; public course search reads anonymously while review and user-scoped resources
-    return 403. Operated by PENN LABS, a non-profit student-run software organization at Penn, on domains
-    registered to Penn Labs — not by the university. The 29 OpenAPI documents held here are the per-tag
-    split of that single contract; they are one surface, not twenty-nine. The previous profile listed
-    them as twenty-nine separate University of Pennsylvania APIs.'
+  description: >-
+    One API, four student-facing products: Penn Course Alert (PCA), Penn Course Plan (PCP), Penn Course
+    Review (PCR) and Penn Degree Plan (PDP), plus a shared Accounts resource. The live OpenAPI 3.0.2 document
+    at penncourseplan.com/api/openapi/ declares 45 paths across 29 tags and returned HTTP 200 (415 KB)
+    on 2026-08-19; public course search reads anonymously while review and user-scoped resources return
+    403. Operated by PENN LABS, a non-profit student-run software organization at Penn, on domains registered
+    to Penn Labs — not by the university. The 29 OpenAPI documents held here are the per-tag split of
+    that single contract; they are one surface, not twenty-nine. The previous profile listed them as twenty-nine
+    separate University of Pennsylvania APIs.
   x-operator: tenant
-  x-operator-entity: Penn Labs (non-profit student-run software organization at the University of Pennsylvania)
-  x-operator-evidence: penncourseplan.com WHOIS registrant organization is "Penn Labs"; info.description
-    of the live OpenAPI describes the API as a Penn Labs product.
+  x-operator-entity: >-
+    Penn Labs (non-profit student-run software organization at the University of Pennsylvania)
+  x-operator-evidence: >-
+    penncourseplan.com WHOIS registrant organization is "Penn Labs"; info.description of the live OpenAPI
+    describes the API as a Penn Labs product.
   humanURL: https://penncourseplan.com/api/documentation/
   baseURL: https://penncourseplan.com/api
   tags:
@@ -238,7 +241,8 @@ apis:
   - type: x-open-collection
     url: collections/university-of-pennsylvania-pca-registration-history-api.opencollection.json
   - type: x-postman-collection
-    url: collections/university-of-pennsylvania-pca-registration-history-api.postman_collection.json
+    url: >-
+      collections/university-of-pennsylvania-pca-registration-history-api.postman_collection.json
   - type: x-open-collection
     url: collections/university-of-pennsylvania-pcp-break-api.opencollection.json
   - type: x-postman-collection
@@ -248,9 +252,11 @@ apis:
   - type: x-postman-collection
     url: collections/university-of-pennsylvania-pcp-calendar-api.postman_collection.json
   - type: x-open-collection
-    url: collections/university-of-pennsylvania-pcp-course-recommendations-api.opencollection.json
+    url: >-
+      collections/university-of-pennsylvania-pcp-course-recommendations-api.opencollection.json
   - type: x-postman-collection
-    url: collections/university-of-pennsylvania-pcp-course-recommendations-api.postman_collection.json
+    url: >-
+      collections/university-of-pennsylvania-pcp-course-recommendations-api.postman_collection.json
   - type: x-open-collection
     url: collections/university-of-pennsylvania-pcp-primary-schedule-api.opencollection.json
   - type: x-postman-collection
@@ -290,7 +296,8 @@ apis:
   - type: x-open-collection
     url: collections/university-of-pennsylvania-pcx-pre-ngss-requirements-api.opencollection.json
   - type: x-postman-collection
-    url: collections/university-of-pennsylvania-pcx-pre-ngss-requirements-api.postman_collection.json
+    url: >-
+      collections/university-of-pennsylvania-pcx-pre-ngss-requirements-api.postman_collection.json
   - type: x-open-collection
     url: collections/university-of-pennsylvania-pcx-section-api.opencollection.json
   - type: x-postman-collection
@@ -306,7 +313,8 @@ apis:
   - type: x-open-collection
     url: collections/university-of-pennsylvania-pdp-degree-plan-detail-api.opencollection.json
   - type: x-postman-collection
-    url: collections/university-of-pennsylvania-pdp-degree-plan-detail-api.postman_collection.json
+    url: >-
+      collections/university-of-pennsylvania-pdp-degree-plan-detail-api.postman_collection.json
   - type: x-open-collection
     url: collections/university-of-pennsylvania-pdp-degree-plan-lists-api.opencollection.json
   - type: x-postman-collection
@@ -320,19 +328,23 @@ apis:
   - type: x-postman-collection
     url: collections/university-of-pennsylvania-pdp-fulfillment-api.postman_collection.json
   - type: x-open-collection
-    url: collections/university-of-pennsylvania-pdp-onboard-from-transcript-api.opencollection.json
+    url: >-
+      collections/university-of-pennsylvania-pdp-onboard-from-transcript-api.opencollection.json
   - type: x-postman-collection
-    url: collections/university-of-pennsylvania-pdp-onboard-from-transcript-api.postman_collection.json
+    url: >-
+      collections/university-of-pennsylvania-pdp-onboard-from-transcript-api.postman_collection.json
   - type: x-open-collection
     url: collections/university-of-pennsylvania-pdp-satisfied-rule-lists-api.opencollection.json
   - type: x-postman-collection
-    url: collections/university-of-pennsylvania-pdp-satisfied-rule-lists-api.postman_collection.json
+    url: >-
+      collections/university-of-pennsylvania-pdp-satisfied-rule-lists-api.postman_collection.json
 - aid: university-of-pennsylvania:penn-clubs
   name: Penn Clubs API
-  description: JSON API behind Penn Clubs, the student-organization directory that Penn's Office of Student
-    Affairs adopted as its official student-group registration system. /api/clubs returned HTTP 200 JSON
-    anonymously on 2026-08-19. Built and operated by Penn Labs on pennclubs.com; Penn endorses and uses
-    the product, Penn Labs runs it. No OpenAPI is published for this surface.
+  description: >-
+    JSON API behind Penn Clubs, the student-organization directory that Penn's Office of Student Affairs
+    adopted as its official student-group registration system. /api/clubs returned HTTP 200 JSON anonymously
+    on 2026-08-19. Built and operated by Penn Labs on pennclubs.com; Penn endorses and uses the product,
+    Penn Labs runs it. No OpenAPI is published for this surface.
   x-operator: tenant
   x-operator-entity: Penn Labs
   humanURL: https://pennclubs.com/
@@ -350,9 +362,10 @@ apis:
     url: https://osa.universitylife.upenn.edu/startclb/
 - aid: university-of-pennsylvania:penn-sdk-python
   name: Penn SDK (Python)
-  description: Open-source Python client maintained by Penn Labs wrapping Penn data services. Published
-    documentation at penn-sdk.readthedocs.io returned HTTP 200. An SDK is a client, not an institution-operated
-    surface; it is recorded as tenant because Penn Labs maintains it.
+  description: >-
+    Open-source Python client maintained by Penn Labs wrapping Penn data services. Published documentation
+    at penn-sdk.readthedocs.io returned HTTP 200. An SDK is a client, not an institution-operated surface;
+    it is recorded as tenant because Penn Labs maintains it.
   x-operator: tenant
   x-operator-entity: Penn Labs
   humanURL: https://penn-sdk.readthedocs.io/en/latest/
@@ -367,9 +380,10 @@ apis:
     url: https://github.com/pennlabs/penn-sdk-python
 - aid: university-of-pennsylvania:penn-sdk-js
   name: Penn SDK (JavaScript / Node)
-  description: Open-source JavaScript/Node client from Penn Labs. Documentation is hosted on js.org, a
-    community subdomain service, at penn-sdk.js.org (HTTP 200) — a code/docs host, not a vendor platform,
-    but not a Penn domain either.
+  description: >-
+    Open-source JavaScript/Node client from Penn Labs. Documentation is hosted on js.org, a community
+    subdomain service, at penn-sdk.js.org (HTTP 200) — a code/docs host, not a vendor platform, but not
+    a Penn domain either.
   x-operator: tenant
   x-operator-entity: Penn Labs
   humanURL: https://penn-sdk.js.org/
@@ -384,12 +398,13 @@ apis:
     url: https://github.com/pennlabs
 - aid: university-of-pennsylvania:pennkey-identity-provider
   name: PennKey Identity Provider — SAML 2.0 / Shibboleth Metadata
-  description: Penn's Shibboleth identity provider publishes a signed SAML 2.0 EntityDescriptor at a well-known
-    location (HTTP 200, application/xml, entityID https://idp.pennkey.upenn.edu/idp/shibboleth), carrying
-    the Shibboleth metadata extension namespace and an embedded X.509 signing certificate. The same entity
-    resolves live through InCommon MDQ as application/samlmetadata+xml, which makes federation membership
-    verifiable rather than self-asserted. This is machine-readable infrastructure the institution itself
-    operates, and it is the strongest institution-owned surface in this profile.
+  description: >-
+    Penn's Shibboleth identity provider publishes a signed SAML 2.0 EntityDescriptor at a well-known location
+    (HTTP 200, application/xml, entityID https://idp.pennkey.upenn.edu/idp/shibboleth), carrying the Shibboleth
+    metadata extension namespace and an embedded X.509 signing certificate. The same entity resolves live
+    through InCommon MDQ as application/samlmetadata+xml, which makes federation membership verifiable
+    rather than self-asserted. This is machine-readable infrastructure the institution itself operates,
+    and it is the strongest institution-owned surface in this profile.
   x-operator: institution
   humanURL: https://idp.pennkey.upenn.edu/idp/shibboleth
   baseURL: https://idp.pennkey.upenn.edu/idp
@@ -410,43 +425,15 @@ apis:
     url: authentication/university-of-pennsylvania-authentication.yml
   - type: x-lifecycle
     url: lifecycle/university-of-pennsylvania-lifecycle.yml
-- aid: university-of-pennsylvania:scholarlycommons-oai-pmh
-  name: ScholarlyCommons at Penn — OAI-PMH
-  description: Conformant OAI-PMH 2.0 harvesting endpoint for ScholarlyCommons at Penn, the university's
-    institutional research repository, on Penn's own host under Handle prefix 20.500.14332. verb=Identify,
-    ListSets, ListMetadataFormats and ListRecords all returned HTTP 200 with well-formed OAI-PMH XML and
-    real Penn records; twelve metadata formats are advertised. The software is DSpace 7.6 (open source,
-    with Atmire modules), so the protocol is not Penn's engineering — but the endpoint, the host and the
-    records are Penn's, which is what x-operator institution means here. Contract derived from live probes;
-    Penn publishes no OpenAPI.
-  x-operator: institution
-  humanURL: https://repository.upenn.edu/
-  baseURL: https://repository.upenn.edu/server/oai
-  tags:
-  - Research Repository
-  - OAI-PMH
-  - Metadata
-  - Open Access
-  - Library
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-pennsylvania-scholarlycommons-oai-pmh-openapi.yml
-  - type: Documentation
-    url: https://repository.upenn.edu/
-  - type: x-conformance
-    url: conformance/university-of-pennsylvania-conformance.yml
-  - type: x-errors
-    url: errors/university-of-pennsylvania-errors.yml
-  - type: x-lifecycle
-    url: lifecycle/university-of-pennsylvania-lifecycle.yml
 - aid: university-of-pennsylvania:scholarlycommons-rest
   name: ScholarlyCommons at Penn — DSpace REST API
-  description: DSpace 7.6 HAL+JSON REST API on Penn's own host. The API root returned HTTP 200 advertising
-    dspaceName "ScholarlyCommons at Penn" and the full DSpace link relation set; content endpoints require
-    authentication (/server/api/core/items returned 401). Recorded as institution because Penn operates
-    the deployment and the records, with the explicit caveat that the CONTRACT SHAPE IS UPSTREAM DSPACE'S,
-    shared by every DSpace 7 installation — so no OpenAPI is derived for it and no contract-quality credit
-    should attach to Penn for it.
+  description: >-
+    DSpace 7.6 HAL+JSON REST API on Penn's own host. The API root returned HTTP 200 advertising dspaceName
+    "ScholarlyCommons at Penn" and the full DSpace link relation set; content endpoints require authentication
+    (/server/api/core/items returned 401). Recorded as institution because Penn operates the deployment
+    and the records, with the explicit caveat that the CONTRACT SHAPE IS UPSTREAM DSPACE'S, shared by
+    every DSpace 7 installation — so no OpenAPI is derived for it and no contract-quality credit should
+    attach to Penn for it.
   x-operator: institution
   x-contract-origin: upstream DSpace 7.6 — generic across all DSpace installations, not Penn-authored
   humanURL: https://repository.upenn.edu/server/api
@@ -463,40 +450,14 @@ apis:
     url: authentication/university-of-pennsylvania-authentication.yml
   - type: x-errors
     url: errors/university-of-pennsylvania-errors.yml
-- aid: university-of-pennsylvania:franklin-catalog
-  name: Penn Libraries Franklin Catalog — JSON API
-  description: JSON:API surface of Franklin, the Penn Libraries discovery catalog, operated by Penn Libraries
-    on find.library.upenn.edu. /catalog.json returned HTTP 200 with links, meta.pages and data[] over
-    388,604 records; /catalog/{id}.json returned 200 for a record id taken from that result set; an unmatched
-    query correctly returned 200 with an empty data[] rather than a 404. Penn Libraries publishes an open-metadata
-    policy explicitly permitting reuse of this data. Contract derived from live probes.
-  x-operator: institution
-  humanURL: https://find.library.upenn.edu/
-  baseURL: https://find.library.upenn.edu
-  tags:
-  - Library
-  - Library Catalog
-  - Bibliographic Data
-  - Open Data
-  - Discovery
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-pennsylvania-franklin-catalog-openapi.yml
-  - type: Documentation
-    url: https://find.library.upenn.edu/
-  - type: TermsOfService
-    url: https://www.library.upenn.edu/about/policies/open-metadata
-  - type: x-errors
-    url: errors/university-of-pennsylvania-errors.yml
-  - type: x-lifecycle
-    url: lifecycle/university-of-pennsylvania-lifecycle.yml
 - aid: university-of-pennsylvania:colenda
   name: Colenda Digital Repository — Search JSON
-  description: 'Penn Libraries'' digital repository at colenda.library.upenn.edu exposes a Blacklight/Solr
-    JSON search response (/catalog.json returned HTTP 200, ~59 KB, anonymous). Institution-operated on
-    Penn''s own host. No IIIF Presentation manifest was reachable at the paths probed (/iiif and /iiif/2/manifest
+  description: >-
+    Penn Libraries' digital repository at colenda.library.upenn.edu exposes a Blacklight/Solr JSON search
+    response (/catalog.json returned HTTP 200, ~59 KB, anonymous). Institution-operated on Penn's own
+    host. No IIIF Presentation manifest was reachable at the paths probed (/iiif and /iiif/2/manifest
     both 404), so IIIF is NOT claimed here. No OpenAPI derived: the response is a raw Solr envelope rather
-    than a designed contract.'
+    than a designed contract.
   x-operator: institution
   humanURL: https://colenda.library.upenn.edu/
   baseURL: https://colenda.library.upenn.edu
@@ -512,8 +473,9 @@ apis:
     url: authentication/university-of-pennsylvania-authentication.yml
 - aid: university-of-pennsylvania:openn
   name: OPenn — Open Manuscript Data
-  description: Penn Libraries' bulk open-data site publishing high-resolution manuscript images and TEI/XML
-    descriptions in the public domain, laid out as a plainly-navigable directory tree (openn.library.upenn.edu/Data/
+  description: >-
+    Penn Libraries' bulk open-data site publishing high-resolution manuscript images and TEI/XML descriptions
+    in the public domain, laid out as a plainly-navigable directory tree (openn.library.upenn.edu/Data/
     returned HTTP 200). Not an API — there is no query interface — but it is genuine institution-operated
     machine-readable open data, and recorded as such rather than padded into an API entry.
   x-operator: institution
@@ -531,6 +493,50 @@ apis:
     url: https://openn.library.upenn.edu/ReadMe.html
   - type: x-bulk-data
     url: https://openn.library.upenn.edu/Data/
+- aid: university-of-pennsylvania:university-of-pennsylvania-catalog-api
+  name: University of Pennsylvania Catalog API
+  description: Bibliographic search and record retrieval.
+  humanURL: https://penncourseplan.com/api/documentation/
+  baseURL: https://penncourseplan.com/api
+  tags:
+  - Catalog
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-pennsylvania-catalog-api-openapi.yml
+  - type: Documentation
+    url: https://repository.upenn.edu/
+  - type: x-conformance
+    url: conformance/university-of-pennsylvania-conformance.yml
+  - type: x-errors
+    url: errors/university-of-pennsylvania-errors.yml
+  - type: x-lifecycle
+    url: lifecycle/university-of-pennsylvania-lifecycle.yml
+  - type: Documentation
+    url: https://find.library.upenn.edu/
+  - type: TermsOfService
+    url: https://www.library.upenn.edu/about/policies/open-metadata
+- aid: university-of-pennsylvania:university-of-pennsylvania-request-api
+  name: University of Pennsylvania Request API
+  description: The Request API from University of Pennsylvania — 1 operation(s) for request.
+  humanURL: https://penncourseplan.com/api/documentation/
+  baseURL: https://penncourseplan.com/api
+  tags:
+  - Request
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-pennsylvania-request-api-openapi.yml
+  - type: Documentation
+    url: https://repository.upenn.edu/
+  - type: x-conformance
+    url: conformance/university-of-pennsylvania-conformance.yml
+  - type: x-errors
+    url: errors/university-of-pennsylvania-errors.yml
+  - type: x-lifecycle
+    url: lifecycle/university-of-pennsylvania-lifecycle.yml
+  - type: Documentation
+    url: https://find.library.upenn.edu/
+  - type: TermsOfService
+    url: https://www.library.upenn.edu/about/policies/open-metadata
 common:
 - type: Website
   url: https://www.upenn.edu/
