@@ -20,6 +20,18 @@ description: 'The University of Pennsylvania (Penn) is a private Ivy League rese
 type: Index
 x-type: university
 x-category: Private Research University
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: free
   onboarding: unknown
