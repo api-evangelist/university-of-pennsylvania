@@ -1,0 +1,80 @@
+name: University of Pennsylvania — Surface Lifecycle
+aid: university-of-pennsylvania
+description: >-
+  Lifecycle state of every surface this profile has ever attributed to the University of
+  Pennsylvania, including the one that has since been retired. Recorded because the previous
+  profile (2026-06-03) listed a dead surface as the institution's headline API.
+generated: '2026-08-19'
+method: probed
+source: live HTTP probes run 2026-08-19
+surfaces:
+  - name: Penn OpenData API (ISC enterprise service bus)
+    x-operator: institution
+    state: retired
+    first_recorded: '2026-06-03'
+    confirmed_dead: '2026-08-19'
+    detail: >-
+      Host esb.isc-seo.upenn.edu does not resolve (DNS failure, curl exit 6). The documented
+      landing page provider.www.upenn.edu/computing/da/opendata/ returns HTTP 200 carrying
+      Penn's "Page Not Found" template — a soft-404. The Penn Labs resources page cited as its
+      humanURL does not mention the OpenData API or the ISC service bus at all. Removed from
+      apis[] in this pass; kept here so the retirement is a recorded fact rather than a silent
+      deletion.
+    evidence:
+      - url: https://esb.isc-seo.upenn.edu/
+        status: 0
+      - url: https://provider.www.upenn.edu/computing/da/opendata/
+        status: 200
+      - url: https://pennlabs.org/resources/
+        status: 200
+  - name: Penn Courses API
+    x-operator: tenant
+    x-operator-entity: Penn Labs
+    state: active
+    versioning: >-
+      No version discipline. The live OpenAPI declares info.version as an empty string, and no
+      versioned path prefix or deprecation header was observed.
+    evidence:
+      - url: https://penncourseplan.com/api/openapi/
+        status: 200
+  - name: ScholarlyCommons at Penn
+    x-operator: institution
+    state: active
+    detail: >-
+      DSpace 7.6. The OAI earliestDatestamp reported 2026-08-19T10:02:47Z, which indicates a
+      recent reindex or migration rather than the true age of the collection; records
+      themselves carry datestamps back through 2026-01.
+    evidence:
+      - url: https://repository.upenn.edu/server/api
+        status: 200
+  - name: Penn Libraries Franklin catalog
+    x-operator: institution
+    state: active
+    detail: 388,604 records reachable through the JSON:API surface at time of probe.
+    evidence:
+      - url: https://find.library.upenn.edu/catalog.json?q=penn
+        status: 200
+  - name: PennKey Identity Provider
+    x-operator: institution
+    state: active
+    detail: >-
+      Signing certificate embedded in the published metadata carries a 2011-2031 validity
+      window; the entity resolves live in InCommon MDQ.
+    evidence:
+      - url: https://idp.pennkey.upenn.edu/idp/shibboleth
+        status: 200
+  - name: Penn Mobile / labs-api-server
+    x-operator: tenant
+    x-operator-entity: Penn Labs
+    state: unknown
+    detail: >-
+      Listed on the Penn Labs resources page with a demo host data.pennlabs.org that returns
+      404, and pennmobile.org returns 404. The source repository is live; the running surface
+      is not confirmed. Not recorded as an api[] entry on that basis.
+    evidence:
+      - url: https://data.pennlabs.org
+        status: 404
+      - url: https://pennmobile.org/
+        status: 404
+      - url: https://github.com/pennlabs/labs-api-server
+        status: 200

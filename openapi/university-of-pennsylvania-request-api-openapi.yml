@@ -1,0 +1,102 @@
+openapi: 3.2.0
+info:
+  title: ScholarlyCommons at Penn — OAI-PMH Request API
+  version: '2.0'
+  description: OAI-PMH 2.0 harvesting interface for ScholarlyCommons at Penn, the University of Pennsylvania's institutional research repository. The repository runs DSpace 7.6 on a University of Pennsylvania host (repository.upenn.edu) under the Handle prefix 20.500.14332, and the harvesting endpoint is operated by the institution. This contract was DERIVED by probing the live endpoint — Penn does not publish an OpenAPI for it. The OAI-PMH protocol itself is an OpenArchives standard, not Penn engineering; what is Penn's here is that the endpoint is operated on their own domain over their own records.
+  contact:
+    name: Penn Libraries
+    url: https://www.library.upenn.edu/
+  license:
+    name: Open Archives Initiative Protocol for Metadata Harvesting 2.0
+    url: http://www.openarchives.org/OAI/openarchivesprotocol.html
+  x-operator: institution
+  x-operator-entity: University of Pennsylvania (Penn Libraries)
+  x-software: DSpace 7.6
+  x-provenance:
+    generated: '2026-08-19'
+    method: derived
+    source: https://repository.upenn.edu/server/oai/request?verb=Identify
+    note: Derived from live probes of verb=Identify, verb=ListSets, verb=ListMetadataFormats and verb=ListRecords on 2026-08-19, each returning HTTP 200 with well-formed OAI-PMH XML.
+servers:
+- url: https://repository.upenn.edu/server/oai
+  description: ScholarlyCommons at Penn OAI-PMH endpoint
+tags:
+- name: Request
+paths:
+  /request:
+    get:
+      summary: OAI-PMH request
+      description: Single OAI-PMH 2.0 entry point. The `verb` parameter selects the operation; all responses are OAI-PMH XML, including protocol-level errors, which are returned with HTTP 200 and an <error> element rather than an HTTP error status.
+      operationId: oaiRequest
+      parameters:
+      - name: verb
+        in: query
+        required: true
+        description: OAI-PMH verb.
+        schema:
+          type: string
+          enum:
+          - Identify
+          - ListMetadataFormats
+          - ListSets
+          - ListIdentifiers
+          - ListRecords
+          - GetRecord
+      - name: metadataPrefix
+        in: query
+        required: false
+        description: 'Metadata format. Formats advertised by this repository on 2026-08-19: oai_dc, qdc, uketd_dc, didl, mods, ore, mets, rdf, marc, xoai, dim, etdms.'
+        schema:
+          type: string
+          enum:
+          - oai_dc
+          - qdc
+          - uketd_dc
+          - didl
+          - mods
+          - ore
+          - mets
+          - rdf
+          - marc
+          - xoai
+          - dim
+          - etdms
+      - name: identifier
+        in: query
+        required: false
+        description: OAI identifier, e.g. oai:repository.upenn.edu:20.500.14332/28879
+        schema:
+          type: string
+      - name: set
+        in: query
+        required: false
+        description: Set spec, e.g. com_20.500.14332_1 (1. Research at Penn)
+        schema:
+          type: string
+      - name: from
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: until
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: resumptionToken
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OAI-PMH XML response (success or protocol-level <error>).
+          content:
+            text/xml:
+              schema:
+                type: string
+                description: OAI-PMH 2.0 XML document.
+      tags:
+      - Request

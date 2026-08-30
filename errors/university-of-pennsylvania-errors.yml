@@ -1,0 +1,84 @@
+name: University of Pennsylvania — Error Surface
+aid: university-of-pennsylvania
+description: >-
+  Observed error responses across the surfaces attributed to the University of Pennsylvania.
+  Captured from live probes, not inferred from documentation. Operator is recorded on every
+  entry because two different organizations are answering here.
+generated: '2026-08-19'
+method: probed
+source: live HTTP probes run 2026-08-19
+errors:
+  - surface: ScholarlyCommons at Penn — OAI-PMH
+    x-operator: institution
+    status: 200
+    condition: Unsupported OAI-PMH verb
+    body_shape: OAI-PMH XML with an <error code="badVerb"> element
+    detail: >-
+      Protocol-level errors are returned with HTTP 200 and an XML <error> element, per OAI-PMH
+      2.0. A consumer that reads status codes alone will treat a rejected request as success.
+    evidence:
+      - url: https://repository.upenn.edu/server/oai/request?verb=Bogus
+        status: 200
+  - surface: ScholarlyCommons at Penn — DSpace REST API
+    x-operator: institution
+    status: 401
+    condition: Unauthenticated read of a content collection
+    body_shape: '{"timestamp","status","error","message","path"}'
+    detail: Spring Boot problem shape. Machine-readable and consistent.
+    evidence:
+      - url: https://repository.upenn.edu/server/api/core/items?size=1
+        status: 401
+  - surface: Penn Libraries Franklin catalog JSON
+    x-operator: institution
+    status: 404
+    condition: Unknown record identifier
+    body_shape: '{"status":404,"error":"Not Found"}'
+    evidence:
+      - url: https://find.library.upenn.edu/catalog/9977575422103681/raw.json
+        status: 404
+  - surface: Penn Libraries Franklin catalog JSON
+    x-operator: institution
+    status: 200
+    condition: Query matching nothing
+    body_shape: JSON:API document with empty data[]
+    detail: An empty result is a 200 with meta.pages.total_count 0, not a 404. Correct.
+    evidence:
+      - url: https://find.library.upenn.edu/catalog.json?q=zzzzznotathing
+        status: 200
+  - surface: Penn Courses API
+    x-operator: tenant
+    x-operator-entity: Penn Labs
+    status: 403
+    condition: Unauthenticated read of a user-scoped or review resource
+    body_shape: '{"detail":"..."}'
+    detail: >-
+      Django REST Framework default. Returns 403 rather than 401 with no WWW-Authenticate
+      header, so an agent cannot discover the challenge from the response.
+    evidence:
+      - url: https://penncoursereview.com/api/review/course/CIS-120
+        status: 403
+  - surface: Penn Courses API
+    x-operator: tenant
+    x-operator-entity: Penn Labs
+    status: 404
+    condition: Unknown course code
+    body_shape: '{"detail":"No Course matches the given query."}'
+    evidence:
+      - url: https://penncourseplan.com/api/base/current/courses/NOTACOURSE/
+        status: 404
+  - surface: Penn OpenData API (ISC enterprise service bus)
+    x-operator: institution
+    status: soft-404
+    condition: Documentation retrieval
+    detail: >-
+      The documented landing page returns HTTP 200 carrying Penn's "Page not found" template,
+      and the API host esb.isc-seo.upenn.edu does not resolve at all. This is the retirement of
+      a surface the previous profile still listed as live.
+    evidence:
+      - url: https://provider.www.upenn.edu/computing/da/opendata/
+        status: 200
+      - url: https://esb.isc-seo.upenn.edu/
+        status: 0
+gaps:
+  - No surface in this profile publishes RFC 9457 problem+json.
+  - No published error catalog or status-code reference was found on any Penn host.

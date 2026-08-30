@@ -1,0 +1,100 @@
+name: University of Pennsylvania — Authentication Posture
+aid: university-of-pennsylvania
+description: >-
+  How each machine-readable surface attributed to the University of Pennsylvania authenticates,
+  split by operator. Institution-operated surfaces are open-read library infrastructure plus a
+  SAML identity provider; the course-registration surfaces that look like Penn APIs are operated
+  by Penn Labs, a student organization, and authenticate against Penn Labs Accounts.
+generated: '2026-08-19'
+method: probed
+source: live HTTP probes run 2026-08-19
+surfaces:
+  - name: ScholarlyCommons at Penn — OAI-PMH
+    x-operator: institution
+    scheme: none
+    detail: >-
+      Anonymous harvesting. verb=Identify, ListSets, ListMetadataFormats and ListRecords all
+      returned 200 with no credential.
+    evidence:
+      - url: https://repository.upenn.edu/server/oai/request?verb=Identify
+        status: 200
+  - name: ScholarlyCommons at Penn — DSpace REST API
+    x-operator: institution
+    scheme: session
+    detail: >-
+      DSpace 7.6 REST. The API root and /server/api/authn are anonymous; content endpoints
+      require authentication. /server/api/core/items returned 401 with
+      {"status":401,"error":"Unauthorized","message":"Authentication is required"}. Login,
+      logout and status links are advertised at /server/api/authn. Note the AUTHN CONTRACT IS
+      DSPACE'S, not Penn's engineering — Penn operates the deployment on its own domain.
+    evidence:
+      - url: https://repository.upenn.edu/server/api/authn
+        status: 200
+      - url: https://repository.upenn.edu/server/api/core/items?size=1
+        status: 401
+  - name: Penn Libraries Franklin catalog JSON
+    x-operator: institution
+    scheme: none
+    detail: >-
+      Anonymous read. /catalog.json and /catalog/{id}.json both returned 200 with no
+      credential, consistent with Penn Libraries' published open-metadata policy.
+    evidence:
+      - url: https://find.library.upenn.edu/catalog.json?q=penn
+        status: 200
+      - url: https://www.library.upenn.edu/about/policies/open-metadata
+        status: 200
+  - name: Colenda digital repository search JSON
+    x-operator: institution
+    scheme: none
+    detail: Anonymous read; Blacklight/Solr JSON returned 200 without credential.
+    evidence:
+      - url: https://colenda.library.upenn.edu/catalog.json?q=test
+        status: 200
+  - name: PennKey Identity Provider
+    x-operator: institution
+    scheme: saml
+    detail: >-
+      SAML 2.0 / Shibboleth identity provider. This is the surface Penn actually operates in
+      the authentication domain: a signed EntityDescriptor published at a well-known location
+      and resolvable through InCommon MDQ. It authenticates humans into relying parties, it is
+      not an API credential mechanism.
+    evidence:
+      - url: https://idp.pennkey.upenn.edu/idp/shibboleth
+        status: 200
+      - url: https://mdq.incommon.org/entities/https%3A%2F%2Fidp.pennkey.upenn.edu%2Fidp%2Fshibboleth
+        status: 200
+  - name: Penn Courses API (Penn Course Alert / Plan / Review / Degree Plan)
+    x-operator: tenant
+    x-operator-entity: Penn Labs
+    scheme: session
+    detail: >-
+      Mixed. Public course data reads anonymously — /api/base/current/search/courses/ returned
+      200 JSON. Anything user-scoped requires a Penn Labs Accounts session brokered by PennKey;
+      /api/review/course/CIS-120 returned 403 with
+      {"detail":"Authentication credentials were not provided."}. The live OpenAPI at
+      /api/openapi/ declares NO components.securitySchemes, so the authentication requirement
+      is documented in prose only and is not machine-readable.
+    evidence:
+      - url: https://penncourseplan.com/api/base/current/search/courses/?search=CIS
+        status: 200
+      - url: https://penncoursereview.com/api/review/course/CIS-120
+        status: 403
+      - url: https://penncourseplan.com/api/openapi/
+        status: 200
+  - name: Penn Clubs API
+    x-operator: tenant
+    x-operator-entity: Penn Labs
+    scheme: session
+    detail: >-
+      Public club directory reads anonymously (/api/clubs returned 200 JSON); write and
+      membership operations require a Penn Labs Accounts session.
+    evidence:
+      - url: https://pennclubs.com/api/clubs?page=1
+        status: 200
+gaps:
+  - >-
+    No institution-operated surface publishes an OAuth 2.0 or OpenID Connect discovery
+    document. https://www.upenn.edu/.well-known/security.txt returned 404.
+  - >-
+    The one contract in this profile with a formal OpenAPI (Penn Courses) declares no security
+    schemes at all, despite enforcing authentication at runtime.

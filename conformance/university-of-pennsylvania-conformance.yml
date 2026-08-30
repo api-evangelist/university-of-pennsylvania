@@ -1,0 +1,119 @@
+name: University of Pennsylvania — Education Regime Domain Standard Conformance
+aid: university-of-pennsylvania
+description: >-
+  Conformance of University of Pennsylvania INSTITUTION-OPERATED surfaces against the Kin Score
+  `education` regulatory regime standards[]. Only surfaces whose x-operator is `institution` are
+  eligible here — Penn Labs surfaces (penncourseplan.com, penncoursereview.com, pennclubs.com)
+  are operated by a student organization and are recorded as tenant, so they cannot carry
+  conformance credit for the institution. Every hit points at an exact live location.
+  Reward-only: standards with no evidence are recorded as not_found, never inferred.
+generated: '2026-08-19'
+method: probed
+source: live HTTP probes run 2026-08-19 from a browser User-Agent
+regime: education
+standards:
+  - id: oai-pmh
+    name: Open Archives Initiative Protocol for Metadata Harvesting 2.0
+    status: conformant
+    x-operator: institution
+    surface: ScholarlyCommons at Penn
+    evidence:
+      - url: https://repository.upenn.edu/server/oai/request?verb=Identify
+        status: 200
+        detail: >-
+          Well-formed OAI-PMH 2.0 response. repositoryName "ScholarlyCommons at Penn",
+          protocolVersion 2.0, granularity YYYY-MM-DDThh:mm:ssZ, deletedRecord transient.
+      - url: https://repository.upenn.edu/server/oai/request?verb=ListMetadataFormats
+        status: 200
+        detail: >-
+          Twelve metadata formats advertised: oai_dc, qdc, uketd_dc, didl, mods, ore, mets,
+          rdf, marc, xoai, dim, etdms.
+      - url: https://repository.upenn.edu/server/oai/request?verb=ListRecords&metadataPrefix=oai_dc
+        status: 200
+        detail: >-
+          Real Penn records returned, e.g.
+          oai:repository.upenn.edu:20.500.14332/28879 — not an empty or stub response.
+    contract: openapi/university-of-pennsylvania-scholarlycommons-oai-pmh-openapi.yml
+    defect:
+      severity: low
+      detail: >-
+        DSpace default configuration is still in place on two Identify fields: adminEmail is
+        `dspace-help@myu.edu` and repositoryIdentifier is the unsubstituted template
+        `${oai.identifier.prefix}`. The endpoint is conformant and serving real records; the
+        identity block is unconfigured.
+  - id: shibboleth
+    name: Shibboleth Identity Provider
+    status: conformant
+    x-operator: institution
+    surface: PennKey Identity Provider
+    evidence:
+      - url: https://idp.pennkey.upenn.edu/idp/shibboleth
+        status: 200
+        detail: >-
+          Signed SAML EntityDescriptor served as application/xml with the Shibboleth metadata
+          extension namespace urn:mace:shibboleth:metadata:1.0 present, entityID
+          https://idp.pennkey.upenn.edu/idp/shibboleth.
+  - id: saml
+    name: SAML 2.0 Metadata
+    status: conformant
+    x-operator: institution
+    surface: PennKey Identity Provider / InCommon federation entry
+    evidence:
+      - url: https://idp.pennkey.upenn.edu/idp/shibboleth
+        status: 200
+        detail: >-
+          urn:oasis:names:tc:SAML:2.0:metadata EntityDescriptor, XML-DSig signed
+          (rsa-sha256), X.509 signing certificate embedded.
+      - url: https://mdq.incommon.org/entities/https%3A%2F%2Fidp.pennkey.upenn.edu%2Fidp%2Fshibboleth
+        status: 200
+        detail: >-
+          Penn's IdP resolves in the InCommon MDQ aggregate as
+          application/samlmetadata+xml, confirming live federation membership rather than a
+          self-asserted claim.
+  - id: orcid
+    status: not_found
+    detail: >-
+      Penn Libraries publishes an ORCID guide for researchers, but that is prose. No
+      institution-operated contract was found exposing ORCID identifiers — the DSpace 7.6 API
+      root at repository.upenn.edu/server/api advertises no ORCID endpoints.
+    evidence:
+      - url: https://guides.library.upenn.edu/orcid
+        status: 200
+      - url: https://repository.upenn.edu/server/api
+        status: 200
+  - id: datacite
+    status: not_found
+    detail: >-
+      ScholarlyCommons mints Handles under prefix 20.500.14332, not DataCite DOIs. No DataCite
+      surface found on a Penn-operated host.
+    evidence:
+      - url: https://repository.upenn.edu/server/oai/request?verb=ListRecords&metadataPrefix=oai_dc
+        status: 200
+  - id: crossref
+    status: not_found
+    detail: No institution-operated Crossref deposit or query surface found.
+  - id: scim
+    status: not_found
+    detail: >-
+      Penn operates identity federation via Shibboleth/SAML; no public SCIM provisioning
+      contract is published.
+  - id: lti
+    status: not_found
+    detail: >-
+      Penn's LMS (Canvas) supports LTI, but the contract is Instructure's and runs on a vendor
+      tenant. No institution-published LTI surface found.
+  - id: oneroster
+    status: not_found
+  - id: ed-fi
+    status: not_found
+  - id: caliper
+    status: not_found
+  - id: qti
+    status: not_found
+summary:
+  conformant: 3
+  not_found: 9
+  note: >-
+    All three hits are library and identity infrastructure, which is exactly where a research
+    university's genuinely institution-operated machine-readable surface lives. None of the
+    course-registration surfaces contribute, because Penn does not operate them.
