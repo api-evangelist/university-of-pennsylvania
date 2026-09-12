@@ -2,23 +2,18 @@
   "repo": "university-of-pennsylvania",
   "feeds": [
     {
-      "source": "https://penntoday.upenn.edu/rss.xml",
-      "feed_url": "https://penntoday.upenn.edu/rss.xml",
-      "title": "",
-      "saved": 0,
-      "method": "feed",
-      "nature": "undetermined",
-      "nature_basis": null
-    },
-    {
       "source": "https://www.upenn.edu/about/privacy-policy",
       "feed_url": "https://www.upenn.edu/about/privacy-policy",
       "title": "",
       "saved": 0,
       "method": "none"
+    },
+    {
+      "source": "https://penntoday.upenn.edu/rss.xml",
+      "error": "HTTPError"
     }
   ],
-  "fetched": "2026-08-30T22:33:40Z",
+  "fetched": "2026-09-06T19:17:18Z",
   "post_count": 10,
   "feed_nature": "undetermined",
   "feed_nature_basis": null,
