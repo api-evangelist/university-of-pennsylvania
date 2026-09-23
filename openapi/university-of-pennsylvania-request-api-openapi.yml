@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: ScholarlyCommons at Penn — OAI-PMH Request API
   version: '2.0'
-  description: OAI-PMH 2.0 harvesting interface for ScholarlyCommons at Penn, the University of Pennsylvania's institutional research repository. The repository runs DSpace 7.6 on a University of Pennsylvania host (repository.upenn.edu) under the Handle prefix 20.500.14332, and the harvesting endpoint is operated by the institution. This contract was DERIVED by probing the live endpoint — Penn does not publish an OpenAPI for it. The OAI-PMH protocol itself is an OpenArchives standard, not Penn engineering; what is Penn's here is that the endpoint is operated on their own domain over their own records.
+  description: OAI-PMH 2.0 harvesting interface for ScholarlyCommons at Penn, the University of Pennsylvania's institutional research repository.
   contact:
     name: Penn Libraries
     url: https://www.library.upenn.edu/
@@ -26,7 +26,7 @@ paths:
   /request:
     get:
       summary: OAI-PMH request
-      description: Single OAI-PMH 2.0 entry point. The `verb` parameter selects the operation; all responses are OAI-PMH XML, including protocol-level errors, which are returned with HTTP 200 and an <error> element rather than an HTTP error status.
+      description: Single OAI-PMH 2.0 entry point. The `verb` parameter selects the operation; all responses are OAI-PMH XML, including protocol-level errors, which are returned with HTTP 200 and an element rather than an HTTP error status.
       operationId: oaiRequest
       parameters:
       - name: verb

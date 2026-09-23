@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: Penn Libraries Franklin — JSON Catalog API
   version: '1.0'
-  description: Machine-readable JSON:API surface of Franklin, the University of Pennsylvania Libraries discovery catalog at find.library.upenn.edu. Franklin is a Blacklight application operated by Penn Libraries on a University of Pennsylvania host; every Blacklight page has a `.json` twin, which makes the catalog harvestable without a vendor contract. Penn Libraries publishes an open-metadata policy that explicitly permits reuse of this bibliographic data. This contract was DERIVED by probing live responses — Penn publishes no OpenAPI for it.
+  description: Machine-readable JSON:API surface of Franklin, the University of Pennsylvania Libraries discovery catalog at find.library.upenn.edu.
   contact:
     name: Penn Libraries
     url: https://www.library.upenn.edu/
@@ -28,7 +28,7 @@ paths:
       - Catalog
       summary: Search the catalog
       operationId: searchCatalog
-      description: Paginated JSON:API search over Penn Libraries bibliographic records. Facet parameters follow Blacklight's `f[<facet_field>][]` convention.
+      description: Paginated JSON:API search over Penn Libraries bibliographic records. Facet parameters follow Blacklight's `f[][]` convention.
       parameters:
       - name: q
         in: query
@@ -96,6 +96,17 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
+    Resource:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          type: object
+        links:
+          type: object
     RecordDocument:
       type: object
       properties:
@@ -161,14 +172,3 @@ components:
           type: array
           items:
             type: object
-    Resource:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-        attributes:
-          type: object
-        links:
-          type: object
