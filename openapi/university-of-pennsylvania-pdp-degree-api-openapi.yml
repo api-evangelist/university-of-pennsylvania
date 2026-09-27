@@ -25,7 +25,7 @@ tags:
 paths:
   /api/degree/degrees:
     get:
-      operationId: List Degrees
+      operationId: ListDegrees
       description: '(GET `/api/degree/degrees`)
 
 
@@ -143,9 +143,11 @@ paths:
       - '[PDP] Degree'
       summary: List degrees
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: List Degrees
   /api/degree/degrees/{id}:
     get:
-      operationId: Retrieve Degree
+      operationId: RetrieveDegree
       description: '(GET `/api/degree/degrees/{id}`)
 
 
@@ -266,6 +268,8 @@ paths:
       - '[PDP] Degree'
       summary: Retrieve degree
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Retrieve Degree
 x-tagGroups:
 - name: Penn Course Plan
   tags:

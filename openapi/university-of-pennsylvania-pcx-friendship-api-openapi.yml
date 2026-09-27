@@ -25,7 +25,7 @@ tags:
 paths:
   /api/base/friendship/:
     get:
-      operationId: List Friendships
+      operationId: ListFriendships
       description: '(GET `/api/base/friendship/`)
 
 
@@ -47,8 +47,10 @@ paths:
       - '[PCx] Friendship'
       summary: List friendships
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: List Friendships
     post:
-      operationId: Create Friendship
+      operationId: CreateFriendship
       description: '(POST `/api/base/friendship/`)
 
 
@@ -88,8 +90,10 @@ paths:
       - '[PCx] Friendship'
       summary: Create friendship
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Create Friendship
     delete:
-      operationId: Destroy Friendship
+      operationId: DestroyFriendship
       description: '(DELETE `/api/base/friendship/`)
 
 
@@ -123,6 +127,8 @@ paths:
       - '[PCx] Friendship'
       summary: Destroy friendship
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Destroy Friendship
 x-tagGroups:
 - name: Penn Course Plan
   tags:

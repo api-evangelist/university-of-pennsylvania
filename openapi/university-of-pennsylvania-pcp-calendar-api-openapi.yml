@@ -25,7 +25,7 @@ tags:
 paths:
   /api/plan/{schedule_pk}/calendar/:
     get:
-      operationId: Get Calendar
+      operationId: GetCalendar
       description: '(GET `/api/plan/{schedule_pk}/calendar/`)
 
 
@@ -45,6 +45,8 @@ paths:
       - '[PCP] Calendar'
       summary: Get calendar
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Calendar
 x-tagGroups:
 - name: Penn Course Plan
   tags:

@@ -25,7 +25,7 @@ tags:
 paths:
   /api/base/health/:
     get:
-      operationId: List Healths
+      operationId: ListHealths
       description: (GET `/api/base/health/`)
       parameters: []
       responses:
@@ -40,6 +40,8 @@ paths:
       - '[PCx] Healths'
       summary: List healths
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: List Healths
 x-tagGroups:
 - name: Penn Course Plan
   tags:

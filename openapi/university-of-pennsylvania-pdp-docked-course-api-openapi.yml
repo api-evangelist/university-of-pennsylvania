@@ -25,7 +25,7 @@ tags:
 paths:
   /api/degree/docked:
     get:
-      operationId: List Docked Courses
+      operationId: ListDockedCourses
       description: '(GET `/api/degree/docked`)
 
 
@@ -56,8 +56,10 @@ paths:
       - '[PDP] Docked Course'
       summary: List docked courses
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: List Docked Courses
     post:
-      operationId: Create Docked Course
+      operationId: CreateDockedCourse
       description: '(POST `/api/degree/docked`)
 
 
@@ -105,9 +107,11 @@ paths:
       - '[PDP] Docked Course'
       summary: Create docked course
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Create Docked Course
   /api/degree/docked/{full_code}:
     get:
-      operationId: Retrieve Docked Course
+      operationId: RetrieveDockedCourse
       description: '(GET `/api/degree/docked/{full_code}`)
 
 
@@ -142,8 +146,10 @@ paths:
       - '[PDP] Docked Course'
       summary: Retrieve docked course
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Retrieve Docked Course
     delete:
-      operationId: Destroy Docked Course
+      operationId: DestroyDockedCourse
       description: '(DELETE `/api/degree/docked/{full_code}`)
 
 
@@ -162,6 +168,8 @@ paths:
       - '[PDP] Docked Course'
       summary: Destroy docked course
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Destroy Docked Course
 x-tagGroups:
 - name: Penn Course Plan
   tags:

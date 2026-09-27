@@ -25,7 +25,7 @@ tags:
 paths:
   /api/base/restrictions/:
     get:
-      operationId: List Ngss Restrictions
+      operationId: ListNgssRestrictions
       description: '(GET `/api/base/restrictions/`)
 
 
@@ -81,6 +81,8 @@ paths:
       - '[PCx] NGSS Restrictions'
       summary: List ngss restrictions
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: List Ngss Restrictions
 x-tagGroups:
 - name: Penn Course Plan
   tags:

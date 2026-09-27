@@ -25,7 +25,7 @@ tags:
 paths:
   /api/degree/degreeplans:
     post:
-      operationId: Create Degree Plan Detail
+      operationId: CreateDegreePlanDetail
       description: '(POST `/api/degree/degreeplans`)
 
 
@@ -90,9 +90,11 @@ paths:
       - '[PDP] Degree Plan Detail'
       summary: Create degree plan detail
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Create Degree Plan Detail
   /api/degree/degreeplans/{id}:
     get:
-      operationId: Retrieve Degree Plan Detail
+      operationId: RetrieveDegreePlanDetail
       description: '(GET `/api/degree/degreeplans/{id}`)
 
 
@@ -135,8 +137,10 @@ paths:
       - '[PDP] Degree Plan Detail'
       summary: Retrieve degree plan detail
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Retrieve Degree Plan Detail
     put:
-      operationId: Update Degree Plan Detail
+      operationId: UpdateDegreePlanDetail
       description: '(PUT `/api/degree/degreeplans/{id}`)
 
 
@@ -207,8 +211,10 @@ paths:
       - '[PDP] Degree Plan Detail'
       summary: Update degree plan detail
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Update Degree Plan Detail
     patch:
-      operationId: Partial Update Degree Plan Detail
+      operationId: PartialUpdateDegreePlanDetail
       description: '(PATCH `/api/degree/degreeplans/{id}`)
 
 
@@ -279,8 +285,10 @@ paths:
       - '[PDP] Degree Plan Detail'
       summary: Partial update degree plan detail
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Partial Update Degree Plan Detail
     delete:
-      operationId: Destroy Degree Plan Detail
+      operationId: DestroyDegreePlanDetail
       description: '(DELETE `/api/degree/degreeplans/{id}`)
 
 
@@ -299,9 +307,11 @@ paths:
       - '[PDP] Degree Plan Detail'
       summary: Destroy degree plan detail
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Destroy Degree Plan Detail
   /api/degree/degreeplans/{id}/copy:
     post:
-      operationId: Copy Degree Plan Detail
+      operationId: CopyDegreePlanDetail
       description: '(POST `/api/degree/degreeplans/{id}/copy`)
 
 
@@ -372,9 +382,11 @@ paths:
       - '[PDP] Degree Plan Detail'
       summary: Copy degree plan detail
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Copy Degree Plan Detail
   /api/degree/degreeplans/{id}/degrees:
     post:
-      operationId: Degrees Degree Plan Detail
+      operationId: DegreesDegreePlanDetail
       description: '(POST `/api/degree/degreeplans/{id}/degrees`)
 
 
@@ -445,8 +457,10 @@ paths:
       - '[PDP] Degree Plan Detail'
       summary: Degrees degree plan detail
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Degrees Degree Plan Detail
     delete:
-      operationId: Degrees Degree Plan Detail
+      operationId: deleteApiDegreeDegreeplansByIdDegrees
       description: '(DELETE `/api/degree/degreeplans/{id}/degrees`)
 
 
@@ -465,6 +479,8 @@ paths:
       - '[PDP] Degree Plan Detail'
       summary: Degrees degree plan detail
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Degrees Degree Plan Detail
 x-tagGroups:
 - name: Penn Course Plan
   tags:

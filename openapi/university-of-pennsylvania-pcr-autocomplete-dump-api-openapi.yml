@@ -25,7 +25,7 @@ tags:
 paths:
   /api/review/autocomplete:
     get:
-      operationId: Retrieve Autocomplete Dump
+      operationId: RetrieveAutocompleteDump
       description: '(GET `/api/review/autocomplete`)
 
 
@@ -93,6 +93,8 @@ paths:
       - '[PCR] Autocomplete Dump'
       summary: Retrieve autocomplete dump
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Retrieve Autocomplete Dump
 x-tagGroups:
 - name: Penn Course Plan
   tags:

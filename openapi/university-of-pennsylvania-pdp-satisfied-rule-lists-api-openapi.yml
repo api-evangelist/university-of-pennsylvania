@@ -25,7 +25,7 @@ tags:
 paths:
   /api/degree/satisfied-rule-list/{degree_plan_id}/{full_code}/{rule_id}:
     get:
-      operationId: Retrieve Satisfied Rule List
+      operationId: RetrieveSatisfiedRuleList
       description: '(GET `/api/degree/satisfied-rule-list/{degree_plan_id}/{full_code}/{rule_id}`)
 
 
@@ -58,6 +58,8 @@ paths:
       - '[PDP] Satisfied Rule Lists'
       summary: Retrieve satisfied rule list
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Retrieve Satisfied Rule List
 x-tagGroups:
 - name: Penn Course Plan
   tags:

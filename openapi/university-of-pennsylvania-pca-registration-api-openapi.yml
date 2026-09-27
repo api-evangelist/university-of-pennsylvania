@@ -27,7 +27,7 @@ tags:
 paths:
   /api/alert/registrations/:
     get:
-      operationId: List Registrations
+      operationId: ListRegistrations
       description: '(GET `/api/alert/registrations/`)
 
 
@@ -275,8 +275,10 @@ paths:
       - '[PCA] Registration'
       summary: List registrations
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: List Registrations
     post:
-      operationId: Create Registration
+      operationId: CreateRegistration
       description: '(POST `/api/alert/registrations/`)
 
 
@@ -562,9 +564,11 @@ paths:
       - '[PCA] Registration'
       summary: Create registration
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Create Registration
   /api/alert/registrations/{id}/:
     get:
-      operationId: Retrieve Registration
+      operationId: RetrieveRegistration
       description: '(GET `/api/alert/registrations/{id}/`)
 
 
@@ -803,8 +807,10 @@ paths:
       - '[PCA] Registration'
       summary: Retrieve registration
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Retrieve Registration
     put:
-      operationId: Update Registration
+      operationId: UpdateRegistration
       description: '(PUT `/api/alert/registrations/{id}/`)
 
 
@@ -1103,6 +1109,8 @@ paths:
       - '[PCA] Registration'
       summary: Update registration
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Update Registration
 x-tagGroups:
 - name: Penn Course Plan
   tags:

@@ -96,17 +96,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    Resource:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-        attributes:
-          type: object
-        links:
-          type: object
     RecordDocument:
       type: object
       properties:
@@ -118,13 +107,6 @@ components:
           type: array
           items:
             type: object
-    Error:
-      type: object
-      properties:
-        status:
-          type: integer
-        error:
-          type: string
     SearchResult:
       type: object
       properties:
@@ -172,3 +154,21 @@ components:
           type: array
           items:
             type: object
+    Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        error:
+          type: string
+    Resource:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          type: object
+        links:
+          type: object

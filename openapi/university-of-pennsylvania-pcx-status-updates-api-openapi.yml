@@ -25,7 +25,7 @@ tags:
 paths:
   /api/base/statusupdate/{full_code}/:
     get:
-      operationId: List Status Updates
+      operationId: ListStatusUpdates
       description: '(GET `/api/base/statusupdate/{full_code}/`)
 
 
@@ -87,6 +87,8 @@ paths:
       - '[PCx] Status Updates'
       summary: List status updates
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: List Status Updates
 x-tagGroups:
 - name: Penn Course Plan
   tags:

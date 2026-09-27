@@ -31,7 +31,7 @@ tags:
 paths:
   /api/plan/schedules/:
     get:
-      operationId: List Schedules
+      operationId: ListSchedules
       description: '(GET `/api/plan/schedules/`)
 
 
@@ -99,8 +99,10 @@ paths:
       - '[PCP] Schedule'
       summary: List schedules
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: List Schedules
     post:
-      operationId: Create Schedule
+      operationId: CreateSchedule
       description: '(POST `/api/plan/schedules/`)
 
 
@@ -219,9 +221,11 @@ paths:
       - '[PCP] Schedule'
       summary: Create schedule
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Create Schedule
   /api/plan/schedules/{id}/:
     get:
-      operationId: Retrieve Schedule
+      operationId: RetrieveSchedule
       description: '(GET `/api/plan/schedules/{id}/`)
 
 
@@ -297,8 +301,10 @@ paths:
       - '[PCP] Schedule'
       summary: Retrieve schedule
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Retrieve Schedule
     put:
-      operationId: Update Schedule
+      operationId: UpdateSchedule
       description: '(PUT `/api/plan/schedules/{id}/`)
 
 
@@ -410,8 +416,10 @@ paths:
       - '[PCP] Schedule'
       summary: Update schedule
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Update Schedule
     delete:
-      operationId: Destroy Schedule
+      operationId: DestroySchedule
       description: '(DELETE `/api/plan/schedules/{id}/`)
 
 
@@ -441,6 +449,8 @@ paths:
       - '[PCP] Schedule'
       summary: Destroy schedule
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Destroy Schedule
 x-tagGroups:
 - name: Penn Course Plan
   tags:

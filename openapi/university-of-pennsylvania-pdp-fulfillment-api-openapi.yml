@@ -25,7 +25,7 @@ tags:
 paths:
   /api/degree/degreeplans/{degreeplan_pk}/fulfillments:
     get:
-      operationId: List Fulfillments
+      operationId: ListFulfillments
       description: '(GET `/api/degree/degreeplans/{degreeplan_pk}/fulfillments`)
 
 
@@ -109,8 +109,10 @@ paths:
       - '[PDP] Fulfillment'
       summary: List fulfillments
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: List Fulfillments
     post:
-      operationId: Create Fulfillment
+      operationId: CreateFulfillment
       description: '(POST `/api/degree/degreeplans/{degreeplan_pk}/fulfillments`)
 
 
@@ -259,9 +261,11 @@ paths:
       - '[PDP] Fulfillment'
       summary: Create fulfillment
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Create Fulfillment
   /api/degree/degreeplans/{degreeplan_pk}/fulfillments/{full_code}:
     get:
-      operationId: Retrieve Fulfillment
+      operationId: RetrieveFulfillment
       description: '(GET `/api/degree/degreeplans/{degreeplan_pk}/fulfillments/{full_code}`)
 
 
@@ -349,8 +353,10 @@ paths:
       - '[PDP] Fulfillment'
       summary: Retrieve fulfillment
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Retrieve Fulfillment
     delete:
-      operationId: Destroy Fulfillment
+      operationId: DestroyFulfillment
       description: '(DELETE `/api/degree/degreeplans/{degreeplan_pk}/fulfillments/{full_code}`)
 
 
@@ -375,9 +381,11 @@ paths:
       - '[PDP] Fulfillment'
       summary: Destroy fulfillment
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Destroy Fulfillment
   /api/degree/degreeplans/{degreeplan_pk}/fulfillments/{full_code}/override:
     post:
-      operationId: Add Override Fulfillment
+      operationId: AddOverrideFulfillment
       description: '(POST `/api/degree/degreeplans/{degreeplan_pk}/fulfillments/{full_code}/override`)
 
 
@@ -539,9 +547,11 @@ paths:
       - '[PDP] Fulfillment'
       summary: Add override fulfillment
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Add Override Fulfillment
   /api/degree/degreeplans/{degreeplan_pk}/fulfillments/{full_code}/switch-rule:
     post:
-      operationId: Switch Rule Fulfillment
+      operationId: SwitchRuleFulfillment
       description: '(POST `/api/degree/degreeplans/{degreeplan_pk}/fulfillments/{full_code}/switch-rule`)
 
 
@@ -706,9 +716,11 @@ paths:
       - '[PDP] Fulfillment'
       summary: Switch rule fulfillment
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Switch Rule Fulfillment
   /api/degree/degreeplans/{degreeplan_pk}/fulfillments/{full_code}/override/{rule_id}:
     delete:
-      operationId: Remove Override Fulfillment
+      operationId: RemoveOverrideFulfillment
       description: '(DELETE `/api/degree/degreeplans/{degreeplan_pk}/fulfillments/{full_code}/override/{rule_id}`)
 
 
@@ -744,6 +756,8 @@ paths:
       - '[PDP] Fulfillment'
       summary: Remove override fulfillment
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Remove Override Fulfillment
 x-tagGroups:
 - name: Penn Course Plan
   tags:

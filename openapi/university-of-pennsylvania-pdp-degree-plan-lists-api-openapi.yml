@@ -25,7 +25,7 @@ tags:
 paths:
   /api/degree/degreeplans:
     get:
-      operationId: List Degree Plan Lists
+      operationId: ListDegreePlanLists
       description: '(GET `/api/degree/degreeplans`)
 
 
@@ -60,6 +60,8 @@ paths:
       - '[PDP] Degree Plan Lists'
       summary: List degree plan lists
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: List Degree Plan Lists
 x-tagGroups:
 - name: Penn Course Plan
   tags:

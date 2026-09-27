@@ -25,7 +25,7 @@ tags:
 paths:
   /api/degree/onboard-from-transcript/{degree_plan_id}:
     post:
-      operationId: Create Onboard From Transcript
+      operationId: CreateOnboardFromTranscript
       description: '(POST `/api/degree/onboard-from-transcript/{degree_plan_id}`)
 
 
@@ -53,6 +53,8 @@ paths:
       - '[PDP] Onboard From Transcript'
       summary: Create onboard from transcript
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Create Onboard From Transcript
 x-tagGroups:
 - name: Penn Course Plan
   tags:

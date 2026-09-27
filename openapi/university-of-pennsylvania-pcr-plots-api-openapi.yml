@@ -25,7 +25,7 @@ tags:
 paths:
   /api/review/course_plots/{course_code}:
     get:
-      operationId: Retrieve Plots
+      operationId: RetrievePlots
       description: '(GET `/api/review/course_plots/{course_code}`)
 
 
@@ -220,6 +220,8 @@ paths:
       - '[PCR] Plots'
       summary: Retrieve plots
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Retrieve Plots
 x-tagGroups:
 - name: Penn Course Plan
   tags:

@@ -25,7 +25,7 @@ tags:
 paths:
   /api/plan/breaks/:
     get:
-      operationId: List Breaks
+      operationId: ListBreaks
       description: '(GET `/api/plan/breaks/`)
 
 
@@ -114,8 +114,10 @@ paths:
       - '[PCP] Break'
       summary: List breaks
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: List Breaks
     post:
-      operationId: Create Break
+      operationId: CreateBreak
       description: '(POST `/api/plan/breaks/`)
 
 
@@ -277,9 +279,11 @@ paths:
       - '[PCP] Break'
       summary: Create break
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Create Break
   /api/plan/breaks/{id}/:
     get:
-      operationId: Retrieve Break
+      operationId: RetrieveBreak
       description: '(GET `/api/plan/breaks/{id}/`)
 
 
@@ -372,8 +376,10 @@ paths:
       - '[PCP] Break'
       summary: Retrieve break
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Retrieve Break
     put:
-      operationId: Update Break
+      operationId: UpdateBreak
       description: '(PUT `/api/plan/breaks/{id}/`)
 
 
@@ -541,8 +547,10 @@ paths:
       - '[PCP] Break'
       summary: Update break
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Update Break
     patch:
-      operationId: Partial Update Break
+      operationId: PartialUpdateBreak
       description: '(PATCH `/api/plan/breaks/{id}/`)
 
 
@@ -710,8 +718,10 @@ paths:
       - '[PCP] Break'
       summary: Partial update break
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Partial Update Break
     delete:
-      operationId: Destroy Break
+      operationId: DestroyBreak
       description: '(DELETE `/api/plan/breaks/{id}/`)
 
 
@@ -732,6 +742,8 @@ paths:
       - '[PCP] Break'
       summary: Destroy break
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Destroy Break
 x-tagGroups:
 - name: Penn Course Plan
   tags:

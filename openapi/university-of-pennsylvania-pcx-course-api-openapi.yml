@@ -25,7 +25,7 @@ tags:
 paths:
   /api/base/{semester}/courses/:
     get:
-      operationId: List Courses
+      operationId: ListCourses
       description: '(GET `/api/base/{semester}/courses/`)
 
 
@@ -139,9 +139,11 @@ paths:
       - '[PCx] Course'
       summary: List courses
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: List Courses
   /api/base/{semester}/search/courses/:
     get:
-      operationId: Course Search
+      operationId: CourseSearch
       description: '(GET `/api/base/{semester}/search/courses/`)
 
 
@@ -396,9 +398,11 @@ paths:
       - '[PCx] Course'
       summary: Course search
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Course Search
   /api/base/{semester}/courses/{full_code}/:
     get:
-      operationId: Retrieve Course
+      operationId: RetrieveCourse
       description: '(GET `/api/base/{semester}/courses/{full_code}/`)
 
 
@@ -589,6 +593,8 @@ paths:
       - '[PCx] Course'
       summary: Retrieve course
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Retrieve Course
 x-tagGroups:
 - name: Penn Course Plan
   tags:

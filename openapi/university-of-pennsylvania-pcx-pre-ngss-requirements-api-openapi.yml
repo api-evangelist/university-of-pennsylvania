@@ -25,7 +25,7 @@ tags:
 paths:
   /api/base/{semester}/pre-ngss-requirements/:
     get:
-      operationId: List Pre-Ngss Requirements
+      operationId: ListPre-NgssRequirements
       description: '(GET `/api/base/{semester}/pre-ngss-requirements/`)
 
 
@@ -103,6 +103,8 @@ paths:
       - '[PCx] Pre-NGSS Requirements'
       summary: List pre ngss requirements
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: List Pre-Ngss Requirements
 x-tagGroups:
 - name: Penn Course Plan
   tags:

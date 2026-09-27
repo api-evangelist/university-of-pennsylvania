@@ -33,7 +33,7 @@ tags:
 paths:
   /api/alert/registrationhistory/:
     get:
-      operationId: List Registration History
+      operationId: ListRegistrationHistory
       description: '(GET `/api/alert/registrationhistory/`)
 
 
@@ -256,9 +256,11 @@ paths:
       - '[PCA] Registration History'
       summary: List registration history
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: List Registration History
   /api/alert/registrationhistory/{id}/:
     get:
-      operationId: Retrieve Historic Registration
+      operationId: RetrieveHistoricRegistration
       description: '(GET `/api/alert/registrationhistory/{id}/`)
 
 
@@ -489,6 +491,8 @@ paths:
       - '[PCA] Registration History'
       summary: Retrieve historic registration
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Retrieve Historic Registration
 x-tagGroups:
 - name: Penn Course Plan
   tags:

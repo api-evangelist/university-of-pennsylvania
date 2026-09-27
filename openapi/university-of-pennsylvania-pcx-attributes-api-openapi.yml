@@ -25,7 +25,7 @@ tags:
 paths:
   /api/base/attributes/:
     get:
-      operationId: List Attributes
+      operationId: ListAttributes
       description: '(GET `/api/base/attributes/`)
 
 
@@ -87,6 +87,8 @@ paths:
       - '[PCx] Attributes'
       summary: List attributes
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: List Attributes
 x-tagGroups:
 - name: Penn Course Plan
   tags:

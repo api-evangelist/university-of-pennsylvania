@@ -25,7 +25,7 @@ tags:
 paths:
   /api/plan/primary-schedules/:
     get:
-      operationId: List Primary Schedules
+      operationId: ListPrimarySchedules
       description: '(GET `/api/plan/primary-schedules/`)
 
 
@@ -111,8 +111,10 @@ paths:
       - '[PCP] Primary Schedule'
       summary: List primary schedules
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: List Primary Schedules
     post:
-      operationId: Create Primary Schedule
+      operationId: CreatePrimarySchedule
       description: '(POST `/api/plan/primary-schedules/`)
 
 
@@ -141,9 +143,11 @@ paths:
       - '[PCP] Primary Schedule'
       summary: Create primary schedule
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Create Primary Schedule
   /api/plan/primary-schedules/{id}/:
     get:
-      operationId: Retrieve Primary Schedule
+      operationId: RetrievePrimarySchedule
       description: '(GET `/api/plan/primary-schedules/{id}/`)
 
 
@@ -228,6 +232,8 @@ paths:
       - '[PCP] Primary Schedule'
       summary: Retrieve primary schedule
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Retrieve Primary Schedule
 x-tagGroups:
 - name: Penn Course Plan
   tags:

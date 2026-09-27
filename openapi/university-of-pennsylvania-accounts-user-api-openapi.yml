@@ -33,7 +33,7 @@ tags:
 paths:
   /accounts/me/:
     get:
-      operationId: Retrieve User
+      operationId: RetrieveUser
       description: '(GET `/accounts/me/`)
 
 
@@ -102,8 +102,10 @@ paths:
       - '[Accounts] User'
       summary: Retrieve user
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Retrieve User
     put:
-      operationId: Update User
+      operationId: UpdateUser
       description: '(PUT `/accounts/me/`)
 
 
@@ -224,8 +226,10 @@ paths:
       - '[Accounts] User'
       summary: Update user
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Update User
     patch:
-      operationId: Partial Update User
+      operationId: PartialUpdateUser
       description: '(PATCH `/accounts/me/`)
 
 
@@ -346,6 +350,8 @@ paths:
       - '[Accounts] User'
       summary: Partial update user
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Partial Update User
 x-tagGroups:
 - name: Penn Course Plan
   tags:

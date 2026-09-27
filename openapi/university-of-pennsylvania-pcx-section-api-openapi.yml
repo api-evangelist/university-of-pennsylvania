@@ -25,7 +25,7 @@ tags:
 paths:
   /api/base/{semester}/search/sections/:
     get:
-      operationId: Section Search
+      operationId: SectionSearch
       description: '(GET `/api/base/{semester}/search/sections/`)
 
 
@@ -158,9 +158,11 @@ paths:
       - '[PCx] Section'
       summary: Section search
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Section Search
   /api/base/{semester}/sections/{full_code}/:
     get:
-      operationId: Retrieve Section
+      operationId: RetrieveSection
       description: '(GET `/api/base/{semester}/sections/{full_code}/`)
 
 
@@ -321,6 +323,8 @@ paths:
       - '[PCx] Section'
       summary: Retrieve section
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Retrieve Section
 x-tagGroups:
 - name: Penn Course Plan
   tags:

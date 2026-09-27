@@ -25,7 +25,7 @@ tags:
 paths:
   /api/plan/recommendations/:
     post:
-      operationId: Create Course Recommendations
+      operationId: CreateCourseRecommendations
       description: '(POST `/api/plan/recommendations/`)
 
 
@@ -176,6 +176,8 @@ paths:
       - '[PCP] Course Recommendations'
       summary: Create course recommendations
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Create Course Recommendations
 x-tagGroups:
 - name: Penn Course Plan
   tags:

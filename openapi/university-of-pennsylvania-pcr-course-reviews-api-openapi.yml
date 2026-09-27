@@ -25,7 +25,7 @@ tags:
 paths:
   /api/review/course/{course_code}:
     get:
-      operationId: Retrieve Course Reviews
+      operationId: RetrieveCourseReviews
       description: '(GET `/api/review/course/{course_code}`)
 
 
@@ -392,6 +392,8 @@ paths:
       - '[PCR] Course Reviews'
       summary: Retrieve course reviews
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Retrieve Course Reviews
 x-tagGroups:
 - name: Penn Course Plan
   tags:
