@@ -1,4 +1,4 @@
-# University of Pennsylvania (university-of-pennsylvania)
+# University of Pennsylvania
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,59 +64,194 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-The University of Pennsylvania (Penn) is a private Ivy League research university in Philadelphia, ranked #11 in the QS World University Rankings 2025. This repository catalogs Penn's public developer and API footprint as an [APIs.json](https://apisjson.org) provider profile for the API Evangelist network.
+The University of Pennsylvania (Penn) is a private Ivy League research university in Philadelphia. Penn operates no central developer portal and publishes no institution-wide API program, and the surface that the 2026-06-03 profile treated as its headline API — the Penn OpenData API on the ISC enterprise service bus — is retired: the host esb.isc-seo.upenn.edu no longer resolves and its documentation page returns a soft-404. What Penn genuinely operates is library and identity infrastructure: the PennKey Shibboleth identity provider, whose signed SAML 2.0 metadata resolves live in the InCommon federation; ScholarlyCommons at Penn, a DSpace 7.6 repository on Penn's own domain serving a conformant OAI-PMH 2.0 endpoint over real Penn records; the Franklin catalog and the Colenda digital repository, both Blacklight applications with JSON twins on every page under Penn Libraries' published open-metadata policy; and OPenn, a bulk open-data site of manuscript images and TEI descriptions. The far larger and better known surface — Penn Course Alert, Penn Course Plan, Penn Course Review, Penn Degree Plan and Penn Clubs, with a live 45-path OpenAPI at penncourseplan.com/api/openapi/ — is NOT operated by the university. It is built and run by Penn Labs, a non-profit student-run software organization, on domains registered to Penn Labs. Penn's Office of Student Affairs adopted Penn Clubs as its official student-group registry, which is institutional endorsement of the product, not institutional operation of the API. Those surfaces are recorded here as tenant relationships so the relationship is preserved without crediting Penn for engineering it did not do.
 
-- APIs.json: https://raw.githubusercontent.com/api-evangelist/university-of-pennsylvania/refs/heads/main/apis.yml
-- Run with Naftiko: https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=university-of-pennsylvania-api-evangelist&utm_content=repo
+**Areas:** Education · Higher Education · University · Research University · Ivy League · United States · Philadelphia · Open Data · Library · Course Catalog · Research Repository · Identity Federation
 
-## Type
+## University of Pennsylvania on APIs.io
 
-- Index / Consumer / 3rd-Party
+Everything profiled for University of Pennsylvania is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/university-of-pennsylvania/](https://apis.io/providers/university-of-pennsylvania/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (10)
 
-Education, Higher Education, University, Open Data, Courses, Library, United States, Ivy League
+- [Penn Courses API (Penn Course Alert / Plan / Review / Degree Plan)](https://apis.io/apis/university-of-pennsylvania/penn-courses/) — One API, four student-facing products: Penn Course Alert (PCA), Penn Course Plan (PCP), Penn Course Review (PCR) and Penn Degree Plan (PDP), plus a shared…
+- [Penn Clubs API](https://apis.io/apis/university-of-pennsylvania/penn-clubs/) — JSON API behind Penn Clubs, the student-organization directory that Penn's Office of Student Affairs adopted as its official student-group registration…
+- [Penn SDK (Python)](https://apis.io/apis/university-of-pennsylvania/penn-sdk-python/) — Open-source Python client maintained by Penn Labs wrapping Penn data services. Published documentation at penn-sdk.readthedocs.io returned HTTP 200. An SDK…
+- [Penn SDK (JavaScript / Node)](https://apis.io/apis/university-of-pennsylvania/penn-sdk-js/) — Open-source JavaScript/Node client from Penn Labs. Documentation is hosted on js.org, a community subdomain service, at penn-sdk.js.org (HTTP 200) — a…
+- [PennKey Identity Provider — SAML 2.0 / Shibboleth Metadata](https://apis.io/apis/university-of-pennsylvania/pennkey-identity-provider/) — Penn's Shibboleth identity provider publishes a signed SAML 2.0 EntityDescriptor at a well-known location (HTTP 200, application/xml, entityID…
+- [ScholarlyCommons at Penn — DSpace REST API](https://apis.io/apis/university-of-pennsylvania/scholarlycommons-rest/) — DSpace 7.6 HAL+JSON REST API on Penn's own host. The API root returned HTTP 200 advertising dspaceName "ScholarlyCommons at Penn" and the full DSpace link…
+- [Colenda Digital Repository — Search JSON](https://apis.io/apis/university-of-pennsylvania/colenda/) — Penn Libraries' digital repository at colenda.library.upenn.edu exposes a Blacklight/Solr JSON search response (/catalog.json returned HTTP 200, ~59 KB,…
+- [OPenn — Open Manuscript Data](https://apis.io/apis/university-of-pennsylvania/openn/) — Penn Libraries' bulk open-data site publishing high-resolution manuscript images and TEI/XML descriptions in the public domain, laid out as a…
+- [University of Pennsylvania Catalog API](https://apis.io/apis/university-of-pennsylvania/university-of-pennsylvania-catalog-api/) — Bibliographic search and record retrieval.
+- [University of Pennsylvania Request API](https://apis.io/apis/university-of-pennsylvania/university-of-pennsylvania-request-api/) — The Request API from University of Pennsylvania — 1 operation(s) for request.
 
-## APIs
+### Published properties
 
-- **Penn OpenData API** — institutional ESB exposing Registrar, Dining, Directory, Transit, News, Events, Maps, Calendar, and Laundry data (token required; docs gated). Docs: https://pennlabs.org/resources/
-- **Penn SDK (Python)** — Penn Labs open-source Python wrapper for OpenData. Docs: https://penn-sdk.readthedocs.io/en/latest/ | https://github.com/pennlabs/penn-sdk-python
-- **Penn OpenData Node SDK** — JavaScript/Node SDK for OpenData. Docs: https://penn-sdk.js.org/
-- **Penn Courses (PCX) API** — open-source course planning/registration platform; backend uses OpenData. Docs: https://github.com/pennlabs/penn-courses/blob/master/backend/README.md
-- **Penn Course Review API** — JSON REST API for course reviews and registrar data. Docs: https://penncoursereview.com/api/documentation/
-- **Penn Libraries Open Metadata** — bibliographic catalog metadata via OAI-PMH and Z39.50. Docs: https://www.library.upenn.edu/about/policies/open-metadata
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## Plans
+#### Agentic access (1)
 
-See [plans/university-of-pennsylvania-plans-pricing.yml](plans/university-of-pennsylvania-plans-pricing.yml).
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## Rate Limits
+- [University Of Pennsylvania Agentic Access](https://apis.io/agentic-access/university-of-pennsylvania/university-of-pennsylvania-agentic-access/)
 
-See [rate-limits/university-of-pennsylvania-rate-limits.yml](rate-limits/university-of-pennsylvania-rate-limits.yml).
+#### JSON Schema (3)
 
-## FinOps
+The data models the API reads and writes.
 
-See [finops/university-of-pennsylvania-finops.yml](finops/university-of-pennsylvania-finops.yml).
+- [CourseDetail](https://apis.io/schemas/university-of-pennsylvania/university-of-pennsylvania-course/)
+- [Schedule](https://apis.io/schemas/university-of-pennsylvania/university-of-pennsylvania-schedule/)
+- [SectionDetail](https://apis.io/schemas/university-of-pennsylvania/university-of-pennsylvania-section/)
 
-## Timestamps
+#### JSON Structure (2)
 
-- Created: 2026-06-03
-- Modified: 2026-06-03
+Data models expressed in JSON Structure.
 
-## Common Properties
+- [University Of Pennsylvania Course Structure](https://apis.io/json-structure/university-of-pennsylvania/university-of-pennsylvania-course-structure/)
+- [University Of Pennsylvania Section Structure](https://apis.io/json-structure/university-of-pennsylvania/university-of-pennsylvania-section-structure/)
 
-- Website: https://www.upenn.edu/
-- GitHub (official): https://github.com/upenn
-- Source Code (Penn Labs): https://github.com/pennlabs
-- Developer Portal: https://pennlabs.org/resources/
-- LinkedIn: https://www.linkedin.com/school/university-of-pennsylvania/
+#### JSON-LD (1)
 
-## Notes
+Linked-data contexts for the provider's vocabulary.
 
-- The official **Penn OpenData API** is real but gated — its documentation host (`esb.isc-seo.upenn.edu`) does not resolve from outside the Penn network, and most services require a validated API token. It is cataloged honestly without inventing public endpoints.
-- The richest publicly verifiable API surface is maintained by **Penn Labs**, a student-run software organization (not an official university IT property), via open-source SDKs and JSON REST APIs.
-- All cataloged docs URLs were probed live on 2026-06-03; the legacy `data.pennlabs.org` demo returned 404 and is noted as such in `review.yml`.
+- [University Of Pennsylvania Context](https://apis.io/jsonld/university-of-pennsylvania/university-of-pennsylvania-context/)
 
-## Maintainers
+#### Vocabulary (1)
 
-- Kin Lane — kin@apievangelist.com
+The provider's domain terms, defined.
+
+- [University of Pennsylvania Penn Courses Vocabulary](https://apis.io/vocabularies/university-of-pennsylvania/university-of-pennsylvania-vocabulary/)
+
+#### Examples (2)
+
+Example requests and responses.
+
+- [University Of Pennsylvania Course Detail Example](https://apis.io/examples/university-of-pennsylvania/university-of-pennsylvania-course-detail-example/)
+- [University Of Pennsylvania Section Detail Example](https://apis.io/examples/university-of-pennsylvania/university-of-pennsylvania-section-detail-example/)
+
+#### Collections (25)
+
+Postman and Open Collection request collections.
+
+- [Penn Courses API Documentation [Accounts] User [Accounts] User [Accounts] User API](https://apis.io/collections/university-of-pennsylvania/open-university-of-pennsylvania-accounts-user-api/)
+- [Penn Courses API Documentation [Accounts] User [Accounts] User [PCA] Registration API](https://apis.io/collections/university-of-pennsylvania/open-university-of-pennsylvania-pca-registration-api/)
+- [Penn Courses API Documentation [Accounts] User [Accounts] User [PCA] Registration History API](https://apis.io/collections/university-of-pennsylvania/open-university-of-pennsylvania-pca-registration-history-api/)
+- [Penn Courses API Documentation [Accounts] User [Accounts] User [PCP] Break API](https://apis.io/collections/university-of-pennsylvania/open-university-of-pennsylvania-pcp-break-api/)
+- [Penn Courses API Documentation [Accounts] User [Accounts] User [PCP] Calendar API](https://apis.io/collections/university-of-pennsylvania/open-university-of-pennsylvania-pcp-calendar-api/)
+- [Penn Courses API Documentation [Accounts] User [Accounts] User [PCP] Course Recommendations API](https://apis.io/collections/university-of-pennsylvania/open-university-of-pennsylvania-pcp-course-recommendations-api/)
+- [Penn Courses API Documentation [Accounts] User [Accounts] User [PCP] Primary Schedule API](https://apis.io/collections/university-of-pennsylvania/open-university-of-pennsylvania-pcp-primary-schedule-api/)
+- [Penn Courses API Documentation [Accounts] User [Accounts] User [PCP] Schedule API](https://apis.io/collections/university-of-pennsylvania/open-university-of-pennsylvania-pcp-schedule-api/)
+- [Penn Courses API Documentation [Accounts] User [Accounts] User [PCR] Autocomplete Dump API](https://apis.io/collections/university-of-pennsylvania/open-university-of-pennsylvania-pcr-autocomplete-dump-api/)
+- [Penn Courses API Documentation [Accounts] User [Accounts] User [PCR] Plots API](https://apis.io/collections/university-of-pennsylvania/open-university-of-pennsylvania-pcr-plots-api/)
+- [Penn Courses API Documentation [Accounts] User [Accounts] User [PCx] Attributes API](https://apis.io/collections/university-of-pennsylvania/open-university-of-pennsylvania-pcx-attributes-api/)
+- [Penn Courses API Documentation [Accounts] User [Accounts] User [PCx] Course API](https://apis.io/collections/university-of-pennsylvania/open-university-of-pennsylvania-pcx-course-api/)
+- [Penn Courses API Documentation [Accounts] User [Accounts] User [PCx] Friendship API](https://apis.io/collections/university-of-pennsylvania/open-university-of-pennsylvania-pcx-friendship-api/)
+- [Penn Courses API Documentation [Accounts] User [Accounts] User [PCx] Healths API](https://apis.io/collections/university-of-pennsylvania/open-university-of-pennsylvania-pcx-healths-api/)
+- [Penn Courses API Documentation [Accounts] User [Accounts] User [PCx] NGSS Restrictions API](https://apis.io/collections/university-of-pennsylvania/open-university-of-pennsylvania-pcx-ngss-restrictions-api/)
+- [Penn Courses API Documentation [Accounts] User [Accounts] User [PCx] Pre-NGSS Requirements API](https://apis.io/collections/university-of-pennsylvania/open-university-of-pennsylvania-pcx-pre-ngss-requirements-api/)
+- [Penn Courses API Documentation [Accounts] User [Accounts] User [PCx] Section API](https://apis.io/collections/university-of-pennsylvania/open-university-of-pennsylvania-pcx-section-api/)
+- [Penn Courses API Documentation [Accounts] User [Accounts] User [PCx] Status Updates API](https://apis.io/collections/university-of-pennsylvania/open-university-of-pennsylvania-pcx-status-updates-api/)
+- [Penn Courses API Documentation [Accounts] User [Accounts] User [PDP] Degree API](https://apis.io/collections/university-of-pennsylvania/open-university-of-pennsylvania-pdp-degree-api/)
+- [Penn Courses API Documentation [Accounts] User [Accounts] User [PDP] Degree Plan Detail API](https://apis.io/collections/university-of-pennsylvania/open-university-of-pennsylvania-pdp-degree-plan-detail-api/)
+- [Penn Courses API Documentation [Accounts] User [Accounts] User [PDP] Degree Plan Lists API](https://apis.io/collections/university-of-pennsylvania/open-university-of-pennsylvania-pdp-degree-plan-lists-api/)
+- [Penn Courses API Documentation [Accounts] User [Accounts] User [PDP] Docked Course API](https://apis.io/collections/university-of-pennsylvania/open-university-of-pennsylvania-pdp-docked-course-api/)
+- [Penn Courses API Documentation [Accounts] User [Accounts] User [PDP] Fulfillment API](https://apis.io/collections/university-of-pennsylvania/open-university-of-pennsylvania-pdp-fulfillment-api/)
+- [Penn Courses API Documentation [Accounts] User [Accounts] User [PDP] Onboard From Transcript API](https://apis.io/collections/university-of-pennsylvania/open-university-of-pennsylvania-pdp-onboard-from-transcript-api/)
+- [Penn Courses API Documentation [Accounts] User [Accounts] User [PDP] Satisfied Rule Lists API](https://apis.io/collections/university-of-pennsylvania/open-university-of-pennsylvania-pdp-satisfied-rule-lists-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [University of Pennsylvania — jsonschema rules](https://apis.io/rules/university-of-pennsylvania/university-of-pennsylvania-jsonschema-spectral-rules/)
+- [University of Pennsylvania API Rules](https://apis.io/rules/university-of-pennsylvania/university-of-pennsylvania-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [University Of Pennsylvania Authentication](https://apis.io/security/university-of-pennsylvania/university-of-pennsylvania-authentication/)
+- [University Of Pennsylvania Domain Security](https://apis.io/security/university-of-pennsylvania/university-of-pennsylvania-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [University Of Pennsylvania Plans Pricing](https://apis.io/plans/university-of-pennsylvania/university-of-pennsylvania-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [University Of Pennsylvania Rate Limits](https://apis.io/rate-limits/university-of-pennsylvania/university-of-pennsylvania-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [University Of Pennsylvania Finops](https://apis.io/finops/university-of-pennsylvania/university-of-pennsylvania-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.upenn.edu/)
+- [Documentation](https://pennlabs.org/resources/)
+- [Blog](https://penntoday.upenn.edu/rss.xml)
+- [Privacy policy](https://www.upenn.edu/about/privacy-policy)
+- [GitHub](https://github.com/upenn)
+
+## API Evangelist rating
+
+**Kin Score 31.0** — thin · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 62.5 |
+| Contract quality | 50.3 |
+| Contract governance | 13.6 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 19.0 |
+| Access clarity | 26.3 |
+
+**Agent readiness 20.0** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | paginated |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 18.6** — Education & Research
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/university-of-pennsylvania/](https://apis.io/providers/university-of-pennsylvania/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for University of Pennsylvania: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/university-of-pennsylvania/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
